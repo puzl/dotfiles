@@ -1,0 +1,88 @@
+#!/bin/bash
+
+umask 022
+set -o emacs
+set -o igncr
+
+source ~/.bash_funcs
+source ~/.bash_aliases
+
+PROMPT_COMMAND=ps1
+VIMPATH=/usr/bin/vim
+
+if [[ "$OSTYPE" = "cygwin" ]] ;  then
+    export CMAKE_PNAME_SEP=/
+    export CCASE_CONC=7
+    export RUBYOPT=rubygems
+    export CCASE_CONC_V6_OBSOLETE=1
+    export CCASE_SHELL_REQUIRED=TRUE
+
+    export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
+
+    if [[ -e ${HOME}/.arrisrc ]] ; then source ${HOME}/.arrisrc ; fi
+
+    if [[ ! -z "$CC_VIEW_SPEC" ]] ; then
+        cleartool catcs | grep CMTS_V 2>&1 > /dev/null
+        if [[ "$?" = "0" ]] ; then
+            export SETVIEW_ENV=C4
+            svenv $SETVIEW_ENV
+            svinitcd
+        fi
+    fi
+        
+    #if [[ -f /etc/bash_completion ]] ;  then
+        #. /etc/bash_completion
+    #fi
+
+    if [[ ! -z $SETVIEW_ENV ]] ;  then
+        if [[ $SETVIEW_ENV = "C4" ]] ;  then
+            export TAGFILES="/CMTS/sw/src/src.t,/CMTS/sw/include/h.t,/model/cmts/model.t,/common/windriver/build/appKernel/kernel.t"
+        elif [[ $SETVIEW_ENV = "E6" ]] ;  then
+            export TAGFILES="/app/app.t,/kernel/kernel.t,/system/system.t,/vendor/windriver/vxworks/target/wrs.t,/vendor/windriver/components/comp.t"
+        fi
+    fi
+
+else
+    export TERM="xterm-256color"
+
+    add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
+    add_to_path LD_LIBRARY_PATH /usr/local/lib
+    add_to_path MANPATH /usr/local/man:/usr/man
+
+	# No need to setup build environment if not in a view
+	if [[ -z "$CLEARCASE_ROOT" ]] ;   then
+		PS1="\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "
+	else
+		# Calculate the view name for later use
+		VIEW=`echo $CLEARCASE_ROOT  | sed -e 's./view/..g'`
+
+		PS1="\[\033[1;32m\][$VIEW]\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "
+
+		export CCASE_BLD_UMASK=002
+		export CCASE_MAKE_COMPAT=gnu
+	fi
+
+    if [[ "$OSTYPE" = "solaris2.10" ]] ;  then
+        VIMPATH=/usr/local/bin/vim
+        # Call this to use old gryphon montavista
+        add_gryphon_sbtools() {
+            echo adding /vobs/gryphon
+            eval `/vobs/gryphon/linux/Montavista/add_mvtools sh "$@"`
+        }
+
+        # Call this to use new C3_3rdparty montavista
+        add_3rd_sbtools() {
+            echo adding /vobs/mv/linux
+            eval `/vobs/C3_3rdparty/linux/Montavista/add_mvtools sh "$@"`
+        }
+    fi
+
+fi
+
+if [[ -x "${VIM_PATH}" ]] ;  then
+    export VIEWER="$VIM_PATH" 
+    export EDITOR="$VIM_PATH"
+    export WINEDITOR="vim"
+fi
+
+$HOME/bin/cleartitle
