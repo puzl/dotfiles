@@ -1,0 +1,47 @@
+#!/bin/bash
+
+case $TERM in
+    cygwin*)
+    CYGFIXIFY="| sed -e 's/\\\\/\\//g'"
+    ;;
+    *)
+    CYGFIXIFY=""
+    ;;
+esac
+
+function lsco 
+{
+    eval cleartool lsco -cvi -all -s $CYGFIXIFY
+}
+function lspriv
+{
+    eval cleartool lspriv $CYGFIXIFY
+}
+
+function lscoa
+{
+    eval cleartool lsco -cvi -avobs -s $CYGFIXIFY
+}
+
+function cdiff 
+{
+    cleartool diff -pred -diff $1
+}
+
+function add_to_path
+{
+    if [[ "${!1}" =~ "(^|:)"${2}"(:|$)" ]]
+    then
+        return 0
+    fi
+    export $1="$2:${!1}"
+}
+
+function ps1() 
+{ 
+    GREEN='\[\033[0;32;1m\]'
+    BLUE='\[\033[0;36;1m\]'
+
+    PS1="\[\e[7m\]\[\e[0m\]${GREEN}\[\e[1m\]\W\[\e[0m\] \!\$\[\e[0m\] "
+}
+
