@@ -1,0 +1,6 @@
+[submodule "prezto"]
+	path = prezto
+	url = https://github.com/puzl/prezto
+[submodule "dotvim"]
+	path = dotvim
+	url = https://github.com/puzl/dotvim
