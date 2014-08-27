@@ -7,34 +7,6 @@ function hostify()
     fi
 }
 
-case $TERM in
-    cygwin*)
-    CYGFIXIFY="| sed -e 's/\\\\/\\//g'"
-    ;;
-    *)
-    CYGFIXIFY=""
-    ;;
-esac
-
-function lsco 
-{
-    eval cleartool lsco -cvi -all -s $CYGFIXIFY
-}
-function lspriv
-{
-    eval cleartool lspriv $CYGFIXIFY
-}
-
-function lscoa
-{
-    eval cleartool lsco -cvi -avobs -s $CYGFIXIFY
-}
-
-function cdiff 
-{
-    cleartool diff -pred -diff $1
-}
-
 function add_to_path
 {
     if [[ "${!1}" =~ "(^|:)"${2}"(:|$)" ]]
@@ -52,3 +24,56 @@ function ps1()
     PS1="\[\e[7m\]\[\e[0m\]${GREEN}\[\e[1m\]\W\[\e[0m\] \!\$\[\e[0m\] "
 }
 
+function fgrep()
+{
+    case $# in 
+        1)
+            DIR=.
+            EXPR=$1
+            ;;
+        2)
+            DIR=$1
+            EXPR=$2
+            ;;
+        *)
+            echo "Usage: $0 [directory] <expression>"
+            return 1;
+            ;;
+    esac
+
+    find ${DIR} -type d -path obj -prune -o -type f -name \*[cph]   | xargs egrep "$EXPR"
+}
+
+function figrep()
+{
+    case $# in 
+        1)
+            DIR=.
+            EXPR=$1
+            ;;
+        2)
+            DIR=$1
+            EXPR=$2
+            ;;
+        *)
+            echo "Usage: $0 [directory] <expression>"
+            return 1;
+            ;;
+    esac
+
+    find ${DIR} -type d -path obj -prune -o -type f -name \*[cph]   | xargs egrep -i "$EXPR"
+}
+
+function vi()
+{
+    case $OSTYPE in
+        cygwin*)
+            GVIM="/c/Program Files (x86)/Vim/vim73/gvim.exe"
+            ;;
+        *)
+            GVIM=gvim
+            ;;
+    esac
+
+    "${GVIM}" --servername ${SETVIEW_ENV-GVIM} --remote-tab-silent "${@}"&
+}

@@ -1,0 +1,44 @@
+function lsco 
+{
+    eval cleartool lsco -cvi -all -s $CYGFIXIFY
+}
+function lspriv
+{
+    eval cleartool lspriv $CYGFIXIFY
+}
+
+function lscoa
+{
+    eval cleartool lsco -cvi -avobs -s $CYGFIXIFY
+}
+
+function lscor
+{
+    eval cleartool lsco -cvi -rec -s $CYGFIXIFY
+}
+
+function co
+{
+    eval cleartool co -nc -unres $*
+}
+
+function ci
+{
+    eval cleartool ci -nc $*
+}
+
+function unco
+{
+    eval cleartool unco -rm $*
+}
+
+function catcs
+{
+    eval cleartool catcs $*
+}
+
+function cdiff 
+{
+    cleartool diff -pred -diff $*
+}
+
