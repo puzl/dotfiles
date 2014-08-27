@@ -1,0 +1,1 @@
+/home/hjw/.rcm/dotvim/vimrc
