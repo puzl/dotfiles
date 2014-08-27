@@ -85,4 +85,6 @@ if [[ -x "${VIM_PATH}" ]] ;  then
     export WINEDITOR="vim"
 fi
 
-$HOME/bin/cleartitle
+if [[ -x $HOME/bin/cleartitle ]]; then
+    $HOME/bin/cleartitle
+fi

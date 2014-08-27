@@ -1,4 +1,11 @@
 #!/bin/bash
+function hostify()
+{
+    local RC=$1
+    if [[ -e ~/.rcm/bash/$RC.$(hostname) ]]; then
+        source ~/.rcm/bash/$RC.$(hostname)
+    fi
+}
 
 case $TERM in
     cygwin*)
