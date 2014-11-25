@@ -43,3 +43,5 @@ setup $HOME/.rcm/prezto/runcoms/zpreztorc $HOME/.zpreztorc
 setup $HOME/.rcm/prezto/runcoms/zprofile $HOME/.zprofile
 setup $HOME/.rcm/prezto/runcoms/zshenv $HOME/.zshenv
 setup $HOME/.rcm/prezto/runcoms/zshrc $HOME/.zshrc
+setup $HOME/.rcm/emacs/dotemacs $HOME/.emacs
+setup $HOME/.rcm/emacs/emacs.d $HOME/.emacs.d
