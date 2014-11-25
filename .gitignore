@@ -1,0 +1,4 @@
+elpa
+*~
+*.elc
+/emacs/emacs.d/ede-projects.el

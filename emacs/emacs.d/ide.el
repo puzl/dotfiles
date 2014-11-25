@@ -10,6 +10,7 @@
 
 (defconst demo-packages
   '(company
+    magit
     ggtags
     helm
     helm-gtags

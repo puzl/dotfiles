@@ -73,23 +73,6 @@ of FILE in the current directory, suitable for creation"
 (modify-syntax-entry ?_ "w")
 (delete-selection-mode 1)
 
-;; make backup to a designated dir, mirroring the full path
-
-(defun my-backup-file-name (fpath)
-  "Return a new file path of a given file path.
-If the new path's directories does not exist, create them."
-  (let* (
-        (backupRootDir "/home/emacs-backup/")
-        (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path, ⁖ “C:”
-        (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") ))
-        )
-    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
-    backupFilePath
-  )
-)
-
-(setq make-backup-file-name-function 'my-backup-file-name)
-
 (require 'bs)
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
