@@ -2,7 +2,6 @@
 
 umask 022
 set -o emacs
-set -o igncr
 
 source ~/.bash_funcs
 source ~/.bash_aliases
@@ -11,15 +10,18 @@ PROMPT_COMMAND=ps1
 VIMPATH=/usr/bin/vim
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
+    set -o igncr
     export CMAKE_PNAME_SEP=/
     export CCASE_CONC=7
     export RUBYOPT=rubygems
     export CCASE_CONC_V6_OBSOLETE=1
+    export CCASE_MAKEFLAGS_V6_OBSOLETE=1
     export CCASE_SHELL_REQUIRED=TRUE
 
     export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
 
-    if [[ -e ${HOME}/.arrisrc ]] ; then source ${HOME}/.arrisrc ; fi
+    if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
+    #if [[ -e ${HOME}/.arrisrc ]] ; then source ${HOME}/.arrisrc ; fi
 
     if [[ ! -z "$CC_VIEW_SPEC" ]] ; then
         cleartool catcs | grep CMTS_V 2>&1 > /dev/null
@@ -29,6 +31,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
             svinitcd
         fi
     fi
+    add_to_path PATH /c/emacs-24.3/bin 
         
     #if [[ -f /etc/bash_completion ]] ;  then
         #. /etc/bash_completion
@@ -36,9 +39,9 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 
     if [[ ! -z $SETVIEW_ENV ]] ;  then
         if [[ $SETVIEW_ENV = "C4" ]] ;  then
-            export TAGFILES="/CMTS/sw/src/src.t,/CMTS/sw/include/h.t,/model/cmts/model.t,/common/windriver/build/appKernel/kernel.t"
+            export TAGFILES="/CMTS/sw/src/src.t,/CMTS/sw/include/h.t,/model/cmts/model.t,/common/windriver/build/kernel.t,/common/ezchip/ezchip.t, /CMTS/sw/Rhapsody/Share/LangCpp/oxf/rhap.t"
         elif [[ $SETVIEW_ENV = "E6" ]] ;  then
-            export TAGFILES="/app/app.t,/kernel/kernel.t,/system/system.t,/vendor/windriver/vxworks/target/wrs.t,/vendor/windriver/components/comp.t"
+            export TAGFILES="/app/app.t,/kernel/kernel.t,/system/system.t,/vendor/windriver/vxworks/target/wrs.t,/vendor/windriver/components/comp.t,/devTools/videosim/videosim.t"
         fi
     fi
 
@@ -63,6 +66,11 @@ else
 	fi
 
     if [[ "$OSTYPE" = "solaris2.10" ]] ;  then
+        echo Solaris
+        export WIND_BASE=/vobs/tornadonew/mips211solaris
+        export WIND_HOST_TYPE=sun4-solaris2
+        export PATH=${WIND_BASE}/host/sun4-solaris2/bin:${PATH}
+
         VIMPATH=/usr/local/bin/vim
         # Call this to use old gryphon montavista
         add_gryphon_sbtools() {
@@ -75,6 +83,7 @@ else
             echo adding /vobs/mv/linux
             eval `/vobs/C3_3rdparty/linux/Montavista/add_mvtools sh "$@"`
         }
+        add_3rd_sbtools bash sb1-elf-2.7.16
     fi
 
 fi
@@ -82,9 +91,9 @@ fi
 if [[ -x "${VIM_PATH}" ]] ;  then
     export VIEWER="$VIM_PATH" 
     export EDITOR="$VIM_PATH"
-    export WINEDITOR="vim"
 fi
+export GTAGSLIBPATH=/app:/kernel:/system
+$HOME/bin/cleartitle
+export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
 
-if [[ -x $HOME/bin/cleartitle ]]; then
-    $HOME/bin/cleartitle
-fi
+hostify bash_profile

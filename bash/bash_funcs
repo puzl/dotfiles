@@ -5,6 +5,11 @@ function hostify()
     if [[ -e ~/.rcm/bash/$RC.$(hostname) ]]; then
         source ~/.rcm/bash/$RC.$(hostname)
     fi
+    if [[ ! -z "$CC_VIEW_SPEC" ]]; then
+        if [[ -e ~/.rcm/bash/$RC.clearcase ]]; then
+            source ~/.rcm/bash/$RC.clearcase
+        fi
+    fi
 }
 
 function add_to_path
@@ -77,3 +82,5 @@ function vi()
 
     "${GVIM}" --servername ${SETVIEW_ENV-GVIM} --remote-tab-silent "${@}"&
 }
+
+hostify bash_funcs

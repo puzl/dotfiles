@@ -30,18 +30,22 @@ function setup()
   DST=$2
 
   backup $DST
-  $LN -s $SRC $DST
+  $LN -sf $SRC $DST
 
 }
 
-setup $HOME/.rcm/dotvim $HOME/.vim
-setup $HOME/.rcm/dotvim/vimrc $HOME/.vimrc
-setup $HOME/.rcm/prezto $HOME/.zprezto
-setup $HOME/.rcm/prezto/runcoms/zlogin $HOME/.zlogin
-setup $HOME/.rcm/prezto/runcoms/zlogout $HOME/.zlogout
-setup $HOME/.rcm/prezto/runcoms/zpreztorc $HOME/.zpreztorc
-setup $HOME/.rcm/prezto/runcoms/zprofile $HOME/.zprofile
-setup $HOME/.rcm/prezto/runcoms/zshenv $HOME/.zshenv
-setup $HOME/.rcm/prezto/runcoms/zshrc $HOME/.zshrc
-setup $HOME/.rcm/emacs/dotemacs $HOME/.emacs
-setup $HOME/.rcm/emacs/emacs.d $HOME/.emacs.d
+setup .rcm/bash/bash_profile $HOME/.bashrc
+setup .rcm/bash/bash_profile $HOME/.bash_profile
+setup .rcm/bash/bash_aliases $HOME/.bash_aliases
+setup .rcm/bash/bash_funcs $HOME/.bash_funcs
+setup .rcm/dotvim $HOME/.vim
+setup .rcm/dotvim/vimrc $HOME/.vimrc
+setup .rcm/prezto $HOME/.zprezto
+setup .rcm/prezto/runcoms/zlogin $HOME/.zlogin
+setup .rcm/prezto/runcoms/zlogout $HOME/.zlogout
+setup .rcm/prezto/runcoms/zpreztorc $HOME/.zpreztorc
+setup .rcm/prezto/runcoms/zprofile $HOME/.zprofile
+setup .rcm/prezto/runcoms/zshenv $HOME/.zshenv
+setup .rcm/prezto/runcoms/zshrc $HOME/.zshrc
+setup .rcm/emacs/dotemacs $HOME/.emacs
+setup .rcm/emacs/emacs.d $HOME/.emacs.d

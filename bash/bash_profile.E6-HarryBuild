@@ -1,2 +1,1 @@
-CYGFIXIFY="| sed -e 's/\\\\/\\//g'"
-
+export CYGFIXIFY="| sed -e 's/\\\\/\\//g'"
