@@ -75,7 +75,6 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
 fi
 
 export GTAGSLIBPATH=/app:/kernel:/system
-$HOME/bin/cleartitle
 export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
 
 hostify bash_profile
