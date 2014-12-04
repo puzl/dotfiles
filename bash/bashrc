@@ -1,7 +1,8 @@
 #!/bin/bash
 
-echo Executing bash profile
+echo Executing bashrc
 
 if [[ -f $HOME/.rcm/bash/dotbash ]]; then
     . $HOME/.rcm/bash/dotbash
 fi
+

@@ -24,7 +24,16 @@ function backup()
   fi
 }
 
-function setup()
+function setuplp()
+{
+  SRC=$1
+  DST=$2
+
+  backup $DST
+  $LN -sf $SRC $DST
+
+}
+function setupln()
 {
   SRC=$1
   DST=$2
@@ -34,18 +43,18 @@ function setup()
 
 }
 
-setup .rcm/bash/bash_profile $HOME/.bashrc
-setup .rcm/bash/bash_profile $HOME/.bash_profile
-setup .rcm/bash/bash_aliases $HOME/.bash_aliases
-setup .rcm/bash/bash_funcs $HOME/.bash_funcs
-setup .rcm/dotvim $HOME/.vim
-setup .rcm/dotvim/vimrc $HOME/.vimrc
-setup .rcm/prezto $HOME/.zprezto
-setup .rcm/prezto/runcoms/zlogin $HOME/.zlogin
-setup .rcm/prezto/runcoms/zlogout $HOME/.zlogout
-setup .rcm/prezto/runcoms/zpreztorc $HOME/.zpreztorc
-setup .rcm/prezto/runcoms/zprofile $HOME/.zprofile
-setup .rcm/prezto/runcoms/zshenv $HOME/.zshenv
-setup .rcm/prezto/runcoms/zshrc $HOME/.zshrc
-setup .rcm/emacs/dotemacs $HOME/.emacs
-setup .rcm/emacs/emacs.d $HOME/.emacs.d
+setupcp .rcm/bash/bashrc $HOME/.bashrc
+setupcp .rcm/bash/bash_profile $HOME/.bash_profile
+setupln .rcm/bash/bash_aliases $HOME/.bash_aliases
+setupln .rcm/bash/bash_funcs $HOME/.bash_funcs
+setupln .rcm/dotvim $HOME/.vim
+setupln .rcm/dotvim/vimrc $HOME/.vimrc
+setupln .rcm/prezto $HOME/.zprezto
+setupln .rcm/prezto/runcoms/zlogin $HOME/.zlogin
+setupln .rcm/prezto/runcoms/zlogout $HOME/.zlogout
+setupln .rcm/prezto/runcoms/zpreztorc $HOME/.zpreztorc
+setupln .rcm/prezto/runcoms/zprofile $HOME/.zprofile
+setupln .rcm/prezto/runcoms/zshenv $HOME/.zshenv
+setupln .rcm/prezto/runcoms/zshrc $HOME/.zshrc
+setupln .rcm/emacs/dotemacs $HOME/.emacs
+setupln .rcm/emacs/emacs.d $HOME/.emacs.d
