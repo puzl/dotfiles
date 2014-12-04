@@ -47,8 +47,8 @@ setupcp .rcm/bash/bashrc $HOME/.bashrc
 setupcp .rcm/bash/bash_profile $HOME/.bash_profile
 setupln .rcm/bash/bash_aliases $HOME/.bash_aliases
 setupln .rcm/bash/bash_funcs $HOME/.bash_funcs
-setupln .rcm/dotvim $HOME/.vim
-setupln .rcm/dotvim/vimrc $HOME/.vimrc
+setupln .rcm/vim $HOME/.vim
+setupln .rcm/vim/vimrc $HOME/.vimrc
 setupln .rcm/prezto $HOME/.zprezto
 setupln .rcm/prezto/runcoms/zlogin $HOME/.zlogin
 setupln .rcm/prezto/runcoms/zlogout $HOME/.zlogout
