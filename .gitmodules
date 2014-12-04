@@ -13,3 +13,6 @@
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline
+[submodule "emacs/emacs.d/themes/gotham-theme"]
+	path = emacs/emacs.d/themes/gotham-theme
+	url = https://github.com/wasamasa/gotham-theme
