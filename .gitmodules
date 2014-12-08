@@ -1,15 +1,20 @@
 [submodule "vim/bundle/Align"]
 	path = vim/bundle/Align
-	url = https://github.com/vim-scripts/Align.git
+    url = https://github.com/vim-scripts/Align.git
+    ignore = dirty
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim
+    url = https://github.com/kien/ctrlp.vim
+    ignore = dirty
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
+    url = https://github.com/altercation/vim-colors-solarized
+    ignore = dirty
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline
+    url = https://github.com/Lokaltog/vim-powerline
+    ignore = dirty
 [submodule "emacs/emacs.d/themes/gotham-theme"]
 	path = emacs/emacs.d/themes/gotham-theme
-	url = https://github.com/wasamasa/gotham-theme
+    url = https://github.com/wasamasa/gotham-theme
+    ignore = dirty
