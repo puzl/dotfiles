@@ -1,4 +1,6 @@
-(load-file "~/.rcm/emacs/emacs-initi.el")
+(setq inhibit-startup-message t)
+
+(load-file "~/.rcm/emacs/emacs-init.el")
 
 (setq custom-file "~/.rcm/emacs/custom.el")
 (load custom-file)

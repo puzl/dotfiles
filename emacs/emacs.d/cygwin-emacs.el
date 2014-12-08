@@ -37,7 +37,7 @@ If the new path's directories does not exist, create them."
 
 (setq make-backup-file-name-function 'my-backup-file-name)
 
-(defun* get-closest-pathname (&optional (file "makefile"))
+(defun get-closest-pathname (&optional (file "makefile"))
   "Determine the pathname of the first instance of FILE starting from the current directory towards root.
 This may not do the correct thing in presence of links. If it does not find FILE, then it shall return the name
 of FILE in the current directory, suitable for creation"

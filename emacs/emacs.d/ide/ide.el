@@ -2,11 +2,28 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(package-initialize)
-
-(setq inhibit-startup-message t)
-
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+(defun* get-closest-pathname (&optional (file "makefile"))
+  "Determine the pathname of the first instance of FILE starting from the current directory towards root.
+This may not do the correct thing in presence of links. If it does not find FILE, then it shall return the name
+of FILE in the current directory, suitable for creation"
+  (let ((root (expand-file-name "/"))) ; the win32 builds should translate this correctly
+    (expand-file-name file
+              (loop
+            for d = default-directory then (expand-file-name ".." d)
+            if (file-exists-p (expand-file-name file d))
+            return d
+            if (equal d root)
+            return nil))))
+
+(require 'compile)
+(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
+(add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
+
+(add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
+(setq c-default-style "linux"
+          c-basic-offset 4)
 
 
 ;; this variables must be set before load helm-gtags
@@ -25,7 +42,6 @@
 (define-key c++-mode-map  [(shift tab)] 'moo-complete)
 (define-key c-mode-map (kbd "M-o")  'fa-show)
 (define-key c++-mode-map (kbd "M-o")  'fa-show)
-
 
 ;; company
 (require 'company)
@@ -84,8 +100,19 @@
 
 ;; Package: smartparens
 (require 'smartparens-config)
-(show-smartparens-global-mode +1)
-(smartparens-global-mode 1)
+(setq sp-autoinsert-pair t
+    sp-autowrap-region t
+    sp-autodelete-opening-pair t
+    sp-autodelete-closing-pair t
+    sp-autodelete-pair t
+    sp-autodelete-wrap t
+    sp-autoescape-string-quote t
+    sp-autoinsert-quote-if-followed-by-closing-pair nil
+    sp-show-pair-from-inside nil
+    sp-highlight-pair-overlay nil
+    sp-show-pair-delay 0)
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
 
 ;; Package: projejctile
 ;(require 'projectile)
