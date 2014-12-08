@@ -1,8 +1,13 @@
-* TODO Add bash stuff
+* TODO vim startup issues
+
+* DONE Add bash stuff
+  CLOSED: [2014-12-08 Mon 10:57]
 * DONE deploy on E6-HarryBuild
   CLOSED: [2014-12-02 Tue 15:21]
-* TODO deploy on vm
-* TODO deploy on home machine
-* TODO vim startup issues
-* TODO get magit working
+* DONE deploy on vm
+  CLOSED: [2014-12-08 Mon 10:57]
+* DONE deploy on home machine
+  CLOSED: [2014-12-08 Mon 10:57]
+* DONE get magit working
+  CLOSED: [2014-12-08 Mon 11:02]
 

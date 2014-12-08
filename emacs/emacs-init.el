@@ -40,41 +40,41 @@ of FILE in the current directory, suitable for creation"
 (add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
 (add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
 
-(c-add-style "hjw"
-  '("bsd"  ; this must be defined elsewhere - it is in cc-modes.el
-  (c-basic-offset . 4)
-  (c-echo-syntactic-information-p . t)
-  (c-comment-only-line-offset . (0 . 0))
-  (c-offsets-alist . (
-    (c                     . c-lineup-C-comments)
-    (statement-case-open   . 0)
-    (case-label            . +)
-    (func-decl-cont        . 0)
-    (arglist-intro         . +)
-    ))
-  ))
+; (c-add-style "hjw"
+;   '("bsd"  ; this must be defined elsewhere - it is in cc-modes.el
+;   (c-basic-offset . 4)
+;   (c-echo-syntactic-information-p . t)
+;   (c-comment-only-line-offset . (0 . 0))
+;   (c-offsets-alist . (
+;     (c                     . c-lineup-C-comments)
+;     (statement-case-open   . 0)
+;     (case-label            . +)
+;     (func-decl-cont        . 0)
+;     (arglist-intro         . +)
+;     ))
+;   ))
 
 
-(defconst my-c-lineup-maximum-indent 30)
- (defun my-c-lineup-arglist (langelem)
-    (let ((ret (c-lineup-arglist langelem)))
-      (if (< (elt ret 0) my-c-lineup-maximum-indent)
-          ret
-        (save-excursion
-          (goto-char (cdr langelem))
-          (vector (+ (current-column) 8))))))
+; (defconst my-c-lineup-maximum-indent 30)
+;  (defun my-c-lineup-arglist (langelem)
+;     (let ((ret (c-lineup-arglist langelem)))
+;       (if (< (elt ret 0) my-c-lineup-maximum-indent)
+;           ret
+;         (save-excursion
+;           (goto-char (cdr langelem))
+;           (vector (+ (current-column) 8))))))
 
-(defun hjw-c-mode-hook-fn ()
-     ;; use my defined style for all C modules
-     (c-set-style "hjw")
-     ;; never convert leading spaces to tabs
-     (setq indent-tabs-mode nil)
-     (setcdr (assoc 'arglist-cont-nonempty c-offsets-alist)
-             '(c-lineup-gcc-asm-reg my-c-lineup-arglist))
-  )
+; (defun hjw-c-mode-hook-fn ()
+;      ;; use my defined style for all C modules
+;      (c-set-style "hjw")
+;      ;; never convert leading spaces to tabs
+;      (setq indent-tabs-mode nil)
+;      (setcdr (assoc 'arglist-cont-nonempty c-offsets-alist)
+;              '(c-lineup-gcc-asm-reg my-c-lineup-arglist))
+;   )
 
-(add-hook 'c-mode-hook 'hjw-c-mode-hook-fn)
-(add-hook 'c++-mode-hook 'hjw-c-mode-hook-fn)
+; (add-hook 'c-mode-hook 'hjw-c-mode-hook-fn)
+; (add-hook 'c++-mode-hook 'hjw-c-mode-hook-fn)
 
 (modify-syntax-entry ?_ "w")
 (delete-selection-mode 1)
