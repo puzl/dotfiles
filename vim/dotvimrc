@@ -1,2 +1,2 @@
 set nocompatible
-exe 'source ~/.rcm/vim/dotvim'
+exe 'source ~/.rcm/vim/vim-init'

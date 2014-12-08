@@ -50,7 +50,7 @@ setupln .rcm/bash/bash_aliases $HOME/.bash_aliases
 setupln .rcm/bash/bash_funcs $HOME/.bash_funcs
 
 setupln .rcm/vim $HOME/.vim
-setupln .rcm/vim/vimrc $HOME/.vimrc
+setupcp .rcm/vim/dotvimrc $HOME/.vimrc
 
-setupln .rcm/emacs/dotemacs $HOME/.emacs
+setupcp .rcm/emacs/dotemacs $HOME/.emacs
 setupln .rcm/emacs/emacs.d $HOME/.emacs.d
