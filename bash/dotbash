@@ -22,14 +22,14 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
     if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
     #if [[ -e ${HOME}/.arrisrc ]] ; then source ${HOME}/.arrisrc ; fi
 
-    if [[ ! -z "$CC_VIEW_SPEC" ]] ; then
-        cleartool catcs | grep CMTS_V 2>&1 > /dev/null
-        if [[ "$?" = "0" ]] ; then
-            export SETVIEW_ENV=C4
-            svenv $SETVIEW_ENV
-            svinitcd
-        fi
-    fi
+    #if [[ ! -z "$CC_VIEW_SPEC" ]] ; then
+        #cleartool catcs | grep CMTS_V 2>&1 > /dev/null
+        #if [[ "$?" = "0" ]] ; then
+            #export SETVIEW_ENV=C4
+            #svenv $SETVIEW_ENV
+            #svinitcd
+        #fi
+    #fi
     add_to_path PATH /c/emacs-24.3/bin 
         
     #if [[ -f /etc/bash_completion ]] ;  then

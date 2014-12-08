@@ -45,16 +45,12 @@ function setupln()
 
 setupcp .rcm/bash/bashrc $HOME/.bashrc
 setupcp .rcm/bash/bash_profile $HOME/.bash_profile
+
 setupln .rcm/bash/bash_aliases $HOME/.bash_aliases
 setupln .rcm/bash/bash_funcs $HOME/.bash_funcs
+
 setupln .rcm/vim $HOME/.vim
 setupln .rcm/vim/vimrc $HOME/.vimrc
-setupln .rcm/prezto $HOME/.zprezto
-setupln .rcm/prezto/runcoms/zlogin $HOME/.zlogin
-setupln .rcm/prezto/runcoms/zlogout $HOME/.zlogout
-setupln .rcm/prezto/runcoms/zpreztorc $HOME/.zpreztorc
-setupln .rcm/prezto/runcoms/zprofile $HOME/.zprofile
-setupln .rcm/prezto/runcoms/zshenv $HOME/.zshenv
-setupln .rcm/prezto/runcoms/zshrc $HOME/.zshrc
+
 setupln .rcm/emacs/dotemacs $HOME/.emacs
 setupln .rcm/emacs/emacs.d $HOME/.emacs.d
