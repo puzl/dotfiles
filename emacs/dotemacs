@@ -1,4 +1,4 @@
-(load-file "~/.rcm/emacs/emacs-initi.el")
+(load-file "~/.rcm/emacs/emacs-init.el")
 
 (setq custom-file "~/.rcm/emacs/custom.el")
 (load custom-file)
