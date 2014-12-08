@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo Executing bash profile
-
-if [[ -f $HOME/.rcm/bash/dotbash ]]; then
-    . $HOME/.rcm/bash/dotbash
-fi

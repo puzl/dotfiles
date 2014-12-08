@@ -5,10 +5,12 @@ if [[ $TEST -eq 1 ]]; then
   MKDIR="echo mkdir"
   MV="echo mv"
   LN="echo ln"
+  CP="echo cp"
 else
   MKDIR=mkdir
   MV=mv
   LN=ln
+  CP=cp
 fi
 
 BACKUPDIR=~/.rcm.backup.$$ 
@@ -24,13 +26,13 @@ function backup()
   fi
 }
 
-function setuplp()
+function setupcp()
 {
   SRC=$1
   DST=$2
 
   backup $DST
-  $LN -sf $SRC $DST
+  $CP -sf $SRC $DST
 
 }
 function setupln()
@@ -43,11 +45,9 @@ function setupln()
 
 }
 
-setupcp .rcm/bash/bashrc $HOME/.bashrc
-setupcp .rcm/bash/bash_profile $HOME/.bash_profile
-
-setupln .rcm/bash/bash_aliases $HOME/.bash_aliases
-setupln .rcm/bash/bash_funcs $HOME/.bash_funcs
+setupln .rcm/bash/bash.d $HOME/.bash.d
+setupcp .rcm/bash/bash-init $HOME/.bashrc
+setupcp .rcm/bash/bash-init $HOME/.bash_profile
 
 setupln .rcm/vim $HOME/.vim
 setupcp .rcm/vim/dotvimrc $HOME/.vimrc

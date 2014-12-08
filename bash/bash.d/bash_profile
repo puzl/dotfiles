@@ -2,9 +2,6 @@
 umask 022
 set -o emacs
 
-source ~/.bash_funcs
-source ~/.bash_aliases
-
 PROMPT_COMMAND=ps1
 VIMPATH=/usr/bin/vim
 

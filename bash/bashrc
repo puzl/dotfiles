@@ -1,8 +1,6 @@
 #!/bin/bash
-
-echo Executing bashrc
-
-if [[ -f $HOME/.rcm/bash/dotbash ]]; then
-    . $HOME/.rcm/bash/dotbash
+echo execing bashrc
+if [[ -f $HOME/.rcm/bash/bash-init ]]; then
+    . $HOME/.rcm/bash/bash-init
 fi
 

@@ -2,12 +2,12 @@
 function hostify()
 {
     local RC=$1
-    if [[ -e ~/.rcm/bash/$RC.$(hostname) ]]; then
-        source ~/.rcm/bash/$RC.$(hostname)
+    if [[ -e ~/.bash.d/$RC.$(hostname) ]]; then
+        source ~/.bash.d/$RC.$(hostname)
     fi
     if [[ ! -z "$CC_VIEW_SPEC" ]]; then
-        if [[ -e ~/.rcm/bash/$RC.clearcase ]]; then
-            source ~/.rcm/bash/$RC.clearcase
+        if [[ -e ~/.bash.d/$RC.clearcase ]]; then
+            source ~/.bash.d/$RC.clearcase
         fi
     fi
 }
