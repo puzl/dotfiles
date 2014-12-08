@@ -97,7 +97,7 @@ of FILE in the current directory, suitable for creation"
     ws-butler
     yasnippet
     smartparens
-    aggressive-indent-excluded-modes
+    aggressive-indent
     projectile))
 
 (defun install-packages ()
