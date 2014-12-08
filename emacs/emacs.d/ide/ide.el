@@ -95,8 +95,8 @@ of FILE in the current directory, suitable for creation"
 (add-hook 'prog-mode-hook 'ws-butler-mode)
 
 ;; Package: yasnippet
-;(require 'yasnippet)
-;(yas-global-mode 1)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; Package: smartparens
 (require 'smartparens-config)
