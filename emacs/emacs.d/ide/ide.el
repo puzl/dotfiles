@@ -8,38 +8,10 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defconst demo-packages
-  '(company
-    magit
-    ggtags
-    helm
-    helm-gtags
-    function-args
-    clean-aindent-mode
-    company-c-headers
-    igrep
-    dtrt-indent
-    ws-butler
-    yasnippet
-    smartparens
-    projectile))
-
-(defun install-packages ()
-  "Install all required packages."
-  (interactive)
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package demo-packages)
-    (unless (package-installed-p package)
-      (package-install package))))
-
-(install-packages)
 
 ;; this variables must be set before load helm-gtags
 ;; you can change to any prefix key of your choice
 ;(setq helm-gtags-prefix-key "\C-cg")
-
-(add-to-list 'load-path "~/.emacs.d/custom")
 
 ;(require 'setup-helm)
 ;(require 'setup-helm-gtags)
@@ -68,6 +40,8 @@
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
+;;
+(add-hook 'c-mode-common-hook #'aggressive-indent-mode)
 
 (global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
 

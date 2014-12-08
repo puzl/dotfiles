@@ -1,5 +1,8 @@
-(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
+
+(add-to-list 'default-frame-alist
+                       '(font . "DejaVu Sans Mono-12"))
 
 ;; org mode
 (require 'org)
@@ -7,12 +10,13 @@
 ;(define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-;; cygwin
+;; Windows
+(when (eq system-type 'cygwin)     (load "cygwin-emacs.el"))
 (when (eq system-type 'windows-nt) (load "nt-emacs.el"))
 
 ; ide
-(load-file (concat user-emacs-directory "ide.el"))
-(load-library "clearcase.el")
+(add-to-list 'load-path "~/.emacs.d/ide")
+(load-library "ide.el")
 
 (require 'cl) ; If you don't have it already
 (require 'igrep)
@@ -78,3 +82,31 @@ of FILE in the current directory, suitable for creation"
 (require 'bs)
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
+
+(defconst my-packages
+  '(company
+    magit
+    ggtags
+    helm
+    helm-gtags
+    function-args
+    clean-aindent-mode
+    company-c-headers
+    igrep
+    dtrt-indent
+    ws-butler
+    yasnippet
+    smartparens
+    aggressive-indent-excluded-modes
+    projectile))
+
+(defun install-packages ()
+  "Install all required packages."
+  (interactive)
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (dolist (package my-packages)
+    (unless (package-installed-p package)
+      (package-install package))))
+
+(install-packages)

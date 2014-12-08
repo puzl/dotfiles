@@ -18,3 +18,6 @@
 	path = emacs/emacs.d/themes/gotham-theme
     url = https://github.com/wasamasa/gotham-theme
     ignore = dirty
+[submodule "emacs/emacs.d/themes/color-theme-wombat"]
+	path = emacs/emacs.d/themes/color-theme-wombat
+	url = https://github.com/jasonblewis/color-theme-wombat.git

@@ -32,7 +32,7 @@ function setupcp()
   DST=$2
 
   backup $DST
-  $CP -sf $SRC $DST
+  $CP $SRC $DST
 
 }
 function setupln()

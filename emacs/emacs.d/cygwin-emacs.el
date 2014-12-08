@@ -51,8 +51,8 @@ of FILE in the current directory, suitable for creation"
             return nil))))
 
 (require 'compile)
-(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
-(add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
+;(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
+(add-hook 'c-mode-common-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
 
 ; clearcase
 (load-library "clearcase")
