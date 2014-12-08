@@ -17,21 +17,6 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
     export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
 
     if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
-    #if [[ -e ${HOME}/.arrisrc ]] ; then source ${HOME}/.arrisrc ; fi
-
-    #if [[ ! -z "$CC_VIEW_SPEC" ]] ; then
-        #cleartool catcs | grep CMTS_V 2>&1 > /dev/null
-        #if [[ "$?" = "0" ]] ; then
-            #export SETVIEW_ENV=C4
-            #svenv $SETVIEW_ENV
-            #svinitcd
-        #fi
-    #fi
-    add_to_path PATH /c/emacs-24.3/bin 
-        
-    #if [[ -f /etc/bash_completion ]] ;  then
-        #. /etc/bash_completion
-    #fi
 
     if [[ ! -z $SETVIEW_ENV ]] ;  then
         if [[ $SETVIEW_ENV = "C4" ]] ;  then
@@ -44,6 +29,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 else
     export TERM="xterm-256color"
 
+    VIM_PATH=vim
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
     add_to_path LD_LIBRARY_PATH /usr/local/lib
     add_to_path MANPATH /usr/local/man:/usr/man
@@ -83,11 +69,11 @@ else
     fi
 
 fi
-
-if [[ -x "${VIM_PATH}" ]] ;  then
+if [[ ! -z "$VIM_PATH" ]] ;  then
     export VIEWER="$VIM_PATH" 
     export EDITOR="$VIM_PATH"
 fi
+
 export GTAGSLIBPATH=/app:/kernel:/system
 $HOME/bin/cleartitle
 export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
