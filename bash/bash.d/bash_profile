@@ -2,17 +2,10 @@
 umask 022
 set -o emacs
 
-PROMPT_COMMAND=ps1
 VIMPATH=/usr/bin/vim
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
     set -o igncr
-    export CMAKE_PNAME_SEP=/
-    export CCASE_CONC=7
-    export RUBYOPT=rubygems
-    export CCASE_CONC_V6_OBSOLETE=1
-    export CCASE_MAKEFLAGS_V6_OBSOLETE=1
-    export CCASE_SHELL_REQUIRED=TRUE
 
     export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
 
@@ -48,7 +41,6 @@ else
 	fi
 
     if [[ "$OSTYPE" = "solaris2.10" ]] ;  then
-        echo Solaris
         export WIND_BASE=/vobs/tornadonew/mips211solaris
         export WIND_HOST_TYPE=sun4-solaris2
         export PATH=${WIND_BASE}/host/sun4-solaris2/bin:${PATH}
@@ -65,7 +57,9 @@ else
             echo adding /vobs/mv/linux
             eval `/vobs/C3_3rdparty/linux/Montavista/add_mvtools sh "$@"`
         }
-        add_3rd_sbtools bash sb1-elf-2.7.16
+        if [[ ! -z "$CLEARCASE_ROOT" ]]; then
+            add_3rd_sbtools bash sb1-elf-2.7.16
+        fi
     fi
 
 fi
@@ -75,7 +69,9 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
 fi
 
 export GTAGSLIBPATH=/app:/kernel:/system
-$HOME/bin/cleartitle
 export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
 
+if [[ -z "$PS1" ]]; then
+    echo no prompt
+fi
 hostify bash_profile

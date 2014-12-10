@@ -1,3 +1,16 @@
+#!/bin/bash
+function lsv
+{
+    while [ $# -gt 0 ];
+    do
+        DIR=`dirname $1`
+        FILE=`basename $1`
+
+        (cd $DIR; cleartool lsvtree -g $FILE)&
+        shift
+    done
+}
+
 function lsco 
 {
     eval cleartool lsco -cvi -all -s $CYGFIXIFY
@@ -47,3 +60,16 @@ function cdiff
     cleartool diff -pred -diff $*
 }
 
+function ppcmakeall
+{
+    (cd /system/app && ppcmake $*;)
+    (cd /system/kernel && ppcmake $*;)
+    (cd /system/image && ppcmake $*;)
+}
+
+function x86makeall
+{
+    (cd /system/app && x86make $*;)
+    (cd /system/kernel && x86make $*;)
+    (cd /system/image && x86make $*;)
+}

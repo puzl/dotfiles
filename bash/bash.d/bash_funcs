@@ -83,4 +83,19 @@ function vi()
     "${GVIM}" --servername ${SETVIEW_ENV-GVIM} --remote-tab-silent "${@}"&
 }
 
+function title()
+{
+    echo -ne "\033]2;$*\007"
+}
+
+#function settitle()
+#{
+#    if [[ -z "$CC_VIEW_SPEC" ]]; then
+#        title "$HOSTNAME :: $PWD"
+#    else
+#        title "$(cleartool pwv -s) :: $HOSTNAME :: $PWD :: "
+#    fi
+#}
+#export PROMPT_COMMAND=settitle
+
 hostify bash_funcs

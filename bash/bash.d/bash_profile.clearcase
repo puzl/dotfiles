@@ -1,1 +1,7 @@
-
+#!/bin/bash
+export CMAKE_PNAME_SEP=/
+export CCASE_CONC=7
+export RUBYOPT=rubygems
+export CCASE_CONC_V6_OBSOLETE=1
+export CCASE_MAKEFLAGS_V6_OBSOLETE=1
+export CCASE_SHELL_REQUIRED=TRUE

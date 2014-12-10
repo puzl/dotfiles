@@ -15,7 +15,6 @@
     ws-butler
     yasnippet
     smartparens
-    aggressive-indent
     projectile))
 
 (defun install-packages ()

@@ -57,7 +57,6 @@ of FILE in the current directory, suitable for creation"
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
 ;;
-(add-hook 'c-mode-common-hook #'aggressive-indent-mode)
 
 (global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
 
