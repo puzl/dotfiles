@@ -58,3 +58,34 @@
 (require 'bs)
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
+<<<<<<< HEAD
+=======
+
+(defconst my-packages
+  '(company
+    magit
+    ggtags
+    helm
+    helm-gtags
+    function-args
+    clean-aindent-mode
+    company-c-headers
+    igrep
+    dtrt-indent
+    ws-butler
+    yasnippet
+    smartparens
+    aggressive-indent
+    projectile))
+
+(defun install-packages ()
+  "Install all required packages."
+  (interactive)
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (dolist (package my-packages)
+    (unless (package-installed-p package)
+      (package-install package))))
+
+(install-packages)
+>>>>>>> 0e07d85f7cd4a071b4f01df4ac1ce7c65b9c3ae6

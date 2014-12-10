@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 (setq inhibit-startup-message t)
 
+=======
+>>>>>>> 0e07d85f7cd4a071b4f01df4ac1ce7c65b9c3ae6
 (load-file "~/.rcm/emacs/emacs-init.el")
 
 (setq custom-file "~/.rcm/emacs/custom.el")
