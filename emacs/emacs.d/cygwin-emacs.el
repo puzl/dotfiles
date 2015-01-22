@@ -56,4 +56,4 @@ of FILE in the current directory, suitable for creation"
 
 ; clearcase
 (load-library "clearcase")
-
+(define-key clearcase-prefix-map "b" 'clearcase-gui-vtree-browser-current-buffer)
