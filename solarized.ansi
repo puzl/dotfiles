@@ -1,0 +1,16 @@
+echo -en "\e]P8002b36"  # base03  brblack
+echo -en "\e]P0073642"  # base02  black
+echo -en "\e]Pa586e75"  # base01  brgreen
+echo -en "\e]Pb657b83"  # base00  bryellow
+echo -en "\e]Pc839496"  # base0   brblue
+echo -en "\e]Pe93a1a1"  # base1   brcyan
+echo -en "\e]P7eee8d5"  # base2   white
+echo -en "\e]Pffdf6e3"  # base3   brwhite
+echo -en "\e]P3b58900"  # yellow  yellow
+echo -en "\e]P9cb4b16"  # orange  brred
+echo -en "\e]P1dc322f"  # red     red
+echo -en "\e]P5d33682"  # magenta magenta
+echo -en "\e]Pd6c71c4"  # violet  brmagenta
+echo -en "\e]P4268bd2"  # blue    blue
+echo -en "\e]P62aa198"  # cyan    cyan
+echo -en "\e]P2859900"  # green   green
