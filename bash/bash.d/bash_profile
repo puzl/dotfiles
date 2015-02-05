@@ -9,6 +9,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 
     export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
 
+    export ARRIS_DISABLE_CYGWIN_VERSION_WARNING=yes
     if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
 
     if [[ ! -z $SETVIEW_ENV ]] ;  then
