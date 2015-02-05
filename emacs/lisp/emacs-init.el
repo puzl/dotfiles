@@ -33,7 +33,7 @@
 
 (install-packages)
 
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
 
 (add-to-list 'default-frame-alist
@@ -48,8 +48,8 @@
 (when (eq system-type 'windows-nt) (load "nt-emacs.el"))
 
 ; ide
-(add-to-list 'load-path "~/.emacs.d/ide")
-(load-library "ide.el")
+;(add-to-list 'load-path "~/.emacs.d/ide")
+;(load-library "ide.el")
 
 (require 'cl);
 
