@@ -42,13 +42,23 @@
 (require 'org)
 (setq org-log-done t)
 
-;; Windows
-(when (eq system-type 'cygwin)     (load "cygwin-emacs.el"))
-(when (eq system-type 'windows-nt) (load "nt-emacs.el"))
+;; check OS type
+(cond
+ ((string-equal system-type "windows-nt") ; Native windows
+  (progn
+    (require 'nt-emacs)
+  )
+  )
+ ((string-equal system-type "cygwin") ; Cygwin windows
+  (progn
+    (require 'cygwin-emacs)
+  )
+  )
+)
 
 ; ide
 (add-to-list 'load-path "~/.emacs.d/ide")
-(load-library "ide.el")
+(require 'ide)
 
 (require 'cl);
 

@@ -1,20 +1,9 @@
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
+(provide 'ide)
 
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
 (setq c-default-style "linux"
           c-basic-offset 4)
 
-
-;; this variables must be set before load helm-gtags
-;; you can change to any prefix key of your choice
-;(setq helm-gtags-prefix-key "\C-cg")
-
-;(require 'setup-helm)
-;(require 'setup-helm-gtags)
 (require 'setup-ggtags)
 (require 'setup-cedet)
 
@@ -38,10 +27,6 @@
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
-
-;;
-
-(global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
 
 ;; activate whitespace-mode to view all whitespace characters
 (global-set-key (kbd "C-c w") 'whitespace-mode)
