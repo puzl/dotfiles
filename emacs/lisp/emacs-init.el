@@ -10,17 +10,16 @@
   '(company
     magit
     ggtags
-    helm
-    helm-gtags
-    function-args
     clean-aindent-mode
     company-c-headers
     igrep
     dtrt-indent
     ws-butler
-    yasnippet
     smartparens
-    projectile))
+    projectile
+    function-args
+    helm
+    ))
 
 (defun install-packages ()
   "Install all required packages."
@@ -48,8 +47,8 @@
 (when (eq system-type 'windows-nt) (load "nt-emacs.el"))
 
 ; ide
-;(add-to-list 'load-path "~/.emacs.d/ide")
-;(load-library "ide.el")
+(add-to-list 'load-path "~/.emacs.d/ide")
+(load-library "ide.el")
 
 (require 'cl);
 

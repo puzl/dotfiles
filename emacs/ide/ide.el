@@ -4,23 +4,6 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defun* get-closest-pathname (&optional (file "makefile"))
-  "Determine the pathname of the first instance of FILE starting from the current directory towards root.
-This may not do the correct thing in presence of links. If it does not find FILE, then it shall return the name
-of FILE in the current directory, suitable for creation"
-  (let ((root (expand-file-name "/"))) ; the win32 builds should translate this correctly
-    (expand-file-name file
-              (loop
-            for d = default-directory then (expand-file-name ".." d)
-            if (file-exists-p (expand-file-name file d))
-            return d
-            if (equal d root)
-            return nil))))
-
-(require 'compile)
-(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
-(add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(dirname %s); x86make -J 8" (get-closest-pathname)))))
-
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
 (setq c-default-style "linux"
           c-basic-offset 4)
@@ -92,10 +75,6 @@ of FILE in the current directory, suitable for creation"
 ;; Package: ws-butler
 (require 'ws-butler)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
-
-;; Package: yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
 
 ;; Package: smartparens
 (require 'smartparens-config)
