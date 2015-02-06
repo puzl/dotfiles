@@ -39,6 +39,7 @@
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(tool-bar-mode nil)
+ '(user-emacs-directory-warning nil)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
