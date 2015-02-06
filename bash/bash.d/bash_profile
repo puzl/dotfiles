@@ -6,6 +6,7 @@ VIMPATH=/usr/bin/vim
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
     set -o igncr
+    add_to_path PATH $HOME/bin
 
     export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
 
