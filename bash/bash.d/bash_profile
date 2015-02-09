@@ -8,7 +8,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
     set -o igncr
     add_to_path PATH $HOME/bin
 
-    export VIM_PATH="${CYGDRIVE}/c/Program Files (x86)/Vim/vim73/gvim.exe"
+    export VIM_PATH=vim
 
     export ARRIS_DISABLE_CYGWIN_VERSION_WARNING=yes
     if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi

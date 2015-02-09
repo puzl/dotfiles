@@ -109,6 +109,6 @@ function emacs()
             exec emacs
         fi
     fi
-fi
+}
 
 hostify bash_funcs
