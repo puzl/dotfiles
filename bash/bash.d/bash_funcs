@@ -101,7 +101,7 @@ function title()
 function emacs()
 {
     if [[ $# == 0 ]]; then
-        /c/emacs-24.4.51-windows-x64/bin/runemacs.exe
+        $(cygpath c:\\)/emacs-24.4.51-windows-x64/bin/runemacs.exe
     else
         if [[ $OSTYPE = "cygwin" ]]; then
             exec emacsclient -q --no-wait "$@" &
