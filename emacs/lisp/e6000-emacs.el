@@ -37,5 +37,3 @@ of FILE in the current directory, suitable for creation"
 (require 'compile)
  (add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); x86make " (get-closest-pathname)))))
 
-(require 'cygwin-mount)
-(cygwin-mount-activate)

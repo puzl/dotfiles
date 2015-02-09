@@ -3,3 +3,5 @@ elpa
 *~
 *.elc
 ede-projects.el
+emacs/projectile-bookmarks.eld
+emacs/semanticdb/

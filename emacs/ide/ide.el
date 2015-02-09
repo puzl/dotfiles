@@ -78,9 +78,9 @@
 (show-smartparens-global-mode t)
 
 ;; Package: projejctile
-;(require 'projectile)
-;(projectile-global-mode)
-;(setq projectile-enable-caching t)
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-enable-caching t)
 
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 (add-to-list 'company-backends 'company-c-headers)

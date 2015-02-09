@@ -1,42 +1,11 @@
-;; Packages
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(package-initialize)
-
-
-(defconst my-packages
-  '(company
-    magit
-    ggtags
-    clean-aindent-mode
-    company-c-headers
-    igrep
-    dtrt-indent
-    ws-butler
-    smartparens
-    projectile
-    function-args
-    helm
-    ))
-
-(defun install-packages ()
-  "Install all required packages."
-  (interactive)
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package my-packages)
-    (unless (package-installed-p package)
-      (package-install package))))
-
-(install-packages)
-
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
 
-(add-to-list 'default-frame-alist
-                       '(font . "DejaVu Sans Mono-12"))
+(load-file "~/.emacs.d/lisp/init.el")
+
+(load-file "~/.emacs.d/lisp/hjw.el")
+
+(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 ;; org mode
 (require 'org)
@@ -57,8 +26,8 @@
 )
 
 ; ide
-(add-to-list 'load-path "~/.emacs.d/ide")
-(require 'ide)
+;(add-to-list 'load-path "~/.emacs.d/ide")
+;(require 'ide)
 
 (require 'cl);
 

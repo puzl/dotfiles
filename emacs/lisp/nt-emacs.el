@@ -24,4 +24,7 @@
       ;; appear in the output of java applications.
       (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
 
+(require 'cygwin-mount)
+(cygwin-mount-activate)
+
 (require 'e6000-emacs)
