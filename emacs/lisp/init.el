@@ -11,6 +11,7 @@
 (defconst demo-packages
   '(anzu
     company
+    company-c-headers
     duplicate-thing
     ggtags
     helm
@@ -23,6 +24,7 @@
     dtrt-indent
     ws-butler
     iedit
+    igrep
     yasnippet
     smartparens
     sml-mode
@@ -50,7 +52,6 @@
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
-;; (require 'setup-ggtags)
 (require 'setup-cedet)
 (require 'setup-editing)
 

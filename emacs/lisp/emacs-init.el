@@ -1,7 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
-
 (load-file "~/.emacs.d/lisp/init.el")
-
 (load-file "~/.emacs.d/lisp/hjw.el")
 
 (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
@@ -25,17 +23,12 @@
   )
 )
 
-; ide
-;(add-to-list 'load-path "~/.emacs.d/ide")
-;(require 'ide)
-
 (require 'cl);
 
 (require 'igrep)
 (setq igrep-find-prune-clause  "-type d \\( -name RCS -o -name CVS -o -name SCCS -o -name obj \\)")
 (setq igrep-find-file-clause "-type f \\! -name \\*\\~ \\! -name \\*\\,v \\! -name s.\\* \\! -name .\\#\\*e \\! -name \\*.keep \\! -name \\*.keep.\\[0-9\\]")
 
-(modify-syntax-entry ?_ "w")
 (delete-selection-mode 1)
 
 (require 'bs)

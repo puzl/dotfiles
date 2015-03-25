@@ -6,7 +6,7 @@ VIMPATH=/usr/bin/vim
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
     set -o igncr
-    add_to_path PATH $HOME/bin
+    #add_to_path PATH $HOME/bin
 
     export VIM_PATH=vim
 
@@ -70,7 +70,7 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
     export EDITOR="$VIM_PATH"
 fi
 
-export GTAGSLIBPATH=/app:/kernel:/system
+#export GTAGSLIBPATH=/app:/kernel:/system
 export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
 
 if [[ -z "$PS1" ]]; then

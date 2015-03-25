@@ -1,3 +1,14 @@
+(setq helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match    t)
+
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t
+      helm-M-x-fuzzy-match        t
+      )
+
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
+
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
 (setq c-default-style "linux"
       c-basic-offset 4)
@@ -13,6 +24,7 @@
 (global-set-key (kbd "<f8>") 'ggtags-find-file)
 
 
+(load-library "helm-gtags")
 
 (semantic-mode 1)
 

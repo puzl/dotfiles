@@ -69,20 +69,6 @@ function figrep()
     find ${DIR} -type d -path obj -prune -o -type f -name \*[cph]   | xargs egrep -i "$EXPR"
 }
 
-function vi()
-{
-    case $OSTYPE in
-        cygwin*)
-            GVIM="/c/Program Files (x86)/Vim/vim73/gvim.exe"
-            ;;
-        *)
-            GVIM=gvim
-            ;;
-    esac
-
-    "${GVIM}" --servername ${SETVIEW_ENV-GVIM} --remote-tab-silent "${@}"&
-}
-
 function title()
 {
     echo -ne "\033]2;$*\007"

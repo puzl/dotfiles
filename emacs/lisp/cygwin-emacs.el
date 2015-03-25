@@ -1,5 +1,5 @@
 (provide 'cygwin-emacs)
-(let* ((cygwin-root "c:/cygwin")
+(let* ((cygwin-root "c:/cygwin-1.7.31-3")
          (cygwin-bin (concat cygwin-root "/bin")))
     (when (and (eq 'windows-nt system-type)
   	     (file-readable-p cygwin-root))

@@ -15,6 +15,7 @@
    (quote
     ("64581032564feda2b5f2cf389018b4b9906d98293d84d84142d90d7986032d33" "1d9492749ca290d1702b2f331b99a2692cda19fb1e4aae4b9e75515027afbf3b" "97a2b10275e3e5c67f46ddaac0ec7969aeb35068c03ec4157cf4887c401e74b1" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(cygwin-mount-table t)
+ '(ede-project-directories (quote ("s:/app")))
  '(fci-rule-color "#073642")
  '(highlight-symbol-colors
    (--map
