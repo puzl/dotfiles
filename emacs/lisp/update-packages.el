@@ -1,3 +1,4 @@
+
 (defun package-installed-and-up-to-date-p (package)
   ;assumes that package-refresh-contents has already been called
   ;also assume all built-in packages are out of date, which is usually true.

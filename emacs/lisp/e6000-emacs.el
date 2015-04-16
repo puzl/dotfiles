@@ -21,3 +21,22 @@ of FILE in the current directory, suitable for creation"
 (require 'compile)
 (add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); x86make " (get-closest-pathname)))))
 (add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); x86make " (get-closest-pathname)))))
+
+
+(let (
+      (view-spec (getenv "CC_VIEW_SPEC"))
+      )
+  (setq frame-title-format "%f")
+  (when (string= view-spec "S")
+    (load-theme 'wombat t)
+    )
+  (when (string= view-spec "R")
+    (load-theme 'gotham t)
+    )
+  (when (string= view-spec "Z")
+    (load-theme 'zenburn t)
+    )
+  (when (string= view-spec "")
+    (load-theme 'wombat t)
+    )
+  )

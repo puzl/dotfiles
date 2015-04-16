@@ -21,3 +21,6 @@
 [submodule "emacs/emacs.d/themes/color-theme-wombat"]
 	path = emacs/emacs.d/themes/color-theme-wombat
 	url = https://github.com/jasonblewis/color-theme-wombat.git
+[submodule "emacs/themes/zenburn-emacs"]
+	path = emacs/themes/zenburn-emacs
+	url = https://github.com/bbatsov/zenburn-emacs
