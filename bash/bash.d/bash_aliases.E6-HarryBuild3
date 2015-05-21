@@ -1,0 +1,3 @@
+if [[ $TERM == "emacs" ]]; then
+  PS1='\[\e[32m\]E6:`cleartool pwv -s` : \[\e[33m\]\w\[\e[0m\]\n\$ '
+fi

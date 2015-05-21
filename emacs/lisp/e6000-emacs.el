@@ -19,8 +19,8 @@ of FILE in the current directory, suitable for creation"
             return nil))))
 
 (require 'compile)
-(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); x86make " (get-closest-pathname)))))
-(add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); x86make " (get-closest-pathname)))))
+(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim" (get-closest-pathname)))))
+(add-hook 'c++-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim" (get-closest-pathname)))))
 
 
 (let (
