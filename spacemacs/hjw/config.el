@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/private/")
+(add-to-list 'load-path "~/.rcm/spacemacs/hjw/")
 (require 'cygwin-mount)
 (cygwin-mount-activate)
 
@@ -18,3 +18,4 @@
 (global-set-key (kbd "<f7>") 'previous-error)
 (global-set-key (kbd "<f8>") 'ggtags-find-file)
 
+(setq ad-redefinition-action 'accept)
