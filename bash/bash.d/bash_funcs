@@ -87,12 +87,16 @@ function title()
 function emacs()
 {
     if [[ $# == 0 ]]; then
-        $(cygpath c:\\)/emacs-24.4.51-windows-x64/bin/runemacs.exe
+        if [[ $OSTYPE = "cygwin" ]]; then
+            $(cygpath c:\\)/emacs-24.4.51-windows-x64/bin/runemacs.exe
+        else
+            emacs
+        fi
     else
         if [[ $OSTYPE = "cygwin" ]]; then
-            exec emacsclient -q --no-wait "$@" &
+            exec $(cygpath c:\\)/emacs-24.4.51-windows-x64/bin/emacsclient.exe -q --no-wait "$@" &
         else
-            exec emacs
+           emacsclient -q --no-wait "$@" &
         fi
     fi
 }

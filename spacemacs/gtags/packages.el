@@ -10,17 +10,16 @@
 ;;
 ;;; License: GPLv3
 
-(defvar gtags-packages
+(setq gtags-packages
   '(
     ;; package gtagss go here
     helm-gtags
     ggtags
     )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+  )
 
-(defvar gtags-excluded-packages '()
-  "List of packages to exclude.")
+(setq gtags-excluded-packages '()
+  )
 
 ;; For each package, define a function gtags/init-<package-gtags>
 ;;
@@ -64,4 +63,9 @@ which require an initialization must be listed explicitly in the list.")
         "ogF" 'helm-gtags-find-files
         "ogU" 'helm-gtags-update-tags
         "ogP" 'helm-gtags-parse-file)))
+  (require 'evil)
+  (define-key evil-normal-state-map (kbd "C-]") 'helm-gtags-find-tag)
+  (define-key evil-normal-state-map (kbd "C-=") 'helm-gtags-find-rtag) ;reference
+  (define-key evil-normal-state-map (kbd "C-/") 'helm-gtags-find-symbol)
+  (define-key evil-normal-state-map (kbd "C-t") 'helm-gtags-pop-stack)
   )

@@ -10,18 +10,17 @@
 ;;
 ;;; License: GPLv3
 
-(defvar hjw-pre-extensions
+(setq hjw-pre-extensions
   '(
     ;; pre extension hjws go here
     )
-  "List of all extensions to load before the packages.")
+  )
 
-(defvar hjw-post-extensions
+(setq hjw-post-extensions
   '(
     ;; post extension hjws go here
     )
-  "List of all extensions to load after the packages.")
-
+  )
 ;; For each extension, define a function hjw/init-<extension-hjw>
 ;;
 ;; (defun hjw/init-my-extension ()

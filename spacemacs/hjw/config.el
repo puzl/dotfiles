@@ -19,3 +19,15 @@
 (global-set-key (kbd "<f8>") 'ggtags-find-file)
 
 (setq ad-redefinition-action 'accept)
+
+; treat underscore as part of a word when double clicking
+(modify-syntax-entry ?_ "w")
+
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "/home/hjw/emacs-backup"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
