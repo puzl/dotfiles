@@ -11,8 +11,6 @@
 ;;; License: GPLv3
 (setq hjw-packages
       '(
-        helm-gtags
-        ggtags
         igrep
         )
       )
@@ -41,41 +39,3 @@
   (setq igrep-null-device "/dev/null") 
   )
 
-(defun hjw/init-ggtags ()
-  (use-package ggtags
-    :config
-    ;; (progn
-    ;;   (spacemacs/declare-prefix "og" "gtags")
-    ;;   (evil-leader/set-key "ogg" 'ggtags-find-tag-dwim
-    ;;     "ogd" 'ggtags-find-definition
-    ;;     "ogr" 'ggtags-find-reference
-    ;;     "ogS" 'ggtags-find-other-symbol
-    ;;     "ogF" 'ggtags-find-file
-    ;;     ;; need to find good bingings for these
-    ;;     ;; "oge" 'ggtags-find-tag-regexp
-    ;;     ;; "ogp" 'ggtags-grep
-    ;;     ;; "ogl" 'ggtags-query-replace
-    ;;     ))
-    ))
-
-(defun hjw/init-helm-gtags ()
-  (use-package helm-gtags
-    :config
-    (progn
-      (spacemacs/declare-prefix "og" "gtags")
-      (evil-leader/set-key "ogg" 'helm-gtags-dwim
-        "ogd" 'helm-gtags-find-tag      ; find definition
-        "ogr" 'helm-gtags-find-rtag     ; find references
-        "ogs" 'helm-gtags-select
-        "ogp" 'helm-gtags-pop-stack     ; jump back
-        ;; "ogS" 'helm-gtags-find-symbol
-        "ogf" 'helm-gtags-tags-in-this-function
-        "ogF" 'helm-gtags-find-files
-        "ogU" 'helm-gtags-update-tags
-        "ogP" 'helm-gtags-parse-file)))
-  (require 'evil)
-  (define-key evil-normal-state-map (kbd "C-]") 'helm-gtags-find-tag)
-  (define-key evil-normal-state-map (kbd "C-=") 'helm-gtags-find-rtag) ;reference
-  (define-key evil-normal-state-map (kbd "C-/") 'helm-gtags-find-symbol)
-  (define-key evil-normal-state-map (kbd "C-t") 'helm-gtags-pop-stack)
-  )

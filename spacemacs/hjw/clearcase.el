@@ -7264,6 +7264,9 @@ looking for a cleartool executable. If found return the full pathname."
     cleartool-path))
 
 (defun clearcase-non-lt-registry-server-online-p ()
+  "Fake true"
+  t)
+(defun hjw-clearcase-non-lt-registry-server-online-p ()
   "Heuristic to determine if the local host is network-connected to
 its ClearCase servers. Used for a non-LT system."
 

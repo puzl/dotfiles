@@ -16,7 +16,8 @@
                                (call-interactively 'compile)))
 (global-set-key (kbd "<f6>") 'next-error)
 (global-set-key (kbd "<f7>") 'previous-error)
-(global-set-key (kbd "<f8>") 'ggtags-find-file)
+(global-set-key (kbd "<f8>") 'helm-gtags-find-files)
+(global-set-key (kbd "<f9>") 'projectile-find-other-file)
 
 (setq ad-redefinition-action 'accept)
 
