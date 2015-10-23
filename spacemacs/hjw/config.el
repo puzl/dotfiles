@@ -4,6 +4,7 @@
 
 (require 'clearcase)
 (require 'cygwin-emacs)
+(require 'e6000-emacs)
 (define-key clearcase-prefix-map "b" 'clearcase-gui-vtree-browser-current-buffer)
 
 (setq-default tab-width 4 indent-tabs-mode nil)
