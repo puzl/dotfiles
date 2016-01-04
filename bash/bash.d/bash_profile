@@ -23,6 +23,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
+    PS1="\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "
     if [[ -e /usr/atria/bin/cleartool ]]; then
         if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
         export SETVIEW_ENV="E6"
@@ -76,7 +77,6 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
     export EDITOR="$VIM_PATH"
 fi
 
-#export GTAGSLIBPATH=/app:/kernel:/system
 export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
 
 if [[ -z "$PS1" ]]; then

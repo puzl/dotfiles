@@ -9,13 +9,13 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
-(setq hjw-packages
-      '(
-        igrep
-        )
-      )
+;; (setq hjw-packages
+;;       '(
+;;         igrep
+;;         )
+;;       )
 
-(setq hjw-excluded-packages '())
+;; (setq hjw-excluded-packages '())
 
 ;; For each package, define a function hjw/init-<package-hjw>
 ;;
@@ -26,16 +26,16 @@
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
-(defun hjw/init-igrep ()
-  (use-package igrep
-    :config
-    (progn
-       (spacemacs/declare-prefix "oi" "igrep")
-       (evil-leader/set-key "oii" 'igrep-find
-         "oif" 'igrep-find
-         "oiv" 'igrep-visited-files
-         ))
-    )
-  (setq igrep-null-device "/dev/null") 
-  )
+;; (defun hjw/init-igrep ()
+;;   (use-package igrep
+;;     :config
+;;     (progn
+;;        (spacemacs/declare-prefix "oi" "igrep")
+;;        (evil-leader/set-key "oii" 'igrep-find
+;;          "oif" 'igrep-find
+;;          "oiv" 'igrep-visited-files
+;;          ))
+;;     )
+;;   (setq igrep-null-device "/dev/null") 
+;;   )
 
