@@ -1,1 +1,2 @@
 export CYGFIXIFY="| sed -e 's/\\\\/\\//g'"
+add_to_path PATH /c/emacs/bin

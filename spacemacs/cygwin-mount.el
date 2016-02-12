@@ -257,7 +257,7 @@ The result is either \"/\" or \"/<string>/\"."
                         line))
       (let ((win (match-string 1 line))
             (cyg (match-string 2 line)))
-        (setq win (trim-trailing-whitespace (replace-regexp-in-string "^CC" (getenv "CC_VIEW_SPEC") win)))
+          (setq win (trim-trailing-whitespace (replace-regexp-in-string "^CC" (getenv "CC_VIEW_SPEC") win)))
         (setq cyg (trim-trailing-whitespace cyg))
         (cons win cyg))
     (error "Cannot parse output from `mount': %s" line)))

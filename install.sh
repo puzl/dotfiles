@@ -52,5 +52,5 @@ setupcp .rcm/bash/bash-init $HOME/.bash_profile
 setupln .rcm/vim $HOME/.vim
 setupcp .rcm/vim/dotvimrc $HOME/.vimrc
 
-setupcp .rcm/emacs/lisp/dotemacs.el $HOME/.emacs
-setupln .rcm/emacs $HOME/.emacs.d
+#setupcp .rcm/emacs/lisp/dotemacs.el $HOME/.emacs
+#setupln .rcm/emacs $HOME/.emacs.d
