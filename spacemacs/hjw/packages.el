@@ -9,11 +9,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
-;; (setq hjw-packages
-;;       '(
-;;         igrep
-;;         )
-;;       )
+ (setq hjw-packages
+       '(
+         ggtags
+         )
+       )
 
 ;; (setq hjw-excluded-packages '())
 
@@ -39,3 +39,19 @@
 ;;   (setq igrep-null-device "/dev/null") 
 ;;   )
 
+(defun hjw/init-ggtags ()
+  (use-package ggtags
+    :config
+    (progn
+       (spacemacs/declare-prefix "mg" "ggtags")
+       (evil-leader/set-key
+         "mgd" 'ggtags-find-tag-dwim
+         "mgr" 'ggtags-find-reference
+         "mg/" 'ggtags-find-tag-regexp
+         "mgh" 'ggtags-view-tag-history
+         "mgs" 'ggtags-grep
+         "mgu" 'ggtags-update-tags
+         )
+       )
+    )
+  )
