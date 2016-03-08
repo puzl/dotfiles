@@ -1,2 +1,0 @@
-set nocompatible
-exe 'source ~/.rcm/vim/vim-init'

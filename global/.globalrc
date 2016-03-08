@@ -1,0 +1,8 @@
+default:\
+    :tc=gtags
+
+common: \
+    :skip=GPATH,GTAGS,GRTAGS,GSYMS,obj-*,router/,docsis/,card/,dcam/,ucam/,rsm/,cli/
+
+gtags:\
+    :tc=common:

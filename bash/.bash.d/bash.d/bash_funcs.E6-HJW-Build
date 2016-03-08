@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function cdd()
+{
+    BASH_DIR_CACHE=~/.bash_dir_cache.$SETVIEW_ENV
+    if [[ -e $BASH_DIR_CACHE ]]; then
+        for dir in $(grep -i "/$1$" $BASH_DIR_CACHE)
+        do
+            if [[ $PWD != $dir && -d $dir ]]; then
+                cd $dir
+                return 0
+            fi
+        done
+    fi
+    echo Could not change directory to $1, candidates are:
+    for dir in $(grep -i "/$1[^/]*$" $BASH_DIR_CACHE)
+    do
+        if [[ $PWD != $dir && -d $dir ]]; then
+            echo "    "$dir
+        fi
+
+    done
+}
