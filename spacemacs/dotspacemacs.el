@@ -18,20 +18,25 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     gtags
-     spacemacs-ivy
+     ;spacemacs-ivy
      org
-     semantic
-     (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode)
-     auto-completion
      markdown
      emacs-lisp
+     spell-checking
+
+     gtags
+     semantic
      syntax-checking
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode)
+     (auto-completion :variables
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-emable-snippets-in-popup t
+                      auto-completion-enable-sort-by-usage t)
+
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
-     spell-checking
 
      hjw
      themes-megapack
@@ -42,7 +47,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(yasnippet yasnippet-snippets auto-yasnippet helm-c-yasnippet)
+   dotspacemacs-excluded-packages '() ;; yasnippet yasnippet-snippets auto-yasnippet helm-c-yasnippet)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -264,6 +269,7 @@ layers configuration. You are free to put any user code."
   (setq org-agenda-files '("~/org"))
   (setq org-export-preserve-breaks t)
   (setq org-export-with-sub-superscripts nil)
+  (setq org-enforce-todo-dependencies t)
 
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
@@ -320,12 +326,19 @@ layers configuration. You are free to put any user code."
  '(helm-follow-mode t t)
  '(helm-follow-mode-persistent t)
  '(helm-projectile-fuzzy-match t)
+ '(ispell-dictionary "en_GB")
  '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
  '(neo-show-hidden-files nil t)
  '(projectile-enable-caching t)
  '(projectile-indexing-method (quote alien))
  '(projectile-tags-command "ggtags -u")
- '(ring-bell-function (quote ignore) t))
+ '(ring-bell-function (quote ignore) t)
+ '(safe-local-variable-values
+   (quote
+    ((ispell-personal-dictionary . "/home/hjw/org/ecmg-test-plan.dict")
+     (ispell-personal-dictionary . "~/org/ecmg-test-plan.dict")
+     (ispell-personal-dictionary . "ecmg-test-plan.dict")
+     (ispell-dictionary . "english")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
