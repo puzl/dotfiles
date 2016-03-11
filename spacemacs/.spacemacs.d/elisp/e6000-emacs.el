@@ -13,10 +13,9 @@
                         if (equal d root)
                         return nil))))
 
-(add-hook 'c-common-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim " (get-closest-pathname)))))
-(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim " (get-closest-pathname)))))
-(add-hook 'c++-common-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim " (get-closest-pathname)))))
-
+;;(add-hook 'c-common-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim " (get-closest-pathname)))))
+;;(add-hook 'c-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim " (get-closest-pathname)))))
+;;(add-hook 'c++-common-mode-hook (lambda () (set (make-local-variable 'compile-command) (format "cd $(edirname %s); e6make sim " (get-closest-pathname)))))
 
 
 (provide 'e6000-emacs)

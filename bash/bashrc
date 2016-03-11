@@ -1,6 +1,0 @@
-#!/bin/bash
-echo execing bashrc
-if [[ -f $HOME/.rcm/bash/bash-init ]]; then
-    . $HOME/.rcm/bash/bash-init
-fi
-
