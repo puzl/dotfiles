@@ -24,3 +24,6 @@
 [submodule "emacs/themes/zenburn-emacs"]
 	path = emacs/themes/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs
+[submodule "spacemacs/.spacemacs.d/vc-clearcase"]
+	path = spacemacs/.spacemacs.d/vc-clearcase
+	url = https://github.com/alex-hhh/vc-clearcase
