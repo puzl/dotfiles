@@ -25,10 +25,10 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
     PS1="\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "
-    if [[ -e /usr/atria/bin/cleartool ]]; then
-        if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
-        export SETVIEW_ENV="E6"
-    fi
+    #if [[ -e /usr/atria/bin/cleartool ]]; then
+        #if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
+        #export SETVIEW_ENV="E6"
+    #fi
     set -o emacs
 else
     export TERM="xterm-256color"
