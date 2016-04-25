@@ -18,7 +18,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     ;spacemacs-ivy
      org
      markdown
      emacs-lisp
@@ -39,7 +38,6 @@ values."
              shell-default-position 'bottom)
 
      hjw
-     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -47,7 +45,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '() ;; yasnippet yasnippet-snippets auto-yasnippet helm-c-yasnippet)
+   dotspacemacs-excluded-packages '(yasnippet yasnippet-snippets auto-yasnippet helm-c-yasnippet)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -95,6 +93,8 @@ values."
    ;; Number of recent files to show in the startup buffer. Ignored if
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
    dotspacemacs-startup-recent-list-size 5
+   ;; Default major mode of the scratch buffer (default `text-mode')
+   dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -110,7 +110,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 16
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -209,7 +209,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -242,6 +242,7 @@ user code here.  The exception is org related code, which should be placed in
   (load-file (expand-file-name "~/.spacemacs.d/elisp/cygwin-emacs.el"))
   (load-file (expand-file-name "~/.spacemacs.d/elisp/cygwin-mount.el"))
   (cygwin-mount-activate)
+  (remove-hook 'find-file-hooks 'vc-find-file-hook)
   )
 
 (defun dotspacemacs/user-config ()
@@ -301,6 +302,9 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "<f12>") 'helm-resume)
 
   (setq projectile-generic-command "find . \\( -name lost+found -o -name router -o -name docsis -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
+
+  (remove-hook 'find-file-hooks 'vc-find-file-hook)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -329,7 +333,6 @@ layers configuration. You are free to put any user code."
  '(ispell-dictionary "en_GB")
  '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
  '(neo-show-hidden-files nil t)
- '(projectile-enable-caching t)
  '(projectile-indexing-method (quote alien))
  '(projectile-tags-command "ggtags -u")
  '(ring-bell-function (quote ignore) t)
@@ -338,7 +341,8 @@ layers configuration. You are free to put any user code."
     ((ispell-personal-dictionary . "/home/hjw/org/ecmg-test-plan.dict")
      (ispell-personal-dictionary . "~/org/ecmg-test-plan.dict")
      (ispell-personal-dictionary . "ecmg-test-plan.dict")
-     (ispell-dictionary . "english")))))
+     (ispell-dictionary . "english"))))
+ '(vc-clearcase-diff-switches (quote ("-g -option \"-blank_ignore\""))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,0 +1,16 @@
+style=allman 
+indent=spaces=4 
+indent-switches 
+break-blocks 
+max-code-length=80 
+break-after-logical 
+convert-tabs
+add-brackets
+align-pointer=type
+align-reference=type
+pad-oper
+unpad-paren
+break-blocks
+pad-header
+pad-oper
+min-conditional-indent=0
