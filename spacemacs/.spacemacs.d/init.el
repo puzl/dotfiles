@@ -111,8 +111,8 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                :size 13
-                               :weight normal
-                               :width normal
+                               :weight semi-bold
+                               :width condensed
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -205,11 +205,11 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers 'relative
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -304,7 +304,7 @@ layers configuration. You are free to put any user code."
   (setq projectile-generic-command "find . \\( -name lost+found -o -name router -o -name docsis -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
 
   (remove-hook 'find-file-hooks 'vc-find-file-hook)
-
+  (setq nlinum-relative-redisplay-delay 0.2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -314,11 +314,11 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 0.25)
+ '(ahs-case-fold-search nil t)
+ '(ahs-default-range (quote ahs-range-whole-buffer) t)
+ '(ahs-idle-interval 0.25 t)
  '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil)
+ '(ahs-inhibit-face-list nil t)
  '(clearcase-checkout-comment-type (quote none))
  '(clearcase-checkout-policy (quote unreserved))
  '(clearcase-dir-status-ignored-files (quote ("^obj-.*")))
@@ -333,9 +333,12 @@ layers configuration. You are free to put any user code."
  '(ispell-dictionary "en_GB")
  '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
  '(neo-show-hidden-files nil t)
- '(projectile-indexing-method (quote alien))
+ '(package-selected-packages
+   (quote
+    (helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(projectile-indexing-method (quote alien) t)
  '(projectile-tags-command "ggtags -u")
- '(ring-bell-function (quote ignore) t)
+ '(ring-bell-function (quote ignore))
  '(safe-local-variable-values
    (quote
     ((ispell-personal-dictionary . "/home/hjw/org/ecmg-test-plan.dict")
