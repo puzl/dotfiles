@@ -85,3 +85,4 @@ function title()
 #export PROMPT_COMMAND=settitle
 
 hostify bash_funcs
+echo bash_funcs

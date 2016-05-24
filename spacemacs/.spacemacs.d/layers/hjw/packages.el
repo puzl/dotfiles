@@ -12,6 +12,7 @@
  (setq hjw-packages
        '(
          srefactor
+         darkokai-theme
          ;ggtags
          )
        )
@@ -39,6 +40,15 @@
 ;;     )
 ;;   (setq igrep-null-device "/dev/null") 
 ;;   )
+
+(defun hjw/init-darkokai-theme ()
+  (use-package darkokai-theme
+    :init
+    (progn
+      (setq darkokai-mode-line-padding 1)
+      )
+    )
+  )
 
 ;;(defun hjw/init-ggtags ()
   ;;(use-package ggtags

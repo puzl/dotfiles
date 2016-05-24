@@ -1,6 +1,11 @@
 #!/bin/bash
+DIRS="bash global mintty sim vim inputrc emacs zsh"
 
-for dir in bash global mintty sim vim inputrc emacs
+if [[ $# -gt 0 ]]; then
+    DIRS=$*
+fi
+
+for dir in $DIRS
 do
     stow $dir
 done

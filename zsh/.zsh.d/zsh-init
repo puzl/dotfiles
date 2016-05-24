@@ -1,5 +1,5 @@
 # do funcs first
-RCS="bash_funcs bash_profile bash_aliases"
+RCS=(bash_funcs bash_aliases)
 
 for rc in $RCS
 do

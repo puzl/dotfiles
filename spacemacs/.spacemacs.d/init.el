@@ -22,10 +22,13 @@ values."
      markdown
      emacs-lisp
      spell-checking
-
      gtags
      semantic
-     syntax-checking
+     (syntax-checking :variables
+                      flycheck-disabled-checkers '(c/c++-clang c/c++-gcc)
+                      flycheck-cppcheck-checks "all"
+                      )
+
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
      (auto-completion :variables
@@ -35,8 +38,8 @@ values."
 
      (shell :variables
              shell-default-height 30
+             ;shell-default-term-shell "/bin/zsh"
              shell-default-position 'bottom)
-
      hjw
      )
    ;; List of additional packages that will be installed without being
@@ -99,8 +102,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         darkokai
                          tangotango
-                         tango-dark
                          spacemacs-dark
                          solarized-dark
                          monokai
@@ -243,6 +246,7 @@ user code here.  The exception is org related code, which should be placed in
   (load-file (expand-file-name "~/.spacemacs.d/elisp/cygwin-mount.el"))
   (cygwin-mount-activate)
   (remove-hook 'find-file-hooks 'vc-find-file-hook)
+  (setq darkokai-mode-line-padding 1)
   )
 
 (defun dotspacemacs/user-config ()
@@ -305,6 +309,41 @@ layers configuration. You are free to put any user code."
 
   (remove-hook 'find-file-hooks 'vc-find-file-hook)
   (setq nlinum-relative-redisplay-delay 0.2)
+  (setq paradox-github-token "f2da2386bccfc676c822985f04477fddc31047fa")
+
+
+  (setq my-include-directories
+        '("../"
+          "/app/h"
+          "/vendor/ibm/Rhapsody/Share/LangCpp"
+          "/vendor/ibm/Rhapsody/Share/LangCpp/osconfig/VxWorks"
+          "/system/kernel/intf"
+          "/system/dataplanes/intf"
+          "/app/video/h"
+          "/app/video/common/h"
+          "/app/video/encryption/h"
+          "/app/common/uml/CommonLibrary"
+          "/app/common/uml/h"
+          "/app/router/h"
+          "/vendor/windriver/vxworks/target/h"
+          "/vendor/windriver/vxworks/target/usr/h/wrn/wm/common"
+          "/vendor/windriver/vxworks/target/usr/h"
+          "/vendor/windriver/vxworks/target/usr/h/wrn/coreip"
+          "/vendor/windriver/vxworks/target/usr/h/c/abr"
+          "/vendor/windriver/vxworks/target/usr/h/c"
+          )
+        )
+  (defun my-semantic-hook ()
+    (mapcar 'semantic-add-system-include my-include-directories)
+    )
+
+  (add-hook 'semantic-init-hook 'my-semantic-hook)
+
+  (defun my-flycheck-hook ()
+    (setq flycheck-cppcheck-include-path my-include-directories)
+    )
+
+  (add-hook 'c-common-mode-hook 'my-flycheck-hook)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
