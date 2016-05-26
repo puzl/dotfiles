@@ -8,12 +8,17 @@
 # Limited support for Apple Terminal (Terminal can't set window and tab separately)
 source $ZSH/lib/functions.zsh
 
-V=$(cleartool pwv -s | tr -d '\r')
-if [[ $V =~ '.*NONE.*' ]]; then
-    V=""
-else
-    V="$V : "
+V=""
+type cleartool >& /dev/null
+if [[ $? == 0 ]]; then
+    V=$(cleartool pwv -s | tr -d '\r')
+    if [[ $V =~ '.*NONE.*' ]]; then
+        V=""
+    else
+        V="$V : "
+    fi
 fi
+
 function title {
   emulate -L zsh
   setopt prompt_subst
