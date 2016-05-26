@@ -8,14 +8,14 @@
 # Limited support for Apple Terminal (Terminal can't set window and tab separately)
 source $ZSH/lib/functions.zsh
 
-V=""
+VIEW=""
 type cleartool >& /dev/null
 if [[ $? == 0 ]]; then
-    V=$(cleartool pwv -s | tr -d '\r')
-    if [[ $V =~ '.*NONE.*' ]]; then
-        V=""
+    VIEW=$(cleartool pwv -s | tr -d '\r')
+    if [[ $VIEW =~ '.*NONE.*' ]]; then
+        VIEW=""
     else
-        V="$V : "
+        VIEW="$VIEW : "
     fi
 fi
 
@@ -31,8 +31,8 @@ function title {
 
   case "$TERM" in
     cygwin|xterm*|putty*|rxvt*|ansi)
-        print -Pn "\e]2;$V$2:q\a" # set window name
-        print -Pn "\e]1;$V$1:q\a" # set tab name
+        print -Pn "\e]2;$VIEW$2:q\a" # set window name
+        print -Pn "\e]1;$VIEW$1:q\a" # set tab name
       ;;
     screen*)
       print -Pn "\ek$1:q\e\\" # set screen hardstatus

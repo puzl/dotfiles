@@ -1,3 +1,7 @@
+#
+# BEGIN: OH MY ZSH SETUP
+# 
+#
 # Path to your oh-my-zsh installation.
 export ZSH=/home/hjw/.oh-my-zsh
 
@@ -49,20 +53,19 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(git)
+#
+# END
+#
 
 # User configuration
 
 if [[ $OSTYPE == "cygwin" ]]; then
-	export PATH="/c/emacs/bin:/devTools/bin:/home/hjw/bin:/usr/local/bin:/usr/bin:/c/Program Files (x86)/PuTTY:/c/Program Files (x86)/IBM/RationalSDLC/common:/c/rhapTools/5.0.1:/c/Windows/CCM:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/IBM/gsk8/lib:/c/Program Files (x86)/IBM/gsk8/bin:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/RemoteClient/cteapis:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/MacType"
+    # Add cygwin paths to our inherited windows path.
+    export PATH=/c/emacs/bin:/devTools/bin:~/bin:/usr/local/bin:/usr/bin:/bin:$PATH
 fi
-# export MANPATH="/usr/local/man:$MANPATH"
 
-
-export ARRIS_DISABLE_CYGWIN_VERSION_WARNING=yes
-if [[ -d  ~/.arris ]]; then
-	source ~/.arris/arris.env
-fi
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh.d/zsh-init
-PS1="$V$PS1"
+PS1="$VIEW$PS1"

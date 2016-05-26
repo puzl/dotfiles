@@ -7,3 +7,4 @@ emacs/projectile-bookmarks.eld
 emacs/semanticdb/
 projectile.cache
 .netrwhist
+*.swp

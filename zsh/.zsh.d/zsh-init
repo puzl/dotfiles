@@ -1,12 +1,15 @@
-# do funcs first
 SHELL=/bin/zsh
+
+# Save PS1 because arris environment gets called and sets it
 OLDPS1=$PS1
-RCS=(bash_funcs bash_aliases bash_profile)
+
 for completion in ~/.zsh.d/completions/*
 do
     source $completion
 done
 
+# try to suck in bash environment
+RCS=(bash_funcs bash_aliases bash_profile)
 for rc in $RCS
 do
     if [[ -f $HOME/.bash.d/$rc ]]; then
@@ -14,9 +17,11 @@ do
     fi
 done
 
+# user specific zsh files
 for file in ~/.zsh.d/*.zsh
 do
     source $file
 done
 
+# Restore zsh PS1 goodness
 PS1=$OLDPS1
