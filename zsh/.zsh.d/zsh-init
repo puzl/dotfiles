@@ -3,6 +3,7 @@ SHELL=/bin/zsh
 # Save PS1 because arris environment gets called and sets it
 OLDPS1=$PS1
 
+# Load user specific completions
 for completion in ~/.zsh.d/completions/*
 do
     source $completion
@@ -25,3 +26,6 @@ done
 
 # Restore zsh PS1 goodness
 PS1=$OLDPS1
+
+# My ZSH customisations
+setopt no_hist_verify

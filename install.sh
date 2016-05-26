@@ -10,4 +10,4 @@ do
     stow $dir
 done
 
-echo you must install spacemacs with windows mklink
+echo you may need to setup spacemacs with windows mklink
