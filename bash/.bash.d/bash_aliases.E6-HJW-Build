@@ -4,4 +4,3 @@ fi
 
 alias vi="vim -i /home/hjw/.viminfo"
 alias vim="vim -i /home/hjw/.viminfo"
-echo bash_aliases.E6-HJW-Build

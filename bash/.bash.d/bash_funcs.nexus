@@ -3,4 +3,3 @@ function vi()
     /usr/bin/vim $*
 }
 
-echo bash_funcs.nexus

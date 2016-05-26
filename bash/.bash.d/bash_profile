@@ -1,14 +1,10 @@
 #!/bin/bash
 umask 022
 set -o emacs
-
-echo bash_profile
-
 VIMPATH=/usr/bin/vim
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
     if [[ "X$SHELL" != "X" ]]; then
-        echo setting igncr
         set -o igncr
     fi
 
@@ -89,4 +85,3 @@ if [[ -z "$PS1" ]]; then
     echo no prompt
 fi
 hostify bash_profile
-echo bash_profile

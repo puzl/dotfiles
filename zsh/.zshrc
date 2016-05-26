@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/hjw/.oh-my-zsh
+export ZSH=/home/hjw/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -24,10 +24,10 @@ ZSH_THEME="robbyrussell"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -56,7 +56,13 @@ plugins=(git)
 export PATH="/c/emacs/bin:/devTools/bin:/home/hjw/bin:/usr/local/bin:/usr/bin:/c/Program Files (x86)/PuTTY:/c/Program Files (x86)/IBM/RationalSDLC/common:/c/rhapTools/5.0.1:/c/Windows/CCM:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/IBM/gsk8/lib:/c/Program Files (x86)/IBM/gsk8/bin:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/RemoteClient/cteapis:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/MacType"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+
+source ~/.zsh.d/completions/clearcase
+export ARRIS_DISABLE_CYGWIN_VERSION_WARNING=yes
+source ~/.arris/arris.env
 source $ZSH/oh-my-zsh.sh
+
+source ~/.zsh.d/zsh-init
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -82,4 +88,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source .zsh.d/zsh-init

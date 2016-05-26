@@ -3,10 +3,7 @@ RCS="bash_funcs bash_profile bash_aliases"
 
 for rc in $RCS
 do
-    echo rc=$rc
     if [[ -f $HOME/.bash.d/$rc ]]; then
-	echo sourcing
         source $HOME/.bash.d/$rc
     fi
 done
-echo bash-init

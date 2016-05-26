@@ -69,10 +69,10 @@ function figrep()
     find ${DIR} -type d -path obj -prune -o -type f -name \*[cph]   | xargs egrep -i "$EXPR"
 }
 
-function title()
-{
-    echo -ne "\033]2;$*\007"
-}
+#function title()
+#{
+    #echo -ne "\033]2;$*\007"
+#}
 
 #function settitle()
 #{
@@ -85,4 +85,3 @@ function title()
 #export PROMPT_COMMAND=settitle
 
 hostify bash_funcs
-echo bash_funcs

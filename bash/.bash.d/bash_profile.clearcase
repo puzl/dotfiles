@@ -7,4 +7,3 @@ export CCASE_MAKEFLAGS_V6_OBSOLETE=1
 export CCASE_SHELL_REQUIRED=TRUE
 
 export GTAGSFORCECPP=
-echo bash_profile.clearcase

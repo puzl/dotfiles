@@ -73,4 +73,3 @@ function x86makeall
     (cd /system/kernel && x86make $*;)
     (cd /system/image && x86make $*;)
 }
-echo bash_funcs.clearcase
