@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/c/emacs/bin:/devTools/bin:/home/hjw/bin:/usr/local/bin:/usr/bin:/c/Program Files (x86)/PuTTY:/c/Program Files (x86)/IBM/RationalSDLC/common:/c/rhapTools/5.0.1:/c/Windows/CCM:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/IBM/gsk8/lib:/c/Program Files (x86)/IBM/gsk8/bin:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/RemoteClient/cteapis:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/MacType"
+#export PATH="/c/emacs/bin:/devTools/bin:/home/hjw/bin:/usr/local/bin:/usr/bin:/c/Program Files (x86)/PuTTY:/c/Program Files (x86)/IBM/RationalSDLC/common:/c/rhapTools/5.0.1:/c/Windows/CCM:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/IBM/gsk8/lib:/c/Program Files (x86)/IBM/gsk8/bin:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/RemoteClient/cteapis:/c/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin:/c/Program Files (x86)/MacType"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 
