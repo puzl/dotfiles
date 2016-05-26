@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     python
      org
      markdown
      emacs-lisp
@@ -31,6 +32,7 @@ values."
 
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
+
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-emable-snippets-in-popup t
@@ -309,8 +311,6 @@ layers configuration. You are free to put any user code."
 
   (remove-hook 'find-file-hooks 'vc-find-file-hook)
   (setq nlinum-relative-redisplay-delay 0.2)
-  (setq paradox-github-token "f2da2386bccfc676c822985f04477fddc31047fa")
-
 
   (setq my-include-directories
         '("../"
