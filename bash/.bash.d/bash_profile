@@ -4,7 +4,7 @@ set -o emacs
 VIMPATH=/usr/bin/vim
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
-    if [[ "X$SHELL" != "X" ]]; then
+    if [[ "$SHELL" == "/bin/bash" ]]; then
         set -o igncr
     fi
 
@@ -22,6 +22,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
     fi
     set -o emacs
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+    echo LINUX
     export EDITOR=vim
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
     PS1="\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "

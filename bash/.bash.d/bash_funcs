@@ -6,6 +6,7 @@ function hostify()
         source ~/.bash.d/$RC.$(hostname)
     fi
     if [[ ! -z "$CC_VIEW_SPEC" ]]; then
+
         if [[ -e ~/.bash.d/$RC.clearcase ]]; then
             source ~/.bash.d/$RC.clearcase
         fi
@@ -14,11 +15,15 @@ function hostify()
 
 function add_to_path
 {
-    if [[ "${!1}" =~ "(^|:)"${2}"(:|$)" ]]
-    then
-        return 0
+    if [[ "$SHELL" == "/bin/bash" ]]; then
+        if [[ "${!1}" =~ "(^|:)"${2}"(:|$)" ]]
+        then
+            return 0
+        fi
+        export $1="$2:${!1}"
+    elif [[ "$SHELL" == "/bin/zsh" ]]; then
+        export -U $1=$2:${(P)1}
     fi
-    export $1="$2:${!1}"
 }
 
 function ps1() 

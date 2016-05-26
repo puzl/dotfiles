@@ -1,5 +1,11 @@
 # do funcs first
-RCS=(bash_funcs bash_aliases)
+SHELL=/bin/zsh
+OLDPS1=$PS1
+RCS=(bash_funcs bash_aliases bash_profile)
+for completion in ~/.zsh.d/completions/*
+do
+    source $completion
+done
 
 for rc in $RCS
 do
@@ -12,3 +18,5 @@ for file in ~/.zsh.d/*.zsh
 do
     source $file
 done
+
+PS1=$OLDPS1
