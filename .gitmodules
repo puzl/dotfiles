@@ -27,3 +27,6 @@
 [submodule "spacemacs/.spacemacs.d/vc-clearcase"]
 	path = spacemacs/.spacemacs.d/vc-clearcase
 	url = https://github.com/alex-hhh/vc-clearcase
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git

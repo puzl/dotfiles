@@ -60,7 +60,9 @@ fi
 
 
 export ARRIS_DISABLE_CYGWIN_VERSION_WARNING=yes
-source ~/.arris/arris.env
+if [[ -d  ~/.arris ]]; then
+	source ~/.arris/arris.env
+fi
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh.d/zsh-init
 PS1="$V$PS1"
