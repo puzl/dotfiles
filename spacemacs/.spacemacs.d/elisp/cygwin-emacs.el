@@ -8,7 +8,7 @@
     
       ;; By default use the Windows HOME.
       ;; Otherwise, uncomment below to set a HOME
-      ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+      (setenv "HOME" (concat cygwin-root "/home/hjw"))
     
       ;;  NT-emacs assumes a Windows shell. Change to bash.
       (setq shell-file-name "bash")

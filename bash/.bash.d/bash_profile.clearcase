@@ -1,4 +1,5 @@
 #!/bin/bash
+export CCASE_BUILD_SUPPRESS_TIMES=1
 export CMAKE_PNAME_SEP=/
 export CCASE_CONC=7
 export RUBYOPT=rubygems
@@ -6,3 +7,8 @@ export CCASE_CONC_V6_OBSOLETE=1
 export CCASE_MAKEFLAGS_V6_OBSOLETE=1
 export CCASE_SHELL_REQUIRED=TRUE
 export GTAGSFORCECPP=""
+
+
+export VCCAP_DIR=~/vccap
+export DPDK_VER=dpdk-16.11
+export GTAGSLIBPATH=/app:/kernel:/system:/hdwr:/vendor/intel/$DPDK_VER

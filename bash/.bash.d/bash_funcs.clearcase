@@ -50,6 +50,11 @@ function unco
     eval cleartool unco -rm $*
 }
 
+function vagrun
+{
+    eval ${VCCAP_DIR}/bin/vagrun $*
+}
+
 function catcs
 {
     eval cleartool catcs $*
@@ -73,3 +78,50 @@ function x86makeall
     (cd /system/kernel && x86make $*;)
     (cd /system/image && x86make $*;)
 }
+
+# setsnap [drive | viewname]
+#    prints available views if no args given
+function setsnap() {
+views=$(subst | dos2unix | sed -e 's/:.*\\/ /g');
+if [[ -z "$1" ]]; then
+    echo "$views";
+else
+    view=$(echo "$views" | egrep -i "\<$1\>" | cut -f1 -d" " | tr a-z A-Z);
+    tag=$(echo "$views" | egrep -i "\<$1\>" | cut -f2 -d" ");
+    if [[ -z "$view" ]]; then
+        echo "ERROR: view $1 does not exist";
+        echo $views;
+    else
+        if [[ "$view" == "$CC_VIEW_SPEC" ]]; then
+            echo "Already in view $view";
+        else
+            if [[ -n $CC_VIEW_SPEC ]]; then
+                echo "ERROR: A view is currently set -- run unsetview and try again";
+            else
+                # use egrep with perl style regex with -P
+                local baseVer=`cleartool catcs -tag $tag | egrep -i "^element.*CER_V.*\.[0-9][0-9]00" | sed -e s/\\\t/\ /g | cut -f3 -d" "`
+                if [[ $baseVer =~ CER_V0(1\.|2\.|3\.0[0-5]) ]]; then
+                    echo "Version $baseVer has issues with /tmp and ---- permissions (eg 'zero permissions')"
+                    local fstabEntry=`cat /etc/fstab | egrep -i "^none.*noacl"`
+                    if [[ ! $fstabEntry =~ noacl,posix\=0 ]]; then
+                        echo ""
+                        echo "ERROR!"
+                        echo " ensure /etc/fstab has -noacl for: 'none / cygdrive binary,noacl,posix=0,user 0 0'"
+                        echo " see https://cygwin.com/ml/cygwin/2010-07/msg00323.html"
+                        echo "ERROR!"
+                        echo "  -- VIEW NOT SET !!! --"
+                        return
+                    fi
+                    local winTmpDir=`cygpath -am "c:/Users/$USERNAME/AppData/Local/Temp"`
+                    echo "Changing env vars TMP,TEMP,TEMPDIR to $winTmpDir"
+                    export TMP=$winTmpDir
+                    export TMPDIR=$winTmpDir
+                    export TEMP=$winTmpDir
+                fi
+                CC_VIEW_SPEC=$view $SHELL --login -i;
+            fi;
+        fi;
+    fi;
+fi
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
+

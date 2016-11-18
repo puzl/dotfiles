@@ -194,17 +194,17 @@ have their answer stored here for retrieval by
 (put 'cleartool-error-not-a-vob-object
      'error-conditions
      '(error cleartool-error cleartool-error-not-a-vob-object))
-(put 'cleartool-error-not-a-vob-object 'error-message "ClearCase error")
+(put 'cleartool-error-not-a-vob-object 'error-message "ClearCase error not a vob object")
 
 (put 'cleartool-error-label-not-found
      'error-conditions
      '(error cleartool-error cleartool-error-label-not-found))
-(put 'cleartool-error-label-not-found 'error-message "ClearCase error")
+(put 'cleartool-error-label-not-found 'error-message "ClearCase error label not found")
 
 (put 'cleartool-error
      'error-conditions
      '(error cleartool-error))
-(put 'cleartool-error 'error-message "ClearCase error")
+(put 'cleartool-error 'error-message "ClearCase error other")
 
 (defun cleartool-signal-error (message)
   "Signal a cleartool-error with MESSAGE as an argument."

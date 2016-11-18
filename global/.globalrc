@@ -2,7 +2,7 @@ default:\
     :tc=gtags
 
 common: \
-    :skip=GPATH,GTAGS,GRTAGS,GSYMS,obj-*,router/,docsis/,card/,dcam/,ucam/,rsm/,cli/
+    :skip=GPATH,GTAGS,GRTAGS,GSYMS,obj-*,*.keep,.cmake.state
 
 gtags:\
     :tc=common:
