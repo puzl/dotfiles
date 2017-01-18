@@ -1,0 +1,7 @@
+function ssh()
+{
+    echo -ne "\e]0;${@: -1}\a"
+    /usr/bin/ssh $*
+    echo -ne "\e]0;$USER@$HOSTNAME\a"
+}
+

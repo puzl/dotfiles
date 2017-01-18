@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     html
      version-control
      git
      github
@@ -198,7 +199,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -251,7 +252,8 @@ user code here.  The exception is org related code, which should be placed in
     (load-file (expand-file-name "~/.spacemacs.d/elisp/cygwin-mount.el"))
     (cygwin-mount-activate)
     )
-  (remove-hook 'find-file-hooks 'vc-find-file-hook)
+  (when (eq 'windows-nt system-type)
+    (remove-hook 'find-file-hooks 'vc-find-file-hook))
   (setq darkokai-mode-line-padding 1)
   )
 
@@ -313,7 +315,8 @@ layers configuration. You are free to put any user code."
 
   (setq projectile-generic-command "find . \\( -name lost+found -o -name router -o -name docsis -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
 
-  (remove-hook 'find-file-hooks 'vc-find-file-hook)
+  (when (eq 'windows-nt system-type)
+    (remove-hook 'find-file-hooks 'vc-find-file-hook))
   (setq nlinum-relative-redisplay-delay 0.2)
 
   (setq my-include-directories
@@ -351,8 +354,22 @@ layers configuration. You are free to put any user code."
   (add-hook 'c-common-mode-hook 'my-flycheck-hook)
 
   (add-to-list 'load-path "~/.spacemacs.d/elisp")
-  (require 'clearcase)
-  (define-key clearcase-prefix-map "b" 'clearcase-gui-vtree-browser-current-buffer)
+  (add-to-list 'load-path "~/.spacemacs.d/elisp")
+
+  (add-to-list 'load-path "~/.spacemacs.d/clearcase")
+  ;(require 'clearcase)
+  (if (featurep 'clearcase)
+      (define-key clearcase-prefix-map "b" 'clearcase-gui-vtree-browser-current-buffer)
+    )
+
+  (add-to-list 'load-path "~/.spacemacs.d/vc-clearcase")
+  (require 'vc-clearcase)
+  (if (featurep 'vc-clearcase)
+      (progn
+        (define-key vc-prefix-map "b" 'vc-clearcase-gui-vtree-browser)
+        )
+    )
+
 
   (require 'e6000-emacs)
   (setq-default tab-width 4 indent-tabs-mode nil)
@@ -382,9 +399,6 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(clearcase-checkout-comment-type (quote none))
- '(clearcase-checkout-policy (quote unreserved))
- '(clearcase-dir-status-ignored-files (quote ("^obj-.*")))
  '(compile-command "e6make sim")
  '(grep-find-ignored-directories
    (quote
@@ -398,15 +412,24 @@ layers configuration. You are free to put any user code."
  '(helm-follow-mode t t)
  '(helm-follow-mode-persistent t)
  '(helm-projectile-fuzzy-match t)
+ '(helm-source-names-using-follow
+   (quote
+    (#("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
+       (face font-lock-variable-name-face c-in-sws t fontified t))
+     #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
+       (fontified t face font-lock-function-name-face))
+     #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
+       (face font-lock-function-name-face fontified t)))))
  '(ispell-dictionary "en_GB")
  '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
  '(neo-show-hidden-files nil t)
  '(package-selected-packages
    (quote
     (yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(projectile-enable-caching t)
  '(projectile-indexing-method (quote alien))
  '(projectile-tags-command "ggtags -u")
- '(ring-bell-function (quote ignore))
+ '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
    (quote
     ((clearcase-version-stamp-active . t)
@@ -415,7 +438,7 @@ layers configuration. You are free to put any user code."
      (ispell-personal-dictionary . "~/org/ecmg-test-plan.dict")
      (ispell-personal-dictionary . "ecmg-test-plan.dict")
      (ispell-dictionary . "english"))))
- '(vc-clearcase-diff-switches (quote ("-g -option \"-blank_ignore\""))))
+ '(vc-clearcase-diff-switches (quote ("-option \"-blank_ignore\""))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -5,8 +5,7 @@ function hostify()
     if [[ -e ~/.bash.d/$RC.$(hostname) ]]; then
         source ~/.bash.d/$RC.$(hostname)
     fi
-    if [[ ! -z "$CC_VIEW_SPEC" ]]; then
-
+    if [[ ! -z "$CC_VIEW_SPEC" || ! -z "CLEARCASE_ROOT" ]]; then
         if [[ -e ~/.bash.d/$RC.clearcase ]]; then
             source ~/.bash.d/$RC.clearcase
         fi
@@ -26,13 +25,13 @@ function add_to_path
     fi
 }
 
-function ps1() 
-{ 
-    GREEN='\[\033[0;32;1m\]'
-    BLUE='\[\033[0;36;1m\]'
-
-    PS1="\[\e[7m\]\[\e[0m\]${GREEN}\[\e[1m\]\W\[\e[0m\] \!\$\[\e[0m\] "
-}
+#function ps1() 
+#{ 
+    #GREEN='\[\033[0;32;1m\]'
+    #BLUE='\[\033[0;36;1m\]'
+    #
+    #PS1="\[\e[7m\]\[\e[0m\]${GREEN}\[\e[1m\]\W\[\e[0m\] \!\$\[\e[0m\] "
+#}
 
 function fgrep()
 {
