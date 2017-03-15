@@ -5,6 +5,7 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " Pathogen
 "
+call gtags#infect()
 call ccase#infect()
 call pathogen#infect()
 call pathogen#helptags()
