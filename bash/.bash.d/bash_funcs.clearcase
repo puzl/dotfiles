@@ -62,7 +62,7 @@ function catcs
 
 function cdiff 
 {
-    cleartool diff -pred -diff $*
+    cleartool diff -pred -diff -options -b $*
 }
 
 function ppcmakeall
