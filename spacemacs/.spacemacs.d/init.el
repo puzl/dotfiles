@@ -107,10 +107,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         darkokai
-                         tangotango
                          spacemacs-dark
                          solarized-dark
+                         darkokai
+                         tangotango
                          monokai
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -213,7 +213,7 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-smooth-scrolling t
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
@@ -310,10 +310,11 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "<f7>") 'previous-error)
   (global-set-key (kbd "<f8>") 'helm-projectile-find-file)
   (global-set-key (kbd "<f9>") 'projectile-find-other-file)
+  (global-set-key (kbd "<f10>") 'helm-projectile-find-file-in-known-projects)
   (global-set-key (kbd "<f11>") 'astyle-this-buffer)
   (global-set-key (kbd "<f12>") 'helm-resume)
 
-  (setq projectile-generic-command "find . \\( -name lost+found -o -name router -o -name docsis -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
+  (setq projectile-generic-command "find . \\( -name lost+found -o -name router -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
 
   (when (eq 'windows-nt system-type)
     (remove-hook 'find-file-hooks 'vc-find-file-hook))
@@ -385,6 +386,11 @@ layers configuration. You are free to put any user code."
 
                                         ; treat underscore as part of a word when double clicking
   (modify-syntax-entry ?_ "w")
+
+  (require 'i3)
+  (require 'i3-integration)
+  (i3-one-window-per-frame-mode-on)
+  (i3-advise-visible-frame-list-on)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -399,7 +405,10 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(compilation-message-face (quote default))
  '(compile-command "e6make sim")
+ '(evil-want-Y-yank-to-eol t)
+ '(fci-rule-color "#424748" t)
  '(grep-find-ignored-directories
    (quote
     ("SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "obj-*")))
@@ -414,22 +423,43 @@ layers configuration. You are free to put any user code."
  '(helm-projectile-fuzzy-match t)
  '(helm-source-names-using-follow
    (quote
-    (#("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
+    (#("buildRpdDsChanConfig in /app/" 0 20
+       (face font-lock-function-name-face fontified t))
+     #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
+       (fontified t))
+     "Find tag from here"
+     #("sendControlPacket in /vobs/C4_kernel/" 0 17
+       (fontified t face font-lock-function-name-face))
+     #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
        (face font-lock-variable-name-face c-in-sws t fontified t))
      #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
        (fontified t face font-lock-function-name-face))
      #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
        (face font-lock-function-name-face fontified t)))))
+ '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
+ '(highlight-tail-colors
+   (quote
+    (("#424748" . 0)
+     ("#63de5d" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#424748" . 100))))
  '(ispell-dictionary "en_GB")
+ '(magit-diff-use-overlays nil)
  '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
  '(neo-show-hidden-files nil t)
  '(package-selected-packages
    (quote
-    (yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(pos-tip-background-color "#E6DB74")
+ '(pos-tip-foreground-color "#242728")
  '(projectile-enable-caching t)
  '(projectile-indexing-method (quote alien))
  '(projectile-tags-command "ggtags -u")
- '(ring-bell-function (quote ignore) t)
+ '(ring-bell-function (quote ignore))
  '(safe-local-variable-values
    (quote
     ((clearcase-version-stamp-active . t)
@@ -438,7 +468,31 @@ layers configuration. You are free to put any user code."
      (ispell-personal-dictionary . "~/org/ecmg-test-plan.dict")
      (ispell-personal-dictionary . "ecmg-test-plan.dict")
      (ispell-dictionary . "english"))))
- '(vc-clearcase-diff-switches (quote ("-option \"-blank_ignore\""))))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#ff0066")
+     (40 . "#CF4F1F")
+     (60 . "#C26C0F")
+     (80 . "#E6DB74")
+     (100 . "#AB8C00")
+     (120 . "#A18F00")
+     (140 . "#989200")
+     (160 . "#8E9500")
+     (180 . "#63de5d")
+     (200 . "#729A1E")
+     (220 . "#609C3C")
+     (240 . "#4E9D5B")
+     (260 . "#3C9F79")
+     (280 . "#53f2dc")
+     (300 . "#299BA6")
+     (320 . "#2896B5")
+     (340 . "#2790C3")
+     (360 . "#06d8ff"))))
+ '(vc-annotate-very-old-color nil)
+ '(vc-clearcase-diff-switches (quote ("-option \"-blank_ignore\"")))
+ '(weechat-color-list
+   (unspecified "#242728" "#424748" "#F70057" "#ff0066" "#86C30D" "#63de5d" "#BEB244" "#E6DB74" "#40CAE4" "#06d8ff" "#FF61FF" "#ff8eff" "#00b2ac" "#53f2dc" "#f8fbfc" "#ffffff")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

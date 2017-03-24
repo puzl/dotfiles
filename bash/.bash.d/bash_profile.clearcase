@@ -12,7 +12,7 @@ export GTAGSFORCECPP=""
 export VCCAP_DIR=~/vccap
 export DPDK_VER=dpdk-16.11
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export GTAGSLIBPATH=/vobs/C4_app:/vobs/C4_kernel:/vobs/C4_system:/vobs/C4_hdwr:/vobs/C4_vendor/intel/$DPDK_VER
+    export GTAGSLIBPATH=/vobs/C4_app:/vobs/C4_kernel:/vobs/C4_system:/vobs/C4_hdwr/dprocs:/vobs/C4_vendor/intel/$DPDK_VER
 else
-    export GTAGSLIBPATH=/app:/kernel:/system:/hdwr:/vendor/intel/$DPDK_VER
+    export GTAGSLIBPATH=/app:/kernel:/system:/hdwr/dprocs:/vendor/intel/$DPDK_VER
 fi

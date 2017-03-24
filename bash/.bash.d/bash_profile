@@ -24,8 +24,10 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
-    PS1="\[\033[1;34m\][$(cleartool pwv -s) \w]$\[\033[0m\] "
-    trap 'printf "\033]0;$(cleartool pwv -s) %s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
+    if [[ -x /usr/atria/bin/cleartool ]]; then
+        PS1="\[\033[1;34m\][$(cleartool pwv -s) \w]$\[\033[0m\] "
+        trap 'printf "\033]0;$(cleartool pwv -s) %s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
+    fi
     set -o emacs
 else
     export TERM="xterm-256color"
