@@ -69,3 +69,5 @@ fi
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh.d/zsh-init
 PS1="$VIEW$PS1"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
