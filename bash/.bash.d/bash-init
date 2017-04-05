@@ -7,3 +7,5 @@ do
         source $HOME/.bash.d/$rc
     fi
 done
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

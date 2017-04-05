@@ -2,5 +2,3 @@
 if [[ -f $HOME/.bash.d/bash-init ]]; then
     . $HOME/.bash.d/bash-init
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
