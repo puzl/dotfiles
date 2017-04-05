@@ -10,7 +10,6 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 
     export VIM_PATH=vim
 
-    export ARRIS_DISABLE_CYGWIN_VERSION_WARNING=yes
     if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
 
     if [[ ! -z $SETVIEW_ENV ]] ;  then
@@ -20,6 +19,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
             export TAGFILES="/app/app.t,/kernel/kernel.t,/system/system.t,/vendor/windriver/vxworks/target/wrs.t,/vendor/windriver/components/comp.t,/devTools/videosim/videosim.t"
         fi
     fi
+
     set -o emacs
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
@@ -77,8 +77,6 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
     export VIEWER="$VIM_PATH" 
     export EDITOR="$VIM_PATH"
 fi
-
-export CVSROOT=:pserver:hjw@utils.lab.cork.arrisi.com:/var/cvs
 
 if [[ -z "$PS1" ]]; then
     echo no prompt

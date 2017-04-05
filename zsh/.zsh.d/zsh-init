@@ -1,6 +1,5 @@
 SHELL=/bin/zsh
 
-# Save PS1 because arris environment gets called and sets it
 OLDPS1=$PS1
 
 # Load user specific completions
