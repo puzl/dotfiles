@@ -16,3 +16,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 else
     export GTAGSLIBPATH=/app:/kernel:/system:/hdwr/dprocs:/vendor/intel/$DPDK_VER_SRC
 fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    add_to_path PATH /devTools/bin
+fi

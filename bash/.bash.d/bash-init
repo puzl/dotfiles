@@ -8,4 +8,4 @@ do
     fi
 done
 
-[[ "$OSTYPE" != "cygwin" && -f ~/.fzf.bash ]] && source ~/.fzf.bash
+[[ "$OSTYPE" == "linux-gnu" && -f ~/.fzf.bash ]] && source ~/.fzf.bash
