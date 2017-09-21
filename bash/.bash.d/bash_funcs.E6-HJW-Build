@@ -52,8 +52,8 @@ function gvim ()
     if [ "$1" == "-t" -o "$1" == "-R" -o "$1" == "-b" ] ; then     # gvim -tag or -binary or readonly
         SHELL="" "$GVIM_PATH" ${serverflag} $* ${remotesilent} &
     else
-        #echo "$GVIM_PATH" ${serverflag} ${remotesilent} `$CYGPATH -m $*`
-        SHELL="" "$GVIM_PATH" ${serverflag} ${remotesilent} `$CYGPATH -m $*` &
+        #echo "$GVIM_PATH" ${serverflag} ${remotesilent} `cygpath -m $*`
+        SHELL="" "$GVIM_PATH" ${serverflag} ${remotesilent} `cygpath -m $*` &
     fi
 }
 
