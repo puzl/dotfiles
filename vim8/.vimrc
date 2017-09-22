@@ -32,3 +32,5 @@ nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <F6> :cn<CR>
 nmap <F7> :cp<CR>
 nmap <F8> :cw<CR>
+
+set number
