@@ -24,7 +24,7 @@
 "
 " Overview
 " --------
-" The gtags-cscope.vim plugin script integrates the GNU GLOBAL source code tagging system
+" The gtags-cscope.vim plugin script integrates the GNU GLOBAL source code tag system
 " with Vim using cscope interface.
 "
 " Installation
@@ -94,6 +94,8 @@
 "	let GtagsCscope_Auto_Load = 1
 " To use 'vim -t ', ':tag' and '<C-]>'
 "	set cscopetag
+" To auto update tags when a file is saved
+"       let GtagsCscope_Auto_Update = 1
 "
 if exists("loaded_gtags_cscope")
     finish
@@ -125,6 +127,9 @@ if !exists("GtagsCscope_Quiet")
 endif
 if !exists("GtagsCscope_Ignore_Case")
     let GtagsCscope_Ignore_Case = 0
+endif
+if !exists("g:GtagsCscope_Auto_Update")
+    let g:GtagsCscope_Auto_Update = 0
 endif
 if !exists("GtagsCscope_Absolute_Path")
     let GtagsCscope_Absolute_Path = 0
@@ -187,6 +192,15 @@ function! s:GtagsCscope()
     set nocscopeverbose
     exe s:command
     set cscopeverbose
+    "
+    " auto update tags
+    "
+    if g:GtagsCscope_Auto_Update == 1
+        augroup gtags-cscope
+            autocmd BufWritePost * call s:GtagsCscopeAutoUpdate()
+        augroup END
+    endif
+
     "
     " Key mapping
     "
@@ -264,6 +278,12 @@ function! s:GtagsCscope()
 	:nmap <F3> :cs find d <C-R>=expand("<cword>")<CR>:<C-R>=line('.')<CR>:%<CR>
 	:nmap <F4> :cclose<CR>
     endif
+endfunction
+"
+" Auto update of tag files using incremental update facility.
+"
+function! s:GtagsCscopeAutoUpdate()
+    let l:result = system(s:global_command . " -u --single-update=\"" . expand("%") . "\"")
 endfunction
 
 if g:GtagsCscope_Auto_Load == 1

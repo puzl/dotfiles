@@ -15,6 +15,11 @@ nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 
 set runtimepath^=~/.vim_plugins/
+
+
+let GtagsCscope_Auto_Update = 1
+let GtagsCscope_Keep_Alive = 1
+let GtagsCscope_Absolute_Path = 1
 let GtagsCscope_Auto_Map = 1
 let GtagsCscope_Auto_Load = 1
 let GtagsCscope_Quiet = 1
