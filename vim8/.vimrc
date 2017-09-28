@@ -27,10 +27,10 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 set csprg=gtags-cscope 
 set cscopetag
 
-cs add GTAGS  /app -a
-cs add GTAGS  /system -a
-cs add GTAGS  -kernel -a
-cs add GTAGS  /hdwr/dprocs -a
+cs add /app/GTAGS
+cs add /system/GTAGS
+cs add /kernel/GTAGS
+cs add /hdwr/dprocs/GTAGS
 
 nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -38,4 +38,11 @@ nmap <F6> :cn<CR>
 nmap <F7> :cp<CR>
 nmap <F8> :cw<CR>
 
+"" Basic vim tweaks
 set number
+set mouse+=a
+set nocompatible
+set nowrap
+set ignorecase
+set smartcase
+set pastetoggle=<F2>

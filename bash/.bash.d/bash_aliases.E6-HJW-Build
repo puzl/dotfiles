@@ -2,5 +2,5 @@ if [[ $TERM == "emacs" ]]; then
   PS1='\[\e[32m\]E6:`cleartool pwv -s` : \[\e[33m\]\w\[\e[0m\]\n\$ '
 fi
 
-alias vi="vim -i ~/.viminfo"
-alias vim="vim -i ~/.viminfo"
+alias vi="/usr/local/vim/bin/vim -i ~/.viminfo"
+alias vim="/usr/local/vim/bin/vim -i ~/.viminfo"
