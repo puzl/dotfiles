@@ -1,4 +1,5 @@
 execute pathogen#infect()
+
 " basic vim settings
 set nocompatible
 set colorcolumn=90
@@ -19,7 +20,6 @@ filetype indent on
 " Keybindings
 let mapleader=" "
 map <leader>s :source ~/.vimrc<CR>
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <Leader><Leader> :e#<CR>
 map <D-A-RIGHT> <C-w>l
 map <D-A-LEFT> <C-w>h

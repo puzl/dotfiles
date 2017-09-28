@@ -7,3 +7,9 @@
 [submodule "vim8/.vim_runtime"]
 	path = vim8/.vim_runtime
 	url = https://github.com/amix/vimrc.git
+[submodule "vim/.vim/bundle/nerdcommenter"]
+	path = vim/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/.vim/bundle/lightline"]
+	path = vim/.vim/bundle/lightline
+	url = https://github.com/itchyny/lightline.vim.git
