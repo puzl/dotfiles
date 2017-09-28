@@ -40,12 +40,6 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 set csprg=gtags-cscope 
 set cscopetag
 
-<<<<<<< 093babeace1408ac81539536a221896743c08105
-cs add /app/GTAGS
-cs add /system/GTAGS
-cs add /kernel/GTAGS
-cs add /hdwr/dprocs/GTAGS
-=======
 try
 cs add GTAGS  /app -a
 catch
@@ -65,7 +59,6 @@ try
 cs add GTAGS  /hdwr/dprocs -a
 catch
 endtry
->>>>>>> Adding clearcase
 
 nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
