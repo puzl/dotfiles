@@ -52,6 +52,3 @@
 [submodule "vim/.vim/bundle/gtags.vim"]
 	path = vim/.vim/bundle/gtags.vim
 	url = https://github.com/vim-scripts/gtags.vim.git
-[submodule "vim/.vim/bundle/ccase"]
-	path = vim/.vim/bundle/ccase
-	url = https://github.com/vim-scripts/ccase.vim.git

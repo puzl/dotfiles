@@ -73,7 +73,7 @@ map <D-A-LEFT> <C-w>h
 map <D-A-DOWN> <C-w><C-w>
 map <D-A-UP> <C-w>W
 
-map <leader>g :Ack
+map <leader>g :Ack<Space>
 
 
 """"""""""""""""""""""""""""""
