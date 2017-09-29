@@ -4,9 +4,6 @@
 [submodule "spacemacs/.spacemacs.d/vc-clearcase"]
 	path = spacemacs/.spacemacs.d/vc-clearcase
 	url = https://github.com/alex-hhh/vc-clearcase.git
-[submodule "vim8/.vim_runtime"]
-	path = vim8/.vim_runtime
-	url = https://github.com/amix/vimrc.git
 [submodule "vim/.vim/bundle/nerdcommenter"]
 	path = vim/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
