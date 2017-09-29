@@ -2,7 +2,7 @@ execute pathogen#infect()
 
 " basic vim settings
 set nocompatible
-set colorcolumn=90
+set colorcolumn=120
 set number
 set mouse+=a
 set hidden
@@ -131,3 +131,53 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
+"" Clearcase
+try
+source ~/.vim_plugins/ccase.vim
+catch
+endtry
+
+let g:ccaseNoComment = 1
+"" Clearcase
+
+"" gtags
+try
+source ~/.vim_plugins/gtags-cscope.vim
+catch
+endtry
+let GtagsCscope_Auto_Update = 1
+let GtagsCscope_Keep_Alive = 1
+let GtagsCscope_Absolute_Path = 1
+let GtagsCscope_Auto_Map = 1
+let GtagsCscope_Auto_Load = 1
+let GtagsCscope_Quiet = 1
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+set csprg=gtags-cscope 
+set cscopetag
+
+try
+cs add GTAGS  /app -a
+catch
+endtry
+
+try
+cs add GTAGS  /system -a
+catch
+endtry
+
+try
+cs add GTAGS  -kernel -a
+catch
+endtry
+
+try
+cs add GTAGS  /hdwr/dprocs -a
+catch
+endtry
+
+nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <F6> :cn<CR>
+nmap <F7> :cp<CR>
+nmap <F8> :cw<CR>
+"" gtags 
