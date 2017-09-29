@@ -1692,13 +1692,13 @@ let s:revision =
 " Install the document:
 " NOTE: We must detect script name here. In a function, <sfile> will be
 "       expanded to the function name instead!
-silent! let s:install_status =
-    \ s:InstallDocumentation(expand('<sfile>:p'), s:revision)
 
-if (s:install_status == 0)
-    echomsg expand("<sfile>:t:r") . ' v' . s:revision .
-               \ ': Help-documentation installed.'
-endif
+silent! let s:install_status = s:InstallDocumentation(expand('<sfile>:p'), s:revision)
+
+"if (s:install_status == 0)
+    "echomsg expand("<sfile>:t:r") . ' v' . s:revision .
+               "\ ': Help-documentation installed.'
+"endif
 " }}}
 
 " ===========================================================================
