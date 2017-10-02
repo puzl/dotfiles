@@ -1,6 +1,10 @@
 " vim:foldmethod=marker:foldlevel=0
 execute pathogen#infect()
 set nocompatible
+" using Source Code Pro
+set anti enc=utf-8
+set guifont=Source\ Code\ Pro\ 11
+
 " => lightline {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
@@ -30,9 +34,9 @@ let g:lightline = {
 set laststatus=2 " needed for lightline
 
 " }}}
+
 " => binds {{{
 """"""""""""""""""""""""""""""
-" Keybindings
 let mapleader="," " leader is comma
 map <leader>s :source ~/.vimrc<CR>
 nnoremap <Leader><Leader> :e#<CR>
@@ -41,12 +45,14 @@ map <D-A-LEFT> <C-w>h
 map <D-A-DOWN> <C-w><C-w>
 map <D-A-UP> <C-w>W
 "}}}
+
 " => Colours {{{
 """"""""""""""""""""""""""""""
 syntax enable " Syntax highlight and colour scheme
 
 colorscheme wombat
 "}}}
+
 " => UI {{{
 """"""""""""""""""""""""""""""
 set guioptions-=m  "remove menu bar
@@ -66,6 +72,7 @@ filetype plugin on
 set lazyredraw
 set colorcolumn=120
 set mouse+=a
+
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -78,6 +85,7 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 " }}}
+
 " => Spaces and Tabs {{{
 """"""""""""""""""""""""""""""
 set tabstop=4
@@ -87,6 +95,7 @@ set shiftwidth=4
 set smartindent
 set autoindent
 " }}}
+
 " => folding {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -98,6 +107,7 @@ nnoremap <space> za
 set foldmethod=indent   " fold based on indent level
 
 " }}}
+
 " => Searching {{{
 """"""""""""""""""""""""""""""
 set hlsearch
@@ -116,12 +126,14 @@ let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
 map <leader>o :BufExplorer<cr>
 " }}}
+
 " => MRU plugin {{{
 """"""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
 map <leader>f :MRU<CR>
 
 "}}}
+
 " => CTRL-P {{{
 """"""""""""""""""""""""""""""
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -135,6 +147,7 @@ map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
 " }}}
+
 " => clearcase {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
@@ -183,11 +196,10 @@ if 1                                        " Clearcase
     command! Fixcs call FixupCs()
 
 endif                                       " Clearcase 
+"}}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => gnu global {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 try
 source ~/.vim_plugins/gtags-cscope.vim
 catch
@@ -202,30 +214,17 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 set csprg=gtags-cscope 
 set cscopetag
 
-try
-cs add GTAGS  /app -a
-catch
-endtry
-
-try
-cs add GTAGS  /system -a
-catch
-endtry
-
-try
-cs add GTAGS  -kernel -a
-catch
-endtry
-
-try
-cs add GTAGS  /hdwr/dprocs -a
-catch
-endtry
+for dir in ['/app', '/system', '/kernel', '/hdwr/dprocs', '/vobs/rpd']
+    if isdirectory(dir)
+        cs add GTAGS dir -a
+    endif
+endfor
 
 nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
 
 " }}}
+
 " => function keys {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F2> :CtrlPBuffer<CR>

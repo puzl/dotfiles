@@ -34,9 +34,6 @@
 [submodule "vim/.vim/bundle/ctrlp"]
 	path = vim/.vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "vim/.vim/bundle/vim-gitgutter"]
-	path = vim/.vim/bundle/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "vim/.vim/bundle/tabular"]
 	path = vim/.vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git

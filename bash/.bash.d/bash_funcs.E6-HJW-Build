@@ -21,3 +21,7 @@ function cdd()
 
     done
 }
+function gvim()
+{
+    HOME="/c/Users/hjw" /c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe $*
+}
