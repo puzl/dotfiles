@@ -75,6 +75,10 @@ map <D-A-UP> <C-w>W
 
 map <leader>g :Ack<Space>
 
+""""""""""""""""""""""""""""""
+" => tagbar plugin
+""""""""""""""""""""""""""""""
+nmap <F9> :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -181,3 +185,44 @@ nmap <F6> :cn<CR>
 nmap <F7> :cp<CR>
 nmap <F8> :cw<CR>
 "" gtags 
+
+if 1                                        " Clearcase
+    function! DosExpandCurrentFile()        " Full DOS pathname of current file
+        if exists('+shellslash')            " DOS
+            return substitute(expand("%:p"), "/", "\\", "g")
+        else
+            return expand("%:p")
+        endif
+    endfun
+    function! CleartoolCheckout()
+        echom system ("cleartool co -unr -nmaster -nc " . DosExpandCurrentFile())
+        if &modified == 1
+            echoerr "ERROR: Not auto-loading file as buffer has been modified"
+        else
+            exe 'e!'
+        endif
+    endfun
+    command! Ctcou call CleartoolCheckout()
+    command! Cvtree echom system ("clearvtree " . DosExpandCurrentFile())
+
+    function! CleartoolUnCo()               " Cleartool UnCheckout
+        let choice = confirm ("Uncheckout " . expand ("%.p") . " ?", "&Yes\n&No", 2)
+        if choice == 1
+            echom system ("cleartool unco -keep " . DosExpandCurrentFile())
+        endif
+    endfunction
+    command! Ctunco call CleartoolUnCo()
+
+    function! FixupCs()                     " Fixup configspec
+      " Fixup Configspec - change
+      "     Checked in "/dir/file" version "\main\47".
+      " ->
+      "     element /dir/file    /main/47
+      execute '%s/^Checked in "/element /g'
+      execute '%s/" version "/    /g'
+      execute '%s/\\/\//g'
+      execute '%s/".//g'
+    endfunction
+    command! Fixcs call FixupCs()
+
+endif                                       " Clearcase 
