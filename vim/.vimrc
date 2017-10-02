@@ -1,30 +1,59 @@
 execute pathogen#infect()
-
-" basic vim settings
 set nocompatible
-set colorcolumn=120
+
+""""""""""""""""""""""""""""""
+" => Colours
+""""""""""""""""""""""""""""""
+syntax enable " Syntax highlight and colour scheme
+
+try
+    colorscheme molokai
+catch
+endtry
+
+""""""""""""""""""""""""""""""
+" => UI
+""""""""""""""""""""""""""""""
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 set number
+set showcmd
+set cursorline
+filetype indent on
+filetype plugin on
+set wildmenu
+set lazyredraw
+set colorcolumn=120
 set mouse+=a
-set hidden
-set history=100
-set nowrap
+
+""""""""""""""""""""""""""""""
+" => Spaces and Tabs
+""""""""""""""""""""""""""""""
 set tabstop=4
-set shiftwidth=4
+set softtabstop=4
 set expandtab
+set shiftwidth=4
 set smartindent
 set autoindent
+
+
+""""""""""""""""""""""""""""""
+" => Searching
+""""""""""""""""""""""""""""""
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+set showmatch
+
+" basic vim settings
+set hidden
+set history=100
+set nowrap
 set laststatus=2
 
-" Syntax highlight and colour scheme
-syntax enable
-try
-    colorscheme peaksea
-catch
-endtry
 set background=dark
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -32,8 +61,6 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-filetype indent on
-filetype plugin on
 
 
 
@@ -73,7 +100,7 @@ map <D-A-LEFT> <C-w>h
 map <D-A-DOWN> <C-w><C-w>
 map <D-A-UP> <C-w>W
 
-map <leader>g :Ack<Space>
+map <leader>g :Ag<Space>
 
 """"""""""""""""""""""""""""""
 " => tagbar plugin

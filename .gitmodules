@@ -22,9 +22,6 @@
 [submodule "vim/.vim/bundle/peaksea"]
 	path = vim/.vim/bundle/peaksea
 	url = https://github.com/vim-scripts/peaksea.git
-[submodule "vim/.vim/bundle/ack"]
-	path = vim/.vim/bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/.vim/bundle/bufexplorer"]
 	path = vim/.vim/bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer.git
@@ -52,3 +49,9 @@
 [submodule "vim/.vim/bundle/tagbar"]
 	path = vim/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/.vim/bundle/molokai"]
+	path = vim/.vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git
+[submodule "vim/.vim/bundle/badwolf"]
+	path = vim/.vim/bundle/badwolf
+	url = https://github.com/sjl/badwolf.git
