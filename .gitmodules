@@ -55,3 +55,6 @@
 [submodule "vim/.vim/bundle/badwolf"]
 	path = vim/.vim/bundle/badwolf
 	url = https://github.com/sjl/badwolf.git
+[submodule "vim/.vim/bundle/ag"]
+	path = vim/.vim/bundle/ag
+	url = https://github.com/rking/ag.vim.git

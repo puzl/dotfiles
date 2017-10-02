@@ -1,152 +1,17 @@
+" vim:foldmethod=marker:foldlevel=0
 execute pathogen#infect()
 set nocompatible
-
-""""""""""""""""""""""""""""""
-" => Colours
-""""""""""""""""""""""""""""""
-syntax enable " Syntax highlight and colour scheme
-
-try
-    colorscheme molokai
-catch
-endtry
-
-""""""""""""""""""""""""""""""
-" => UI
-""""""""""""""""""""""""""""""
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-set number
-set showcmd
-set cursorline
-filetype indent on
-filetype plugin on
-set wildmenu
-set lazyredraw
-set colorcolumn=120
-set mouse+=a
-
-""""""""""""""""""""""""""""""
-" => Spaces and Tabs
-""""""""""""""""""""""""""""""
-set tabstop=4
-set softtabstop=4
-set expandtab
-set shiftwidth=4
-set smartindent
-set autoindent
-
-
-""""""""""""""""""""""""""""""
-" => Searching
-""""""""""""""""""""""""""""""
-set hlsearch
-set ignorecase
-set smartcase
-set incsearch
-set showmatch
-
-" basic vim settings
-set hidden
-set history=100
-set nowrap
-set laststatus=2
-
-set background=dark
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-
-
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
-
-"Always show current position
-set ruler
-
-" Height of the command bar
-set cmdheight=2
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-
-" Keybindings
-let mapleader=" "
-map <leader>s :source ~/.vimrc<CR>
-nnoremap <Leader><Leader> :e#<CR>
-map <D-A-RIGHT> <C-w>l
-map <D-A-LEFT> <C-w>h
-map <D-A-DOWN> <C-w><C-w>
-map <D-A-UP> <C-w>W
-
-map <leader>g :Ag<Space>
-
-""""""""""""""""""""""""""""""
-" => tagbar plugin
-""""""""""""""""""""""""""""""
-nmap <F9> :TagbarToggle<CR>
-
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-
-""""""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
-
-""""""""""""""""""""""""""""""
-" => CTRL-P
-""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
-
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
-
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
+" => lightline {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lightline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
+      \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
@@ -162,57 +27,122 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
-"" Clearcase
+set laststatus=2 " needed for lightline
+
+" }}}
+" => binds {{{
+""""""""""""""""""""""""""""""
+" Keybindings
+let mapleader="," " leader is comma
+map <leader>s :source ~/.vimrc<CR>
+nnoremap <Leader><Leader> :e#<CR>
+map <D-A-RIGHT> <C-w>l
+map <D-A-LEFT> <C-w>h
+map <D-A-DOWN> <C-w><C-w>
+map <D-A-UP> <C-w>W
+"}}}
+" => Colours {{{
+""""""""""""""""""""""""""""""
+syntax enable " Syntax highlight and colour scheme
+
+colorscheme wombat
+"}}}
+" => UI {{{
+""""""""""""""""""""""""""""""
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set hidden
+set history=100
+set nowrap
+set ffs=unix,dos,mac
+set encoding=utf8
+set number
+set showcmd
+set cursorline
+filetype indent on
+filetype plugin on
+set lazyredraw
+set colorcolumn=120
+set mouse+=a
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set wildmenu
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+" }}}
+" => Spaces and Tabs {{{
+""""""""""""""""""""""""""""""
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set smartindent
+set autoindent
+" }}}
+" => folding {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes folds
+nnoremap <space> za
+set foldmethod=indent   " fold based on indent level
+
+" }}}
+" => Searching {{{
+""""""""""""""""""""""""""""""
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+map <leader>g :Ag<Space>
+" }}}
+
+" => bufExplorer plugin {{{
+""""""""""""""""""""""""""""""
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='name'
+map <leader>o :BufExplorer<cr>
+" }}}
+" => MRU plugin {{{
+""""""""""""""""""""""""""""""
+let MRU_Max_Entries = 400
+map <leader>f :MRU<CR>
+
+"}}}
+" => CTRL-P {{{
+""""""""""""""""""""""""""""""
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_max_height = 20
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+
+map <leader>j :CtrlP<cr>
+map <c-b> :CtrlPBuffer<cr>
+
+" }}}
+" => clearcase {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
 source ~/.vim_plugins/ccase.vim
 catch
 endtry
 
 let g:ccaseNoComment = 1
-"" Clearcase
-
-"" gtags
-try
-source ~/.vim_plugins/gtags-cscope.vim
-catch
-endtry
-let GtagsCscope_Auto_Update = 1
-let GtagsCscope_Keep_Alive = 1
-let GtagsCscope_Absolute_Path = 1
-let GtagsCscope_Auto_Map = 1
-let GtagsCscope_Auto_Load = 1
-let GtagsCscope_Quiet = 1
-set cscopequickfix=s-,c-,d-,i-,t-,e-
-set csprg=gtags-cscope 
-set cscopetag
-
-try
-cs add GTAGS  /app -a
-catch
-endtry
-
-try
-cs add GTAGS  /system -a
-catch
-endtry
-
-try
-cs add GTAGS  -kernel -a
-catch
-endtry
-
-try
-cs add GTAGS  /hdwr/dprocs -a
-catch
-endtry
-
-nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <F6> :cn<CR>
-nmap <F7> :cp<CR>
-nmap <F8> :cw<CR>
-"" gtags 
-
 if 1                                        " Clearcase
     function! DosExpandCurrentFile()        " Full DOS pathname of current file
         if exists('+shellslash')            " DOS
@@ -253,3 +183,57 @@ if 1                                        " Clearcase
     command! Fixcs call FixupCs()
 
 endif                                       " Clearcase 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => gnu global {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+try
+source ~/.vim_plugins/gtags-cscope.vim
+catch
+endtry
+let GtagsCscope_Auto_Update = 1
+let GtagsCscope_Keep_Alive = 1
+let GtagsCscope_Absolute_Path = 1
+let GtagsCscope_Auto_Map = 1
+let GtagsCscope_Auto_Load = 1
+let GtagsCscope_Quiet = 1
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+set csprg=gtags-cscope 
+set cscopetag
+
+try
+cs add GTAGS  /app -a
+catch
+endtry
+
+try
+cs add GTAGS  /system -a
+catch
+endtry
+
+try
+cs add GTAGS  -kernel -a
+catch
+endtry
+
+try
+cs add GTAGS  /hdwr/dprocs -a
+catch
+endtry
+
+nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+
+" }}}
+" => function keys {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F2> :CtrlPBuffer<CR>
+nmap <F3> :CtrlP<CR>
+nmap <F4> :MRU<CR>
+nmap <F5> :TagbarToggle<CR>
+nmap <F6> :cn<CR>
+nmap <F7> :cp<CR>
+nmap <F8> :cw<CR>
+nmap <F9> :Ag<CR>
+" }}}
