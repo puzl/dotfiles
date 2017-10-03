@@ -1,9 +1,14 @@
 " vim:foldmethod=marker:foldlevel=0
 execute pathogen#infect()
 set nocompatible
-" using Source Code Pro
-set anti enc=utf-8
-set guifont=Source\ Code\ Pro\ 11
+set paste
+set guifont=Consolas:h12
+
+if has("win32") && ! has("win32unix")
+    set backupdir=C:/Windows/Temp
+    set directory=C:/Windows/Temp
+endif
+
 
 " => lightline {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -38,7 +43,12 @@ set laststatus=2 " needed for lightline
 " => binds {{{
 """"""""""""""""""""""""""""""
 let mapleader="," " leader is comma
-map <leader>s :source ~/.vimrc<CR>
+if has("win32")
+    map <leader>s :source ~/_vimrc<CR>
+else
+    map <leader>s :source ~/.vimrc<CR>
+endif
+
 nnoremap <Leader><Leader> :e#<CR>
 map <D-A-RIGHT> <C-w>l
 map <D-A-LEFT> <C-w>h
@@ -55,10 +65,16 @@ colorscheme wombat
 
 " => UI {{{
 """"""""""""""""""""""""""""""
+if has("gui_running")
+set guioptions+=c  "no windows dialogs
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+set lines=42
+set columns=100
+endif
+
 set hidden
 set history=100
 set nowrap
@@ -70,7 +86,6 @@ set cursorline
 filetype indent on
 filetype plugin on
 set lazyredraw
-set colorcolumn=120
 set mouse+=a
 
 " Configure backspace so it acts as it should act
@@ -99,7 +114,7 @@ set autoindent
 " => folding {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set foldenable          " enable folding
+set nofoldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 " space open/closes folds
@@ -150,12 +165,6 @@ map <c-b> :CtrlPBuffer<cr>
 
 " => clearcase {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-source ~/.vim_plugins/ccase.vim
-catch
-endtry
-
-let g:ccaseNoComment = 1
 if 1                                        " Clearcase
     function! DosExpandCurrentFile()        " Full DOS pathname of current file
         if exists('+shellslash')            " DOS
@@ -214,7 +223,10 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 set csprg=gtags-cscope 
 set cscopetag
 
-for dir in ['/app', '/system', '/kernel', '/hdwr/dprocs', '/vobs/rpd']
+" Gtags is setup to use tag database in the directories specified in the
+" GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
+
+for dir in split($GTAGSLIBPATH, ":")
     if isdirectory(dir)
         cs add GTAGS dir -a
     endif
