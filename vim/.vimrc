@@ -227,8 +227,8 @@ set cscopetag
 " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
 
 for dir in split($GTAGSLIBPATH, ":")
-    if isdirectory(dir)
-        cs add GTAGS dir -a
+    if isdirectory(dir) && filereadable(dir . "/GTAGS")
+        exe "cs add " . dir . "/GTAGS " . dir
     endif
 endfor
 

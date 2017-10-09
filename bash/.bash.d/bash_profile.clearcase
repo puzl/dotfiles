@@ -11,11 +11,13 @@ export GTAGSFORCECPP=""
 
 export VCCAP_DIR=~/vccap
 export DPDK_VER_SRC=dpdk-17.05
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export GTAGSLIBPATH=/vobs/C4_app:/vobs/C4_kernel:/vobs/C4_system:/vobs/C4_hdwr/dprocs:/vobs/C4_vendor/intel/$DPDK_VER_SRC
-else
-    export GTAGSLIBPATH=/app:/kernel:/system:/hdwr/dprocs:/vendor/intel/$DPDK_VER_SRC
-fi
+#if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    #export GTAGSLIBPATH=/vobs/C4_app:/vobs/C4_kernel:/vobs/C4_system:/vobs/C4_hdwr/dprocs:/vobs/C4_vendor/intel/$DPDK_VER_SRC
+#else
+    #export GTAGSLIBPATH=/app:/kernel:/system:/hdwr/dprocs:/vendor/intel/$DPDK_VER_SRC
+#fi
+
+export GTAGSLIBPATH=/app:/kernel:/system:/hdwr/dprocs:/vendor/intel/$DPDK_VER_SRC
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     add_to_path PATH /devTools/bin
