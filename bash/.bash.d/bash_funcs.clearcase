@@ -22,7 +22,7 @@ function lspriv
 
 function lsrm
 {
-    eval cleartool lspriv $CYGFIXIFY | egrep -v '^.*/(GPATH|GTAGS|GRTAGS|\.projectile|[a-z]*\.t)$'
+    eval cleartool lspriv $CYGFIXIFY | egrep -v '(GPATH|GTAGS|GRTAGS|\.projectile|[a-z]*\.t|checkedout)'
 }
 
 function lscoa

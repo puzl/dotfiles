@@ -55,3 +55,9 @@
 [submodule "vim/.vim/bundle/ag"]
 	path = vim/.vim/bundle/ag
 	url = https://github.com/rking/ag.vim.git
+[submodule "vim/.vim/bundle/vim-orgmode"]
+	path = vim/.vim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+[submodule "vim/.vim/bundle/vim-speeddating"]
+	path = vim/.vim/bundle/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git

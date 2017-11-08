@@ -74,7 +74,7 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https nil
+   dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -247,6 +247,11 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost any
 user code here.  The exception is org related code, which should be placed in
 `dotspacemacs/user-config'."
+  (when (eq 'gnu/linux system-type)
+    (setq spacemacs-cache-directory "/opt/hjw/spacemacs/cache")
+    (setq package-user-dir "/opt/hjw/spacemacs/elpa")
+    )
+
   (when (eq 'windows-nt system-type)
     (load-file (expand-file-name "~/.spacemacs.d/elisp/cygwin-emacs.el"))
     (load-file (expand-file-name "~/.spacemacs.d/elisp/cygwin-mount.el"))
@@ -357,20 +362,19 @@ layers configuration. You are free to put any user code."
   (add-to-list 'load-path "~/.spacemacs.d/elisp")
   (add-to-list 'load-path "~/.spacemacs.d/elisp")
 
-  (add-to-list 'load-path "~/.spacemacs.d/clearcase")
-  (require 'clearcase)
-  (if (featurep 'clearcase)
-      (define-key clearcase-prefix-map "b" 'clearcase-gui-vtree-browser-current-buffer)
-    )
+  ;; (add-to-list 'load-path "~/.spacemacs.d/clearcase")
+  ;; (require 'clearcase)
+  ;; (if (featurep 'clearcase)
+  ;;     (define-key clearcase-prefix-map "b" 'clearcase-gui-vtree-browser-current-buffer)
+  ;;   )
 
-  ;(add-to-list 'load-path "~/.spacemacs.d/vc-clearcase")
-  ;(require 'vc-clearcase)
-  ;(if (featurep 'vc-clearcase)
-      ;(progn
-        ;(define-key vc-prefix-map "b" 'vc-clearcase-gui-vtree-browser)
-        ;)
-    ;)
-
+  ;; (add-to-list 'load-path "~/.spacemacs.d/vc-clearcase")
+  ;; (require 'vc-clearcase
+  ;; (if (featurep 'vc-clearcase)
+  ;;     (progn
+  ;;       (define-key vc-prefix-map "b" 'vc-clearcase-gui-vtree-browser)
+  ;;       )
+  ;;   )
 
   (require 'e6000-emacs)
   (setq-default tab-width 4 indent-tabs-mode nil)
@@ -400,11 +404,11 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil t)
- '(ahs-default-range (quote ahs-range-whole-buffer) t)
- '(ahs-idle-interval 0.25 t)
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil t)
+ '(ahs-inhibit-face-list nil)
  '(compilation-message-face (quote default))
  '(compile-command "e6make sim")
  '(evil-want-Y-yank-to-eol t)
@@ -423,26 +427,28 @@ layers configuration. You are free to put any user code."
  '(helm-projectile-fuzzy-match t)
  '(helm-source-names-using-follow
    (quote
-    (#("freeSdvSession in x:/app/" 0 14
-       (fontified t face font-lock-function-name-face))
+    (#("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
+       (face font-lock-function-name-face fontified t))
+     #("freeSdvSession in x:/app/" 0 14
+       (face font-lock-function-name-face fontified t))
      "Search at /hdwr/dprocs/"
      #("DHCPDISCOVER in /vobs/C4_app/" 0 12
        (fontified t))
      #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
        (fontified t))
      #("buildRpdDsChanConfig in /app/" 0 20
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
        (fontified t))
      "Find tag from here"
      #("sendControlPacket in /vobs/C4_kernel/" 0 17
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
-       (fontified t c-in-sws t face font-lock-variable-name-face))
+       (face font-lock-variable-name-face c-in-sws t fontified t))
      #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
-       (fontified t face font-lock-function-name-face)))))
+       (face font-lock-function-name-face fontified t)))))
  '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
  '(highlight-tail-colors
    (quote

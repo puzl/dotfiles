@@ -228,7 +228,7 @@ set cscopetag
 
 for dir in split($GTAGSLIBPATH, ":")
     if isdirectory(dir) && filereadable(dir . "/GTAGS")
-        exe "cs add " . dir . "/GTAGS " . dir
+        exe "cs add " . dir . "/GTAGS"
     endif
 endfor
 
