@@ -90,7 +90,7 @@ bindsym $mod+r      exec rofi -modi drun -show drun
 bindsym $mod+d      exec rofi -modi drun -show drun
 bindsym $mod+x      exec rofi -show ssh
 bindsym $mod+Tab    exec rofi -show window
-bindsym $mod+c      exec rofi -modi "Remote Desktop Sessions:/home/hjw/.i3/rofi_remmina.sh" -show "Remote Desktop Sessions"
+bindsym $mod+c      exec rofi -modi "Remote Desktop Sessions:/home/hjw/.config/i3/rofi_remmina.sh" -show "Remote Desktop Sessions"
 
 
 

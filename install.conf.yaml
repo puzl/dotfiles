@@ -1,0 +1,27 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.astylerc: astylerc
+    ~/.bash.d:  bash.d
+    ~/.bash_profile:  bash_profile
+    ~/.bashrc: bashrc
+    ~/.globalrc: globalrc
+    ~/.config/.i3: i3
+    ~/.inputrc: inputrc
+    ~/.minttyrc: minttyrc
+    ~/.sim: sim
+    ~/.solarized.ansi: solarized.ansi
+    ~/.spacemacs.d: spacemacs.d
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    ~/.Xresources: Xresources
+
+- shell:
+  - mkdir ~/.config
+  - [git submodule update --init --recursive, Installing submodules]
+
