@@ -1,6 +1,63 @@
-[submodule "spacemacs.d/vc-clearcase"]
-	path = spacemacs.d/vc-clearcase
-	url = https://github.com/alex-hhh/vc-clearcase.git
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "spacemacs.d/vc-clearcase"]
+	path = spacemacs.d/vc-clearcase
+	url = https://github.com/alex-hhh/vc-clearcase.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/lightline"]
+	path = vim/bundle/lightline
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "vim/bundle/Wombat"]
+	path = vim/bundle/Wombat
+	url = https://github.com/vim-scripts/Wombat.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/vim-gitbranch"]
+	path = vim/bundle/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch.git
+[submodule "vim/bundle/peaksea"]
+	path = vim/bundle/peaksea
+	url = https://github.com/vim-scripts/peaksea.git
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/jlanzarotta/bufexplorer.git
+[submodule "vim/bundle/mru"]
+	path = vim/bundle/mru
+	url = https://github.com/vim-scripts/mru.vim.git
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/gtags.vim"]
+	path = vim/bundle/gtags.vim
+	url = https://github.com/vim-scripts/gtags.vim.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git
+[submodule "vim/bundle/badwolf"]
+	path = vim/bundle/badwolf
+	url = https://github.com/sjl/badwolf.git
+[submodule "vim/bundle/ag"]
+	path = vim/bundle/ag
+	url = https://github.com/rking/ag.vim.git
+[submodule "vim/bundle/vim-orgmode"]
+	path = vim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+[submodule "vim/bundle/vim-speeddating"]
+	path = vim/bundle/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
