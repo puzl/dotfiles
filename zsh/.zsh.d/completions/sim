@@ -1,6 +1,0 @@
-#compdef sim
-# arrays
-simcmds=(card chassis chkenv hwsim init net npu start stop update vxsim)
-compctl -f -x \
-'p[1]' -k simcmds - \
--- sim
