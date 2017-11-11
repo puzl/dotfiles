@@ -123,5 +123,9 @@ else
         fi;
     fi;
 fi
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
+}
+
+function peta() {
+    source /opt/Xilinx/2016.1/petalinux-v2016.1-final/settings.sh
+}
 

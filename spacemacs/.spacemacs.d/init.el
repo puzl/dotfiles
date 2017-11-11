@@ -390,11 +390,10 @@ layers configuration. You are free to put any user code."
 
                                         ; treat underscore as part of a word when double clicking
   (modify-syntax-entry ?_ "w")
-
-  ;(require 'i3)
-  ;(require 'i3-integration)
-  ;(i3-one-window-per-frame-mode-on)
-  ;(i3-advise-visible-frame-list-on)
+  (require 'i3)
+  (require 'i3-integration)
+  (i3-one-window-per-frame-mode-on)
+  (i3-advise-visible-frame-list-on)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -427,28 +426,32 @@ layers configuration. You are free to put any user code."
  '(helm-projectile-fuzzy-match t)
  '(helm-source-names-using-follow
    (quote
-    (#("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
+    (#("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
+       (face font-lock-function-name-face fontified t)
+       17 27
        (face font-lock-function-name-face fontified t))
+     #("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
+       (fontified t face font-lock-function-name-face))
      #("freeSdvSession in x:/app/" 0 14
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      "Search at /hdwr/dprocs/"
      #("DHCPDISCOVER in /vobs/C4_app/" 0 12
        (fontified t))
      #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
        (fontified t))
      #("buildRpdDsChanConfig in /app/" 0 20
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
        (fontified t))
      "Find tag from here"
      #("sendControlPacket in /vobs/C4_kernel/" 0 17
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
-       (face font-lock-variable-name-face c-in-sws t fontified t))
+       (fontified t c-in-sws t face font-lock-variable-name-face))
      #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
-       (face font-lock-function-name-face fontified t)))))
+       (fontified t face font-lock-function-name-face)))))
  '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
  '(highlight-tail-colors
    (quote
