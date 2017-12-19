@@ -10,17 +10,19 @@
     ~/.bash_profile:  bash_profile
     ~/.bashrc: bashrc
     ~/.globalrc: globalrc
-    ~/.config/.i3: i3
+    ~/.config/i3: config/i3
+    ~/.config/polybar: config/polybar
     ~/.inputrc: inputrc
     ~/.minttyrc: minttyrc
-    ~/.sim: sim
+    ~/.simrc: simrc
     ~/.solarized.ansi: solarized.ansi
     ~/.spacemacs.d: spacemacs.d
+    ~/.emacs.d: emacs.d
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.Xresources: Xresources
 
 - shell:
-  - mkdir ~/.config
+  - if [[ ! -d ~/.config ]]; then mkdir ~/.config; fi
   - [git submodule update --init --recursive, Installing submodules]
 

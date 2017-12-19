@@ -90,7 +90,7 @@ bindsym $mod+r      exec rofi -modi drun -show drun
 bindsym $mod+d      exec rofi -modi drun -show drun
 bindsym $mod+x      exec rofi -show ssh
 bindsym $mod+Tab    exec rofi -show window
-bindsym $mod+c      exec rofi -modi "Remote Desktop Sessions:/home/hjw/.config/i3/rofi_remmina.sh" -show "Remote Desktop Sessions"
+bindsym $mod+c      exec rofi -show remote -modi remote:/home/hjw/.config/i3/rofi_remmina.sh
 
 
 
@@ -135,15 +135,7 @@ bindsym $mod+t mode "resize"
 #client.unfocused        #333333 #333333 #888888 #292d2e
 #client.urgent           #2f343a #900000 #ffffff #900000
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status -c ~/.config/i3/i3status_config
-#        position top
-#        tray_output DP2
-#}
-
-exec_always pkill -9 polybar ; polybar -c ~/.polybar/config top
+exec_always pkill -9 polybar ; /usr/local/bin/polybar top
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
@@ -154,13 +146,3 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86Tools exec spotify
-
-#exec --no-startup-id xrandr --output DP1 --primary
-#exec --no-startup-id xset dpms 600
-#exec --no-startup-id xautolock -time 10 -locker i3lock
-#exec --no-startup-id gnome-settings-daemon
-#exec --no-startup-id clipit
-#exec --no-startup-id nm-applet
-#exec --no-startup-id remmina -i
-# solid wallpaper
-#exec --no-startup-id xsetroot -solid "#000000"

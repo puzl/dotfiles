@@ -209,31 +209,39 @@ endif                                       " Clearcase
 
 " => gnu global {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-source ~/.vim_plugins/gtags-cscope.vim
-catch
-endtry
 let GtagsCscope_Auto_Update = 1
 let GtagsCscope_Keep_Alive = 1
-let GtagsCscope_Absolute_Path = 1
-let GtagsCscope_Auto_Map = 1
-let GtagsCscope_Auto_Load = 1
-let GtagsCscope_Quiet = 1
+let GtagsCscope_Absolute_Path = 0
+let GtagsCscope_Auto_Map = 0
+let GtagsCscope_Auto_Load =0
+let GtagsCscope_Quiet = 0
 set cscopequickfix=s-,c-,d-,i-,t-,e-
-set csprg=gtags-cscope 
 set cscopetag
+set csprg=gtags-cscope 
 
-" Gtags is setup to use tag database in the directories specified in the
-" GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
+try
+    load "~/.vim/autoload/gtags-cscope.vim"
 
-for dir in split($GTAGSLIBPATH, ":")
-    if isdirectory(dir) && filereadable(dir . "/GTAGS")
-        exe "cs add " . dir . "/GTAGS"
-    endif
-endfor
+    " Gtags is setup to use tag database in the directories specified in the
+    " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
 
-nmap zr :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    for dir in split($GTAGSLIBPATH, ":")
+        if isdirectory(dir) 
+            if filereadable(dir . "/GTAGS")
+                let cscmd = 'cs add ' . dir . '/GTAGS'
+                silent exec cscmd
+            endif
+        endif
+    endfor
+
+    nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap zi :cs find i <C-R>=expand("<cword>")<CR><CR>
+catch
+endtry
+
+
 
 " }}}
 

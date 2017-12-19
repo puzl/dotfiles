@@ -12,5 +12,6 @@ else
     SESSION=$@
     SESSION=$(echo $SESSION | cut -f1 -d" ")
     FILE=$(grep -l ${SESSION} ~/.remmina/*.remmina)
-    remmina -c $FILE
+    remmina -c $FILE&
 fi
+exit 0

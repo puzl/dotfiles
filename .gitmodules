@@ -61,3 +61,15 @@
 [submodule "vim/bundle/vim-speeddating"]
 	path = vim/bundle/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating.git
+[submodule "src/polybar"]
+	path = src/polybar
+	url = https://github.com/jaagr/polybar.git
+[submodule "src/rofi"]
+	path = src/rofi
+	url = https://github.com/DaveDavenport/rofi.git
+[submodule "src/i3"]
+	path = src/i3
+	url = https://github.com/Airblader/i3.git
+[submodule "emacs.d"]
+	path = emacs.d
+	url = https://github.com/syl20bnr/spacemacs.git

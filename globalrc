@@ -2,7 +2,7 @@ default:\
     :tc=gtags
 
 common: \
-    :skip=GPATH,GTAGS,GRTAGS,GSYMS,obj-*,*.keep,.cmake.state
+    :skip=GPATH,GTAGS,GRTAGS,GSYMS,obj-*/,*.keep,.cmake.state,lost+found/,build/
 
 gtags:\
     :tc=common:

@@ -6,8 +6,8 @@ rofi.color-enabled: true
 ! a6 = 65% amount of black needed over white for white to be a 7 contrast score
 ! b3 = 70%
 ! 80 = 50%
-rofi.color-window: argb:a6000000, argb:a6000000, argb:0000000 
-rofi.color-normal: argb:0fdf6e3, #ffffff, argb:0eee8d5, #009688, #ffffff 
+rofi.color-window: argb:a6000000, argb:a6000000, argb:00000000 
+rofi.color-normal: argb:00fdf6e3, #ffffff, argb:00eee8d5, #009688, #ffffff 
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3 
 rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
 rofi.line-margin: 5

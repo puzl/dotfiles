@@ -1,0 +1,5 @@
+#!/bin/bash
+for dir in rofi i3 polybar
+do
+    rm -rf $dir/build
+done

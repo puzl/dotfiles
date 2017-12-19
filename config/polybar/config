@@ -1,0 +1,153 @@
+[global/wm]
+
+margin-top = 0
+margin-bottom = 0
+
+[colours]
+bg = #00000000
+maia =  #259E83
+white = #e8e8e8
+red =   #ff4d4d
+grey =  #33
+clear = #00
+yellow = #f9a825
+
+[bar/top]
+monitor = DP2
+width = 100%
+height = 28
+radius = 0
+bottom = false
+fixed-center = true 
+tray-position = right
+
+background = ${colours.bg}
+;foreground = ${colours.maia}
+
+border-size = 0
+border-bottom-size = 0
+
+border-color =${colours.clear}
+border-bottom-color = ${colours.clear}
+
+border-top-size = 0 
+border-top-color = ${colours.clear}
+
+padding = 3
+module-margin = 1 
+
+font-0 = System San Francisco Display:size=10:weight=Regular;1
+font-1 = FontAwesome:size=16;3
+font-2 = MaterialIcons:size=16;5
+;http://fontawesome.io/cheatsheet/
+;https://shanfan.github.io/material-icons-cheatsheet/
+
+modules-left   = prevsong playpause nextsong music
+modules-center = i3 
+modules-right  = pavolume clock 
+
+; override-redirect = true
+; wm-restack = i3
+
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+; fuzzy-match = true
+
+ws-icon-0 = 1;%{T4}1%{T-}
+ws-icon-1 = 2;%{T4}2%{T-}
+ws-icon-2 = 3;%{T4}3%{T-}
+ws-icon-3 = 4;%{T4}4%{T-}
+ws-icon-4 = 5;%{T4}5%{T-}
+ws-icon-5 = 6;%{T4}6%{T-}
+ws-icon-6 = 7;%{T4}7%{T-}
+ws-icon-7 = 8;%{T4}8%{T-}
+ws-icon-8 = 9;%{T4}9%{T-}
+ws-icon-9 = 10;%{T4}10%{T-}
+
+format = <label-mode> <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = ${colours.white}
+label-mode-background = ${colours.maia}
+
+label-focused = %icon%
+label-focused-foreground = ${colours.white}
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 4
+
+label-unfocused = %icon%
+label-unfocused-foreground = ${colours.white}
+label-unfocused-padding = 4
+
+label-visible = %icon%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 4
+
+
+[module/clock]
+type = internal/date
+format = " <label> "
+label = %date%
+date = %{F#259e83} %{F#e8e8e8}%a %b %d %{F#e8e8e8}%H:%M:%S %p
+label-font = 0
+
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = " %output% "
+exec = ~/.config/polybar/pavolume.sh --listen
+click-left = amixer -D pulse sset Master toggle
+click-right = exec pavucontrol &
+scroll-up = amixer -D pulse sset Master 2%+
+scroll-down = amixer -D pulse sset Master 2%-  
+ 
+
+[module/music]
+type = custom/script
+interval = 1 
+label = %{T4}%output:0:90:...%%{T-}
+tail = true
+exec = ~/.config/polybar/mpris.sh
+
+
+[module/playpause]
+type = custom/script
+label = %output%
+tail = false
+interval = 1
+exec = ~/.config/polybar/playpause.sh
+click-left = playerctl play-pause
+
+
+[module/nextsong]
+type = custom/text
+content = "%{F#17a086}"
+click-left = playerctl next
+
+[module/prevsong]
+type = custom/text
+content = "%{F#17a086}"
+click-left = playerctl previous
+
+[module/xwindow]
+type = internal/xwindow
+
+label = %title%
+label-foreground = ${colours.white}
+
+[settings]
+throttle-output = 10
+throttle-output-for = 10
+throttle-input-for = 30
