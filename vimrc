@@ -1,3 +1,7 @@
+if has('win32') || has('win64')
+    set runtimepath=c:\cygwin-1.7.31-3\home\hjw\.dotfiles\vim
+endif
+
 " vim:foldmethod=marker:foldlevel=0
 execute pathogen#infect()
 set nocompatible
