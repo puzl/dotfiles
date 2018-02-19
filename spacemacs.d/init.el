@@ -406,11 +406,11 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil t)
- '(ahs-default-range (quote ahs-range-whole-buffer) t)
- '(ahs-idle-interval 0.25 t)
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil t)
+ '(ahs-inhibit-face-list nil)
  '(compilation-message-face (quote default))
  '(compile-command "e6make sim")
  '(evil-want-Y-yank-to-eol t)
@@ -429,34 +429,36 @@ layers configuration. You are free to put any user code."
  '(helm-projectile-fuzzy-match t)
  '(helm-source-names-using-follow
    (quote
-    (#("send_mmm_pkt_downstream_stripping_isl in /vobs/C4_hdwr/dprocs/" 0 37
-       (fontified t face font-lock-function-name-face))
-     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
-       (face font-lock-function-name-face fontified t)
-       17 27
+    (#("USING_DSQOS_P in /vobs/C4_hdwr/dprocs/" 0 13
+       (c-in-sws t face font-lock-function-name-face fontified t))
+     #("send_mmm_pkt_downstream_stripping_isl in /vobs/C4_hdwr/dprocs/" 0 37
        (face font-lock-function-name-face fontified t))
+     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
+       (fontified t face font-lock-function-name-face)
+       17 27
+       (fontified t face font-lock-function-name-face))
      #("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("freeSdvSession in x:/app/" 0 14
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      "Search at /hdwr/dprocs/"
      #("DHCPDISCOVER in /vobs/C4_app/" 0 12
        (fontified t))
      #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
        (fontified t))
      #("buildRpdDsChanConfig in /app/" 0 20
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
        (fontified t))
      "Find tag from here"
      #("sendControlPacket in /vobs/C4_kernel/" 0 17
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
-       (fontified t c-in-sws t face font-lock-variable-name-face))
+       (face font-lock-variable-name-face c-in-sws t fontified t))
      #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
-       (fontified t face font-lock-function-name-face)))))
+       (face font-lock-function-name-face fontified t)))))
  '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
  '(highlight-tail-colors
    (quote

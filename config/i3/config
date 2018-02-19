@@ -40,7 +40,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-popup_during_fullscreen smart
+popup_during_fullscreen leave_fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -90,7 +90,7 @@ bindsym $mod+r      exec rofi -modi drun -show drun
 bindsym $mod+d      exec rofi -modi drun -show drun
 bindsym $mod+x      exec rofi -show ssh
 bindsym $mod+Tab    exec rofi -show window
-bindsym $mod+c      exec rofi -show remote -modi remote:/home/hjw/.config/i3/rofi_remmina.sh
+bindsym $mod+c      exec rofi -async-pre-read 0 -show remote -modi remote:/home/hjw/.config/i3/rofi_remmina.sh
 
 
 

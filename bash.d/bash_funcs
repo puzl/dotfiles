@@ -112,6 +112,12 @@ sv () {
     fi
 }
 
+tl () {
+    tail -f $(ls -rt | tail -1)
+}
+
 hostify bash_funcs
+
+
 
 
