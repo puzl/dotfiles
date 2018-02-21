@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.gitignore_global: gitignore_global
     ~/.astylerc: astylerc
     ~/.bash.d:  bash.d
     ~/.bash_profile:  bash_profile
