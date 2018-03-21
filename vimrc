@@ -213,39 +213,39 @@ endif                                       " Clearcase
 
 " => gnu global {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let GtagsCscope_Auto_Update = 1
-let GtagsCscope_Keep_Alive = 1
-let GtagsCscope_Absolute_Path = 0
-let GtagsCscope_Auto_Map = 0
-let GtagsCscope_Auto_Load =0
-let GtagsCscope_Quiet = 0
+let g:GtagsCscope_Auto_Update = 1
+let g:GtagsCscope_Keep_Alive = 1
+let g:GtagsCscope_Absolute_Path = 0
+let g:GtagsCscope_Auto_Map = 0
+let g:GtagsCscope_Auto_Load =1
+let g:GtagsCscope_Quiet = 0
+
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 set cscopetag
 set csprg=gtags-cscope 
 
-try
-    load "~/.vim/autoload/gtags-cscope.vim"
-
-    " Gtags is setup to use tag database in the directories specified in the
-    " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
-
-    for dir in split($GTAGSLIBPATH, ":")
-        if isdirectory(dir) 
-            if filereadable(dir . "/GTAGS")
-                let cscmd = 'cs add ' . dir . '/GTAGS'
-                silent exec cscmd
-            endif
-        endif
-    endfor
+if filereadable($HOME . "/.vim/manualload/gtags-cscope.vim")
+    source $HOME/.vim/manualload/gtags-cscope.vim
 
     nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
     nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
     nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
     nmap zi :cs find i <C-R>=expand("<cword>")<CR><CR>
-catch
-endtry
 
-
+    try 
+        " Gtags is setup to use tag database in the directories specified in the
+        " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
+        for dir in split($GTAGSLIBPATH, ":")
+            if isdirectory(dir) 
+                if filereadable(dir . "/GTAGS")
+                    let cscmd = 'cs add ' . dir . '/GTAGS'
+                    silent exec cscmd
+                endif
+            endif
+        endfor
+    catch
+    endtry
+endif
 
 " }}}
 

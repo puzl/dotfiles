@@ -10,6 +10,9 @@ function hostify()
             source ~/.bash.d/$RC.clearcase
         fi
     fi
+    if [[ -e ~/.bash.d/$RC.git ]]; then
+        source ~/.bash.d/$RC.git
+    fi
 }
 
 function add_to_path

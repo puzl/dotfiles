@@ -1,0 +1,9 @@
+function gitclean() {
+    IGNORE=""
+    for n in $(cat ~/.gitignore_global)
+    do
+        IGNORE="${IGNORE} -e $n"
+    done
+    git clean -fdx ${IGNORE}
+}
+

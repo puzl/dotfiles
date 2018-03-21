@@ -39,7 +39,7 @@ This function should only modify configuration layer settings."
      version-control
      git
      github
-     python
+     ;python
      org
      markdown
      emacs-lisp
@@ -75,7 +75,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(darkokai-theme)
+   dotspacemacs-additional-packages '(darkokai-theme doom-themes)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -121,7 +121,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
    ;; latest version of packages from MELPA. (default nil)
-   dotspacemacs-use-spacelpa t
+   dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
    ;; (default nil)
@@ -181,7 +181,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(doom-one
+                         spacemacs-dark
                          solarized-dark
                          darkokai
                          tangotango
@@ -605,14 +606,142 @@ before packages are loaded."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 0.25)
+ '(ahs-case-fold-search nil t)
+ '(ahs-default-range (quote ahs-range-whole-buffer) t)
+ '(ahs-idle-interval 0.25 t)
  '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil)
+ '(ahs-inhibit-face-list nil t)
  '(compilation-message-face (quote default))
  '(compile-command "e6make sim")
- '(evil-want-Y-yank-to-eol t)
+ '(evil-want-Y-yank-to-eol nil)
+ '(fci-rule-color "#424748" t)
+ '(grep-find-ignored-directories
+   (quote
+    ("SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "obj-*")))
+ '(helm-ag-ignore-patterns (quote ("obj-*")))
+ '(helm-ag-use-grep-ignore-list t)
+ '(helm-boring-file-regexp-list
+   (quote
+    ("\\.o$" "~$" "\\.bin$" "\\.bak$" "\\.obj$" "\\.map$" "\\.ico$" "\\.pif$" "\\.lnk$" "\\.a$" "\\.ln$" "\\.blg$" "\\.bbl$" "\\.dll$" "\\.drv$" "\\.vxd$" "\\.386$" "\\.elc$" "\\.lof$" "\\.glo$" "\\.idx$" "\\.lot$" "\\.svn$" "\\.hg$" "\\.git$" "\\.bzr$" "CVS$" "_darcs$" "_MTN$" "\\.fmt$" "\\.tfm$" "\\.class$" "\\.fas$" "\\.lib$" "\\.mem$" "\\.x86f$" "\\.sparcf$" "\\.dfsl$" "\\.pfsl$" "\\.d64fsl$" "\\.p64fsl$" "\\.lx64fsl$" "\\.lx32fsl$" "\\.dx64fsl$" "\\.dx32fsl$" "\\.fx64fsl$" "\\.fx32fsl$" "\\.sx64fsl$" "\\.sx32fsl$" "\\.wx64fsl$" "\\.wx32fsl$" "\\.fasl$" "\\.ufsl$" "\\.fsl$" "\\.dxl$" "\\.lo$" "\\.la$" "\\.gmo$" "\\.mo$" "\\.toc$" "\\.aux$" "\\.cp$" "\\.fn$" "\\.ky$" "\\.pg$" "\\.tp$" "\\.vr$" "\\.cps$" "\\.fns$" "\\.kys$" "\\.pgs$" "\\.tps$" "\\.vrs$" "\\.pyc$" "\\.pyo$" "^obj-" "^\\.abe")))
+ '(helm-ff-skip-boring-files t)
+ '(helm-follow-mode t t)
+ '(helm-follow-mode-persistent t)
+ '(helm-projectile-fuzzy-match t)
+ '(helm-source-names-using-follow
+   (quote
+    (#("USING_DSQOS_P in /vobs/C4_hdwr/dprocs/" 0 13
+       (fontified t face font-lock-function-name-face c-in-sws t))
+     #("send_mmm_pkt_downstream_stripping_isl in /vobs/C4_hdwr/dprocs/" 0 37
+       (fontified t face font-lock-function-name-face))
+     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
+       (face font-lock-function-name-face fontified t)
+       17 27
+       (face font-lock-function-name-face fontified t))
+     #("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
+       (fontified t face font-lock-function-name-face))
+     #("freeSdvSession in x:/app/" 0 14
+       (fontified t face font-lock-function-name-face))
+     "Search at /hdwr/dprocs/"
+     #("DHCPDISCOVER in /vobs/C4_app/" 0 12
+       (fontified t))
+     #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
+       (fontified t))
+     #("buildRpdDsChanConfig in /app/" 0 20
+       (fontified t face font-lock-function-name-face))
+     #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
+       (fontified t))
+     "Find tag from here"
+     #("sendControlPacket in /vobs/C4_kernel/" 0 17
+       (face font-lock-function-name-face fontified t))
+     #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
+       (fontified t c-in-sws t face font-lock-variable-name-face))
+     #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
+       (face font-lock-function-name-face fontified t))
+     #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
+       (fontified t face font-lock-function-name-face)))))
+ '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
+ '(highlight-tail-colors
+   (quote
+    (("#424748" . 0)
+     ("#63de5d" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#424748" . 100))))
+ '(ispell-dictionary "en_GB")
+ '(magit-diff-use-overlays nil)
+ '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
+ '(neo-show-hidden-files nil t)
+ '(package-selected-packages
+   (quote
+    (org-mime ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(pos-tip-background-color "#E6DB74")
+ '(pos-tip-foreground-color "#242728")
+ '(projectile-enable-caching t)
+ '(projectile-indexing-method (quote alien))
+ '(projectile-tags-command "ggtags -u")
+ '(ring-bell-function (quote ignore))
+ '(safe-local-variable-values
+   (quote
+    ((clearcase-version-stamp-active . t)
+     (folded-file . t)
+     (ispell-personal-dictionary . "/home/hjw/org/ecmg-test-plan.dict")
+     (ispell-personal-dictionary . "~/org/ecmg-test-plan.dict")
+     (ispell-personal-dictionary . "ecmg-test-plan.dict")
+     (ispell-dictionary . "english"))))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#ff0066")
+     (40 . "#CF4F1F")
+     (60 . "#C26C0F")
+     (80 . "#E6DB74")
+     (100 . "#AB8C00")
+     (120 . "#A18F00")
+     (140 . "#989200")
+     (160 . "#8E9500")
+     (180 . "#63de5d")
+     (200 . "#729A1E")
+     (220 . "#609C3C")
+     (240 . "#4E9D5B")
+     (260 . "#3C9F79")
+     (280 . "#53f2dc")
+     (300 . "#299BA6")
+     (320 . "#2896B5")
+     (340 . "#2790C3")
+     (360 . "#06d8ff"))))
+ '(vc-annotate-very-old-color nil)
+ '(vc-clearcase-diff-switches (quote ("-option \"-blank_ignore\"")))
+ '(weechat-color-list
+   (unspecified "#242728" "#424748" "#F70057" "#ff0066" "#86C30D" "#63de5d" "#BEB244" "#E6DB74" "#40CAE4" "#06d8ff" "#FF61FF" "#ff8eff" "#00b2ac" "#53f2dc" "#f8fbfc" "#ffffff")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ahs-case-fold-search nil t)
+ '(ahs-default-range (quote ahs-range-whole-buffer) t)
+ '(ahs-idle-interval 0.25 t)
+ '(ahs-idle-timer 0 t)
+ '(ahs-inhibit-face-list nil t)
+ '(compilation-message-face (quote default))
+ '(compile-command "e6make sim")
+ '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#424748" t)
  '(grep-find-ignored-directories
    (quote
@@ -675,7 +804,7 @@ before packages are loaded."
  '(neo-show-hidden-files nil t)
  '(package-selected-packages
    (quote
-    (ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (symon string-inflection spaceline-all-the-icons realgud test-simple loc-changes load-relative password-generator overseer org-brain nameless impatient-mode simple-httpd helm-xref helm-rtags helm-purpose window-purpose imenu-list google-c-style flycheck-rtags evil-org evil-lion evil-cleverparens paredit editorconfig doom-themes all-the-icons memoize counsel-projectile counsel swiper ivy company-rtags rtags centered-cursor-mode browse-at-remote font-lock+ org-mime ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#E6DB74")
  '(pos-tip-foreground-color "#242728")
  '(projectile-enable-caching t)
@@ -722,132 +851,4 @@ before packages are loaded."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(ahs-case-fold-search nil t)
-   '(ahs-default-range (quote ahs-range-whole-buffer) t)
-   '(ahs-idle-interval 0.25 t)
-   '(ahs-idle-timer 0 t)
-   '(ahs-inhibit-face-list nil t)
-   '(compilation-message-face (quote default))
-   '(compile-command "e6make sim")
-   '(evil-want-Y-yank-to-eol nil)
-   '(fci-rule-color "#424748" t)
-   '(grep-find-ignored-directories
-     (quote
-      ("SCCS" "RCS" "CVS" "MCVS" ".src" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "obj-*")))
-   '(helm-ag-ignore-patterns (quote ("obj-*")))
-   '(helm-ag-use-grep-ignore-list t)
-   '(helm-boring-file-regexp-list
-     (quote
-      ("\\.o$" "~$" "\\.bin$" "\\.bak$" "\\.obj$" "\\.map$" "\\.ico$" "\\.pif$" "\\.lnk$" "\\.a$" "\\.ln$" "\\.blg$" "\\.bbl$" "\\.dll$" "\\.drv$" "\\.vxd$" "\\.386$" "\\.elc$" "\\.lof$" "\\.glo$" "\\.idx$" "\\.lot$" "\\.svn$" "\\.hg$" "\\.git$" "\\.bzr$" "CVS$" "_darcs$" "_MTN$" "\\.fmt$" "\\.tfm$" "\\.class$" "\\.fas$" "\\.lib$" "\\.mem$" "\\.x86f$" "\\.sparcf$" "\\.dfsl$" "\\.pfsl$" "\\.d64fsl$" "\\.p64fsl$" "\\.lx64fsl$" "\\.lx32fsl$" "\\.dx64fsl$" "\\.dx32fsl$" "\\.fx64fsl$" "\\.fx32fsl$" "\\.sx64fsl$" "\\.sx32fsl$" "\\.wx64fsl$" "\\.wx32fsl$" "\\.fasl$" "\\.ufsl$" "\\.fsl$" "\\.dxl$" "\\.lo$" "\\.la$" "\\.gmo$" "\\.mo$" "\\.toc$" "\\.aux$" "\\.cp$" "\\.fn$" "\\.ky$" "\\.pg$" "\\.tp$" "\\.vr$" "\\.cps$" "\\.fns$" "\\.kys$" "\\.pgs$" "\\.tps$" "\\.vrs$" "\\.pyc$" "\\.pyo$" "^obj-" "^\\.abe")))
-   '(helm-ff-skip-boring-files t)
-   '(helm-follow-mode t t)
-   '(helm-follow-mode-persistent t)
-   '(helm-projectile-fuzzy-match t)
-   '(helm-source-names-using-follow
-     (quote
-      (#("USING_DSQOS_P in /vobs/C4_hdwr/dprocs/" 0 13
-         (fontified t face font-lock-function-name-face c-in-sws t))
-       #("send_mmm_pkt_downstream_stripping_isl in /vobs/C4_hdwr/dprocs/" 0 37
-         (fontified t face font-lock-function-name-face))
-       #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
-         (face font-lock-function-name-face fontified t)
-         17 27
-         (face font-lock-function-name-face fontified t))
-       #("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
-         (fontified t face font-lock-function-name-face))
-       #("freeSdvSession in x:/app/" 0 14
-         (fontified t face font-lock-function-name-face))
-       "Search at /hdwr/dprocs/"
-       #("DHCPDISCOVER in /vobs/C4_app/" 0 12
-         (fontified t))
-       #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
-         (fontified t))
-       #("buildRpdDsChanConfig in /app/" 0 20
-         (fontified t face font-lock-function-name-face))
-       #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
-         (fontified t))
-       "Find tag from here"
-       #("sendControlPacket in /vobs/C4_kernel/" 0 17
-         (face font-lock-function-name-face fontified t))
-       #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
-         (fontified t c-in-sws t face font-lock-variable-name-face))
-       #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
-         (face font-lock-function-name-face fontified t))
-       #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
-         (fontified t face font-lock-function-name-face)))))
-   '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
-   '(highlight-tail-colors
-     (quote
-      (("#424748" . 0)
-       ("#63de5d" . 20)
-       ("#4BBEAE" . 30)
-       ("#1DB4D0" . 50)
-       ("#9A8F21" . 60)
-       ("#A75B00" . 70)
-       ("#F309DF" . 85)
-       ("#424748" . 100))))
-   '(ispell-dictionary "en_GB")
-   '(magit-diff-use-overlays nil)
-   '(neo-hidden-regexp-list (quote ("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^obj-")))
-   '(neo-show-hidden-files nil t)
-   '(package-selected-packages
-     (quote
-      (symon string-inflection spaceline-all-the-icons all-the-icons memoize realgud test-simple loc-changes load-relative pippel password-generator overseer org-mime org-brain nameless importmagic epc ctable concurrent deferred impatient-mode simple-httpd helm-xref helm-rtags helm-purpose window-purpose imenu-list google-c-style flycheck-rtags evil-org company-rtags rtags browse-at-remote ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
-   '(pos-tip-background-color "#E6DB74")
-   '(pos-tip-foreground-color "#242728")
-   '(projectile-enable-caching t)
-   '(projectile-indexing-method (quote alien))
-   '(projectile-tags-command "ggtags -u")
-   '(ring-bell-function (quote ignore))
-   '(safe-local-variable-values
-     (quote
-      ((clearcase-version-stamp-active . t)
-       (folded-file . t)
-       (ispell-personal-dictionary . "/home/hjw/org/ecmg-test-plan.dict")
-       (ispell-personal-dictionary . "~/org/ecmg-test-plan.dict")
-       (ispell-personal-dictionary . "ecmg-test-plan.dict")
-       (ispell-dictionary . "english"))))
-   '(vc-annotate-background nil)
-   '(vc-annotate-color-map
-     (quote
-      ((20 . "#ff0066")
-       (40 . "#CF4F1F")
-       (60 . "#C26C0F")
-       (80 . "#E6DB74")
-       (100 . "#AB8C00")
-       (120 . "#A18F00")
-       (140 . "#989200")
-       (160 . "#8E9500")
-       (180 . "#63de5d")
-       (200 . "#729A1E")
-       (220 . "#609C3C")
-       (240 . "#4E9D5B")
-       (260 . "#3C9F79")
-       (280 . "#53f2dc")
-       (300 . "#299BA6")
-       (320 . "#2896B5")
-       (340 . "#2790C3")
-       (360 . "#06d8ff"))))
-   '(vc-annotate-very-old-color nil)
-   '(vc-clearcase-diff-switches (quote ("-option \"-blank_ignore\"")))
-   '(weechat-color-list
-     (unspecified "#242728" "#424748" "#F70057" "#ff0066" "#86C30D" "#63de5d" "#BEB244" "#E6DB74" "#40CAE4" "#06d8ff" "#FF61FF" "#ff8eff" "#00b2ac" "#53f2dc" "#f8fbfc" "#ffffff")))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
-   '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-  )
+)

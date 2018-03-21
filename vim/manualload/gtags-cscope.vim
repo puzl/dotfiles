@@ -18,7 +18,6 @@
 " but WITHOUT ANY WARRANTY; without even the implied warranty of
 " MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 " GNU General Public License for more details.
-" 
 " You should have received a copy of the GNU General Public License
 " along with this program.  If not, see <http://www.gnu.org/licenses/>.
 "
@@ -148,9 +147,7 @@ function! s:GtagsCscope_GtagsRoot()
     let cmd = s:global_command . " -pq"
     let cmd_output = system(cmd)
     if v:shell_error != 0
-        if v:shell_error == 3
-            call s:Error('GTAGS not found.')
-        else
+        if v:shell_error != 3
             call s:Error('global command failed. command line: ' . cmd)
         endif
         return ''

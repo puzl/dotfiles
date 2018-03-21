@@ -23,6 +23,7 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
     set -o emacs
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
+    echo adding home bin
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
     #if [[ -x /usr/atria/bin/cleartool ]]; then
         #PS1="\[\033[1;34m\][$(cleartool pwv -s) \w]$\[\033[0m\] "
