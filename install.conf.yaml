@@ -21,6 +21,7 @@
     ~/.emacs.d: emacs.d
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.fonts: fonts
     ~/.Xresources: Xresources
 
 - shell:

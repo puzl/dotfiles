@@ -7,12 +7,12 @@ rofi.color-enabled: true
 ! a6 = 65% amount of black needed over white for white to be a 7 contrast score
 ! b3 = 70%
 ! 80 = 50%
-rofi.color-window: argb:a6000000, argb:a6000000, argb:00000000 
-rofi.color-normal: argb:00fdf6e3, #ffffff, argb:00eee8d5, #009688, #ffffff 
-rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3 
-rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.color-window: #2f2f38, #679fb4, #679fb4
+rofi.color-normal: #2f2f38, #679fb4, #2f2f38, #2f2f38, #ffffff
+rofi.color-active: #2f2f38, #679fb4, #2f2f38, #2f2f38, #ffffff
+rofi.color-urgent: #2f2f38, #679fb4, #2f2f38, #2f2f38, #ffffff
 rofi.line-margin: 5
-rofi.font: Source Code Pro 16
+rofi.font: monofur 13
 rofi.padding: 10
 rofi.fullscreen: false
 rofi.sidebar-mode: false
@@ -33,7 +33,7 @@ rofi.ssh-command: {terminal} -e {ssh-client} {host}
 !! Appearance
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-URxvt.font: xft:Source Code Pro:pixelsize=13
+URxvt.font: xft:monofur:size=12
 URxvt.boldFont: xft:Source Code Pro:pixelsize=13:weight=bold
 
 !! Larger history limit
@@ -60,8 +60,8 @@ URxvt.perl-ext-common: default,clipboard,selection-to-clipboard
 #define wb_dkgrey       #8f8f8f
 
 URxvt*background:       wb_bg
-URxvt*foreground:       wb_fg
-URxvt*cursorColor:      wb_cur
+URxvt*foreground: 		                #ffffff
+URxvt*cursorColor:		                #ffffff
 URxvt*color0:           black
 URxvt*color1:           wb_red
 URxvt*color2:           wb_green
