@@ -23,7 +23,6 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
     set -o emacs
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
-    echo adding home bin
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
     #if [[ -x /usr/atria/bin/cleartool ]]; then
         #PS1="\[\033[1;34m\][$(cleartool pwv -s) \w]$\[\033[0m\] "
@@ -66,13 +65,11 @@ else
         VIMPATH=/usr/local/bin/vim
         # Call this to use old gryphon montavista
         add_gryphon_sbtools() {
-            echo adding /vobs/gryphon
             eval `/vobs/gryphon/linux/Montavista/add_mvtools sh "$@"`
         }
 
         # Call this to use new C3_3rdparty montavista
         add_3rd_sbtools() {
-            echo adding /vobs/mv/linux
             eval `/vobs/C3_3rdparty/linux/Montavista/add_mvtools sh "$@"`
         }
         if [[ ! -z "$CLEARCASE_ROOT" ]]; then
@@ -84,9 +81,5 @@ fi
 if [[ ! -z "$VIM_PATH" ]] ;  then
     export VIEWER="$VIM_PATH" 
     export EDITOR="$VIM_PATH"
-fi
-
-if [[ -z "$PS1" ]]; then
-    echo no prompt
 fi
 hostify bash_profile
