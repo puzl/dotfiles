@@ -23,6 +23,7 @@
     ~/.vimrc: vimrc
     ~/.fonts: fonts
     ~/.Xresources: Xresources
+    ~/.gitconfig: gitconfig
 
 - shell:
   - if [[ ! -d ~/.config ]]; then mkdir ~/.config; fi
