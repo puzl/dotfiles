@@ -1,153 +1,211 @@
-[global/wm]
-
-margin-top = 0
-margin-bottom = 0
-
-[colours]
-bg = #00000000
-maia =  #259E83
-white = #e8e8e8
-red =   #ff4d4d
-grey =  #33
-clear = #00
-yellow = #f9a825
+[colors]
+;My colors are set from .Xresources to match everything else
+my_background 	= ${xrdb:background}
+my_foreground 	= ${xrdb:foreground}
+my_color0	= ${xrdb:color0}
+my_color1	= ${xrdb:color1}
+my_color2	= ${xrdb:color2}
+my_color3	= ${xrdb:color3}
+my_color4	= ${xrdb:color4}
+my_color5	= ${xrdb:color5}
+my_color6	= ${xrdb:color6}
+my_color7	= ${xrdb:color7}
+my_color8	= ${xrdb:color8}
+my_color9	= ${xrdb:color9}
+my_color10	= ${xrdb:color10}
+my_color11	= ${xrdb:color11}
+my_color12	= ${xrdb:color12}
+my_color13	= ${xrdb:color13}
+my_color14	= ${xrdb:color14}
+my_color15	= ${xrdb:color15}
 
 [bar/top]
 monitor = DP2
-width = 100%
-height = 28
-radius = 0
 bottom = false
+width = 100%
+height = 20
+radius = 0.0
+offset-x = 0
+offset-y = 0
 fixed-center = true 
-tray-position = right
 
-background = ${colours.bg}
-;foreground = ${colours.maia}
+background = ${colors.my_background}
+foreground =  ${colors.my_foreground}
+
+line-size = 3
+line-color = ${colors.my_color4}
 
 border-size = 0
-border-bottom-size = 0
+border-color = ${colors.my_color4}
 
-border-color =${colours.clear}
-border-bottom-color = ${colours.clear}
+padding-left = 0
+padding-right = 0
 
-border-top-size = 0 
-border-top-color = ${colours.clear}
-
-padding = 3
-module-margin = 1 
+module-margin-left = 5 
+module-margin-right = 5 
 
 font-0 = System San Francisco Display:size=10:weight=Regular;1
-font-1 = FontAwesome:size=16;3
-font-2 = MaterialIcons:size=16;5
-;http://fontawesome.io/cheatsheet/
-;https://shanfan.github.io/material-icons-cheatsheet/
+font-1 = System San Francisco Display:size=10:weight=Regular;1
+font-2 = FontAwesome:size=16;3
 
-modules-left   = prevsong playpause nextsong music
-modules-center = i3 
-modules-right  = pavolume clock 
+modules-left   = i3 date
+modules-center = xwindow 
+modules-right  = musicinfo
+
+tray-position = right
+tray-padding = 9
+tray-transparent = false
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.my_background}
 
 ; override-redirect = true
-; wm-restack = i3
+wm-restack = i3
 
+[bar/right]
+monitor = VGA1
+bottom = false
+width = 100%
+height = 20
+radius = 0.0
+offset-x = 0
+offset-y = 0
+fixed-center = true 
+
+background = ${colors.my_background}
+foreground =  ${colors.my_foreground}
+
+line-size = 4
+line-color = ${colors.my_color4}
+
+border-size = 0
+border-color = ${colors.my_color4}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 5 
+module-margin-right = 5 
+
+font-0 = System San Francisco Display:size=10:weight=Regular;1
+font-1 = System San Francisco Display:size=10:weight=Regular;1
+font-2 = FontAwesome:size=16;3
+
+modules-left   = i3 date
+modules-center = xwindow
+modules-right  = 
+
+; override-redirect = true
+wm-restack = i3
+[bar/left]
+monitor = DP1
+bottom = false
+width = 100%
+height = 20
+radius = 0.0
+offset-x = 0
+offset-y = 0
+fixed-center = true 
+
+background = ${colors.my_background}
+foreground =  ${colors.my_foreground}
+
+line-size = 4
+line-color = ${colors.my_color4}
+
+border-size = 0
+border-color = ${colors.my_color4}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 5 
+module-margin-right = 5 
+
+font-0 = System San Francisco Display:size=10:weight=Regular;1
+font-1 = System San Francisco Display:size=10:weight=Regular;1
+font-2 = FontAwesome:size=16;3
+
+modules-left   = i3 date
+modules-center = xwindow
+modules-right  = 
+
+; override-redirect = true
+wm-restack = i3
 
 [module/i3]
 type = internal/i3
-strip-wsnumbers = false
-enable-click = true
-enable-scroll = false
-reverse-scroll = false
-; fuzzy-match = true
+pin-workspaces = yes
 
-ws-icon-0 = 1;%{T4}1%{T-}
-ws-icon-1 = 2;%{T4}2%{T-}
-ws-icon-2 = 3;%{T4}3%{T-}
-ws-icon-3 = 4;%{T4}4%{T-}
-ws-icon-4 = 5;%{T4}5%{T-}
-ws-icon-5 = 6;%{T4}6%{T-}
-ws-icon-6 = 7;%{T4}7%{T-}
-ws-icon-7 = 8;%{T4}8%{T-}
-ws-icon-8 = 9;%{T4}9%{T-}
-ws-icon-9 = 10;%{T4}10%{T-}
+label-unfocused-background = ${colors.my_background}
+label-unfocused-foreground = ${colors.my_foreground}
+label-unfocused-underline  = ${colors.my_color4}
 
-format = <label-mode> <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-foreground = ${colours.white}
-label-mode-background = ${colours.maia}
+label-mode-background = ${colors.my_color4}
 
-label-focused = %icon%
-label-focused-foreground = ${colours.white}
-label-focused-background = #3f3f3f
-label-focused-underline = #fba922
-label-focused-padding = 4
+label-focused = %index%
+label-focused-foreground = ${colors.my_foreground}
+label-focused-background = ${colors.my_color2}
+label-focused-underline = ${colors.my_color2}
+label-focused-padding = 2
 
-label-unfocused = %icon%
-label-unfocused-foreground = ${colours.white}
-label-unfocused-padding = 4
+label-unfocused = %index%
+label-unfocused-padding = 2
 
-label-visible = %icon%
-label-visible-underline = #555555
-label-visible-padding = 4
+label-visible = %index%
+label-visible-underline = ${colors.my_color2}
+label-visible-padding = 2
 
-label-urgent = %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-padding = 4
+label-urgent = %index%
+label-urgent-foreground = ${colors.my_foreground}
+label-urgent-background = ${colors.my_background}
+label-urgent-underline = ${colors.my_color8}
+label-urgent-padding = 2
 
+[module/musicinfo]
+type = custom/script
 
-[module/clock]
+exec = ~/.config/polybar/music.sh
+interval = 5
+format = <label>
+label = %output:0:120:...%
+format-padding = 10
+format-foreground = ${colors.my_foreground}
+
+[module/date]
 type = internal/date
-format = " <label> "
-label = %date%
-date = %{F#259e83} %{F#e8e8e8}%a %b %d %{F#e8e8e8}%H:%M:%S %p
-label-font = 0
+interval = 5
 
+date =
+date-alt = "%d/%m/%Y"
 
-[module/pavolume]
-type = custom/script
-tail = true
-label = " %output% "
-exec = ~/.config/polybar/pavolume.sh --listen
-click-left = amixer -D pulse sset Master toggle
-click-right = exec pavucontrol &
-scroll-up = amixer -D pulse sset Master 2%+
-scroll-down = amixer -D pulse sset Master 2%-  
- 
+time = "%a %b %d, %I:%M %p "
 
-[module/music]
-type = custom/script
-interval = 1 
-label = %{T4}%output:0:90:...%%{T-}
-tail = true
-exec = ~/.config/polybar/mpris.sh
+time-alt = %H:%M
 
+format-prefix-foreground = ${colors.my_foreground}
+format-underline = ${colors.my_color5}
 
-[module/playpause]
-type = custom/script
-label = %output%
-tail = false
-interval = 1
-exec = ~/.config/polybar/playpause.sh
-click-left = playerctl play-pause
-
-
-[module/nextsong]
-type = custom/text
-content = "%{F#17a086}"
-click-left = playerctl next
-
-[module/prevsong]
-type = custom/text
-content = "%{F#17a086}"
-click-left = playerctl previous
+label = %date% %time%
 
 [module/xwindow]
 type = internal/xwindow
+label = %title:0:120:...%
+label-padding = 10
+label-foreground = ${colors.my_foreground}
 
-label = %title%
-label-foreground = ${colours.white}
 
 [settings]
+screenchange-reload = true
 throttle-output = 10
 throttle-output-for = 10
 throttle-input-for = 30
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
