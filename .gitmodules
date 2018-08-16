@@ -74,3 +74,6 @@
 [submodule "emacs.d"]
 	path = emacs.d
 	url = https://github.com/syl20bnr/spacemacs.git
+[submodule "src/i3wm-themer"]
+	path = src/i3wm-themer
+	url = https://github.com/unix121/i3wm-themer

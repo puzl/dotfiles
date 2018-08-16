@@ -2,6 +2,7 @@
 
 # polybar
 if [[ ! -x ./polybar/build/bin/polybar ]]; then
+    echo Polybar
     cd polybar
     git submodule init
     git submodule update
@@ -13,21 +14,16 @@ if [[ ! -x ./polybar/build/bin/polybar ]]; then
 fi
  
 # i3-gaps
-if [[ ! -x ./i3/build/i3 ]]; then
+if [[ ! -x ./i3/i3 ]]; then
+    echo i3
     cd i3
-    git submodule init
-    git submodule update
-    autoreconf --force --install
-    rm -rf build
-    mkdir build
-    cd build
-    ../configure --prefix=/usr/local --sysconfdir=/etc
     make && sudo make install
-    cd ../..
+    cd ..
 fi
 
 # rofi
 if [[ ! -x ./rofi/build/rofi ]]; then
+    echo rofi
     cd rofi
     git submodule init
     git submodule update

@@ -28,14 +28,6 @@ function add_to_path
     fi
 }
 
-#function ps1() 
-#{ 
-    #GREEN='\[\033[0;32;1m\]'
-    #BLUE='\[\033[0;36;1m\]'
-    #
-    #PS1="\[\e[7m\]\[\e[0m\]${GREEN}\[\e[1m\]\W\[\e[0m\] \!\$\[\e[0m\] "
-#}
-
 function fgrep()
 {
     case $# in 
@@ -118,6 +110,29 @@ sv () {
 tl () {
     tail -f $(ls -rt | tail -1)
 }
+
+function peta() {
+    X=2017.1
+    OK=0
+    if [[ $# -gt 0 ]]; then
+        X=$1
+        shift
+    fi
+    if [[ -e /opt/Xilinx/petalinux-v${X}-final/settings.sh ]]; then
+        echo Sourcing petalinux settings
+        source /opt/Xilinx/petalinux-v${X}-final/settings.sh 
+        OK=1
+    fi
+    if [[ -d /opt/Xilinx/SDK/${X} ]]; then
+        echo Adding SDK to PATH
+        export PATH=/gitwork/tools/bin:/opt/Xilinx/SDK/${X}/bin:$PATH
+    fi
+
+    if [[ ! $OK -eq 1 ]]; then
+        >&2 echo "Error: Could not source ${X} petalinux environment"
+    fi
+}
+
 
 hostify bash_funcs
 

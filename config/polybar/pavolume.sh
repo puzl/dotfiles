@@ -4,8 +4,8 @@
 
 osd='no'
 inc='2'
-capvol='no'
-maxvol='200'
+capvol='yes'
+maxvol='100'
 autosync='yes'
 
 # Muted status
@@ -28,10 +28,10 @@ function volUp {
     then
         if [ "$curVol" -le 100 ] && [ "$curVol" -ge "$limit" ]
         then
-            pactl set-sink-volume "$active_sink" -- 100%
+            pactl set-sink-volume "$active_sink" 100%
         elif [ "$curVol" -lt "$limit" ]
         then
-            pactl set-sink-volume "$active_sink" -- "+$inc%"
+            pactl set-sink-volume "$active_sink" "+$inc%"
         fi
     elif [ "$curVol" -le "$maxvol" ] && [ "$curVol" -ge "$maxlimit" ]
     then
@@ -162,6 +162,7 @@ function output() {
     fi
 } #}}}
 
+2>&1 echo $* >> /tmp/volume.log 2>&1
 reloadSink
 case "$1" in
     --up)

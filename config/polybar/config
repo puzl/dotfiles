@@ -1,211 +1,124 @@
-[colors]
-;My colors are set from .Xresources to match everything else
-my_background 	= ${xrdb:background}
-my_foreground 	= ${xrdb:foreground}
-my_color0	= ${xrdb:color0}
-my_color1	= ${xrdb:color1}
-my_color2	= ${xrdb:color2}
-my_color3	= ${xrdb:color3}
-my_color4	= ${xrdb:color4}
-my_color5	= ${xrdb:color5}
-my_color6	= ${xrdb:color6}
-my_color7	= ${xrdb:color7}
-my_color8	= ${xrdb:color8}
-my_color9	= ${xrdb:color9}
-my_color10	= ${xrdb:color10}
-my_color11	= ${xrdb:color11}
-my_color12	= ${xrdb:color12}
-my_color13	= ${xrdb:color13}
-my_color14	= ${xrdb:color14}
-my_color15	= ${xrdb:color15}
-
-[bar/top]
+[bar/i3wmthemer_bar]
 monitor = DP2
-bottom = false
 width = 100%
-height = 20
-radius = 0.0
-offset-x = 0
-offset-y = 0
-fixed-center = true 
+height = 27
+radius = 0
+fixed-center = false
 
-background = ${colors.my_background}
-foreground =  ${colors.my_foreground}
+background = #1d1e26
+foreground = #b0b287
 
 line-size = 3
-line-color = ${colors.my_color4}
+line-color =
 
 border-size = 0
-border-color = ${colors.my_color4}
+border-color =
 
 padding-left = 0
-padding-right = 0
+padding-right = 2
 
-module-margin-left = 5 
-module-margin-right = 5 
+module-margin-left = 1
+module-margin-right = 2
 
-font-0 = System San Francisco Display:size=10:weight=Regular;1
-font-1 = System San Francisco Display:size=10:weight=Regular;1
-font-2 = FontAwesome:size=16;3
+font-0 = "Source Code Pro Semibold:size=10;1"
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
+font-2 = "Font Awesome 5 Brands:size=10;1"
 
-modules-left   = i3 date
-modules-center = xwindow 
-modules-right  = musicinfo
+modules-left = wlan eth
+modules-center = i3
+modules-right = date powermenu
 
-tray-position = right
-tray-padding = 9
-tray-transparent = false
-tray-offset-y = 0%
-tray-offset-x = 0%
-tray-maxsize = 18
-tray-detached = false
-tray-background = ${colors.my_background}
+tray-position = left
+;tray-padding =
 
-; override-redirect = true
-wm-restack = i3
-
-[bar/right]
-monitor = VGA1
-bottom = false
-width = 100%
-height = 20
-radius = 0.0
-offset-x = 0
-offset-y = 0
-fixed-center = true 
-
-background = ${colors.my_background}
-foreground =  ${colors.my_foreground}
-
-line-size = 4
-line-color = ${colors.my_color4}
-
-border-size = 0
-border-color = ${colors.my_color4}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 5 
-module-margin-right = 5 
-
-font-0 = System San Francisco Display:size=10:weight=Regular;1
-font-1 = System San Francisco Display:size=10:weight=Regular;1
-font-2 = FontAwesome:size=16;3
-
-modules-left   = i3 date
-modules-center = xwindow
-modules-right  = 
-
-; override-redirect = true
-wm-restack = i3
-[bar/left]
-monitor = DP1
-bottom = false
-width = 100%
-height = 20
-radius = 0.0
-offset-x = 0
-offset-y = 0
-fixed-center = true 
-
-background = ${colors.my_background}
-foreground =  ${colors.my_foreground}
-
-line-size = 4
-line-color = ${colors.my_color4}
-
-border-size = 0
-border-color = ${colors.my_color4}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 5 
-module-margin-right = 5 
-
-font-0 = System San Francisco Display:size=10:weight=Regular;1
-font-1 = System San Francisco Display:size=10:weight=Regular;1
-font-2 = FontAwesome:size=16;3
-
-modules-left   = i3 date
-modules-center = xwindow
-modules-right  = 
-
-; override-redirect = true
-wm-restack = i3
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 [module/i3]
 type = internal/i3
-pin-workspaces = yes
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
 
-label-unfocused-background = ${colors.my_background}
-label-unfocused-foreground = ${colors.my_foreground}
-label-unfocused-underline  = ${colors.my_color4}
-
-label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = ${colors.my_color4}
+label-mode-foreground = #1d1e26
+label-mode-background = #1d1e26
 
 label-focused = %index%
-label-focused-foreground = ${colors.my_foreground}
-label-focused-background = ${colors.my_color2}
-label-focused-underline = ${colors.my_color2}
+label-focused-background = #789073
+label-focused-foreground = #ffffff
 label-focused-padding = 2
 
 label-unfocused = %index%
+label-unfocused-background = #789073
+label-unfocused-foreground = #1d1e26
 label-unfocused-padding = 2
 
 label-visible = %index%
-label-visible-underline = ${colors.my_color2}
+label-visible-background = #789073
+label-visible-foreground = #1d1e26
 label-visible-padding = 2
 
 label-urgent = %index%
-label-urgent-foreground = ${colors.my_foreground}
-label-urgent-background = ${colors.my_background}
-label-urgent-underline = ${colors.my_color8}
+label-urgent-background = #BA2922
 label-urgent-padding = 2
-
-[module/musicinfo]
-type = custom/script
-
-exec = ~/.config/polybar/music.sh
-interval = 5
-format = <label>
-label = %output:0:120:...%
-format-padding = 10
-format-foreground = ${colors.my_foreground}
 
 [module/date]
 type = internal/date
 interval = 5
 
 date =
-date-alt = "%d/%m/%Y"
+date-alt = " %Y-%m-%d"
 
-time = "%a %b %d, %I:%M %p "
+time = %H:%M
+time-alt = %H:%M:%S
 
-time-alt = %H:%M
-
-format-prefix-foreground = ${colors.my_foreground}
-format-underline = ${colors.my_color5}
+format-prefix = 
+format-foreground = #1d1e26
+format-background = #789073
+format-padding = 2
 
 label = %date% %time%
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:120:...%
-label-padding = 10
-label-foreground = ${colors.my_foreground}
+[module/powermenu]
+type = custom/menu
 
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = #789073
+label-close =  cancel
+label-close-foreground = #789073
+label-separator = |
+label-separator-foreground = #789073
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log off
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log off
+menu-3-0-exec = pkill -KILL -u $USER
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
-throttle-output = 10
-throttle-output-for = 10
-throttle-input-for = 30
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
-
+margin-top = 0
+margin-bottom = 0
