@@ -112,7 +112,7 @@ tl () {
 }
 
 function peta() {
-    X=2017.1
+    X=2018.2
     OK=0
     if [[ $# -gt 0 ]]; then
         X=$1

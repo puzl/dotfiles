@@ -8,3 +8,4 @@ emacs/semanticdb/
 projectile.cache
 .netrwhist
 *.swp
+.spacemacs.env
