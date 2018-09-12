@@ -24,6 +24,9 @@
     ~/.fonts: fonts
     ~/.Xresources: Xresources
     ~/.gitconfig: gitconfig
+    ~/.colors: colors
+    ~/.xinitrc: xinitrc
+    ~/.xsession: xinitrc
 
 - shell:
   - if [[ ! -d ~/.config ]]; then mkdir ~/.config; fi
