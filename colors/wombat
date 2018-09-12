@@ -1,0 +1,51 @@
+#define wb_bg           #1c1c1c
+#define wb_fg           #f6f3e8
+#define wb_cur          #656565
+#define wb_sel          #444444
+#define wb_grey         #99968b
+#define wb_blue         #8ac6f2
+#define wb_red          #e5786d
+#define wb_yellow       #cae682
+#define wb_ltgreen      #e7f6da
+#define wb_green        #95e454
+#define wb_dkgrey       #8f8f8f
+
+URxvt*background:         wb_bg
+URxvt*foreground:         wb_fg
+URxvt*cursorColor:        wb_cur
+
+*.background:         wb_bg
+*.foreground:         wb_fg
+*.cursorColor:        wb_cur
+*.cursorUL:           wb_sel
+
+! black
+*color0:  black
+*color8:  wb_red
+! red
+*color1:  wb_red
+*color9:  wb_dkgrey
+! green
+*color2:  wb_green
+*color10: wb_green
+! yellow
+*color3:  wb_yellow
+*color11: wb_yellow
+! blue
+*color4:  wb_blue
+*color12: wb_blue
+! purple
+*color5:  wb_blue
+*color13: wb_blue
+! orange (replaces cyan)
+*color6:  wb_blue
+*color14: wb_blue
+! white
+*color7:  wb_grey
+*color15: white
+
+! Rofi colors.
+rofi.color-window: black, black, wb_green
+rofi.color-normal: black, wb_green, black, wb_green, black
+rofi.color-active: black, wb_green, black, wb_green, black
+rofi.color-urgent: black, wb_dkgrey, black, wb_dkgrey, wb_green

@@ -26,14 +26,14 @@ height = 27
 radius = 0
 fixed-center = false
 
-background = #1f1f1f
-foreground = #c6c6c6
+background = ${colors.my_background}
+foreground = ${colors.my_foreground}
 
 line-size = 3
 line-color =
 
 border-size = 0
-border-color =
+border-color = ${colors.my_color1}
 
 padding-left = 0
 padding-right = 2
@@ -63,22 +63,22 @@ index-sort = false
 wrapping-scroll = false
 
 label-mode-padding = 2
-label-mode-foreground = #828282
-label-mode-background = #1f1f1f
+label-mode-foreground = ${colors.my_color13}
+label-mode-background = ${colors.my_color14}
 
 label-focused = %index%
-label-focused-background = #8abeb7
-label-focused-foreground = #ffffff
+label-focused-background = ${colors.my_color5}
+label-focused-foreground = ${colors.my_foreground}
 label-focused-padding = 2
 
 label-unfocused = %index%
-label-unfocused-background = #8abeb7
-label-unfocused-foreground = #1f1f1f
+label-unfocused-background = ${colors.my_color9}
+label-unfocused-foreground = ${colors.my_foreground}
 label-unfocused-padding = 2
 
 label-visible = %index%
-label-visible-background = #8abeb7
-label-visible-foreground = #aaffaa
+label-visible-background = ${colors.my_color7}
+label-visible-foreground = ${colors.my_color5}
 label-visible-padding = 2
 
 label-urgent = %index%
@@ -96,8 +96,8 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-foreground = #1f1f1f
-format-background = #8abeb7
+format-foreground = ${colors.my_foreground}
+format-background = ${colors.my_color5}
 format-padding = 2
 
 label = %date% %time%

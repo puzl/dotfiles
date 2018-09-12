@@ -1,0 +1,39 @@
+URxvt*background:         #2e3436
+URxvt*foreground:         #eeeeec
+URxvt*cursorColor:        #8ae234
+
+*.background:         #2e3436
+*.foreground:         #eeeeec
+*.cursorColor:        #8ae234
+*.cursorUL:           #75507B
+
+! black
+*color0:  #2E3436
+*color8:  #555753
+! red
+*color1:  #a40000
+*color9:  #EF2929
+! green
+*color2:  #4E9A06
+*color10: #8AE234
+! yellow
+*color3:  #C4A000
+*color11: #FCE94F
+! blue
+*color4:  #3465A4
+*color12: #729FCF
+! purple
+*color5:  #75507B
+*color13: #AD7FA8
+! orange (replaces cyan)
+*color6:  #ce5c00
+*color14: #fcaf3e
+! white
+*color7:  #babdb9
+*color15: #EEEEEC
+
+! Rofi colors.
+rofi.color-window: #2E3436, #2E3436, #4E9A06
+rofi.color-normal: #2E3436, #8AE234, #2E3436, #4E9A06, #2E3436
+rofi.color-active: #2E3436, #8AE234, #2E3436, #4E9A06, #2E3436
+rofi.color-urgent: #2E3436, #EF2929, #2E3436, #EF2929, #8AE234

@@ -37,15 +37,15 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
             fi
         }
 
-        PS1="\[\e[41m\] \u@\h \[\e[m\]\[\e[45m\] \W \[\e[m\] "
+        PS1="\[\e[31m\] \u@\h \[\e[m\]\[\e[35m\] \W \[\e[m\]"
 
         BRANCH=$( git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
         if [[ "X$VIEW" != "X" ]]; then
-            PS1="\[\e[46m\] $VIEW \[\e[m\]$PS1"
+            PS1="\[\e[32m\] $VIEW \[\e[m\]$PS1"
         fi
-        PS1="\[\e[42m\]\$(git_branch_prompt)\[\e[m\]$PS1 "
-        PS1="\[\e[45m\] \D{%T} \[\e[m\]$PS1 "
-        PS1="$PS1 \n$ "
+        PS1="\[\e[33m\]\$(git_branch_prompt)\[\e[m\]$PS1"
+        PS1="\[\e[39m\] \D{%T} \[\e[m\]$PS1"
+        PS1="\[\e[0;31m\]┌─\e[0m\e[34m{\[\e[0m\e[0;32m\]$PS1\e[34m}\e[0m\n└─>\[\e[0m\] "
 
 		export CCASE_BLD_UMASK=002
 		export CCASE_MAKE_COMPAT=gnu
@@ -98,4 +98,3 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
 fi
 export GOPATH=$HOME/.go
 hostify bash_profile
-

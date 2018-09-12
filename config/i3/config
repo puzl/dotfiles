@@ -1,7 +1,7 @@
 set $mod Mod4
 force_xinerama no
 
-new_window pixel 1
+new_window pixel 2
 new_float pixel 4
 
 hide_edge_borders none
@@ -184,14 +184,33 @@ mode "resize" {
 # Autostart applications
 exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
-# Theme colors
-client.focused #c6c6c6 #1f1f1f #c6f6c6 #8abeb7 #8abeb7
-client.focused_inactive #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.unfocused #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.urgent #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
-client.placeholder #c6c6c6 #1f1f1f #c6c6c6 #8abeb7 #8abeb7
+# Custom colors
+set_from_resource $black       color8  #000000
+set_from_resource $darkblack   color0  #000000
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $white       color7  #000000
+set_from_resource $darkwhite   color15 #000000
 
-client.background #1f1f1f
+set_from_resource $background  color8 #000000
+
+# Theme colors
+# Window colors           border       background   text           indicator   child_border
+client.focused            $blue        $blue        $darkblack     $darkblack  $darkblack
+client.focused_inactive   $darkblack   $darkblack   $blue          $darkblack  $darkblack
+client.unfocused          $darkblack   $darkblack   $blue          $darkblack  $darkblack
+client.urgent             $darkblue    $darkblue    $blue          $darkblack  $darkblack
+client.background         $background
 
 # Gaps
 gaps inner 10
