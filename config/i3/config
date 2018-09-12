@@ -2,11 +2,11 @@ set $mod Mod4
 force_xinerama no
 
 new_window pixel 2
-new_float pixel 4
+new_float pixel 2
 
 hide_edge_borders none
 
-font pango:System San Francisco Display 10
+font pango:System San Francisco Display 14
 
 floating_modifier $mod
 
@@ -76,9 +76,9 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-workspace 1 output VGA1
-workspace 5 output DP2
-workspace 0 output DP1
+workspace 1 output DP2
+workspace 5 output DP1
+workspace 0 output VGA1
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -117,33 +117,33 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 0
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Thus"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
+#for_window [title="alsamixer"] floating enable border pixel 1
+#for_window [class="Calamares"] floating enable border normal
+#for_window [class="Clipgrab"] floating enable
+#for_window [title="File Transfer*"] floating enable
+#for_window [class="Galculator"] floating enable border pixel 1
+#for_window [class="GParted"] floating enable border normal
+#for_window [title="i3_help"] floating enable sticky enable border normal
+#for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+#for_window [class="Lxappearance"] floating enable sticky enable border normal
+#for_window [class="Manjaro-hello"] floating enable
+#for_window [class="Manjaro Settings Manager"] floating enable border normal
+#for_window [title="MuseScore: Play Panel"] floating enable
+#for_window [class="Nitrogen"] floating enable sticky enable border normal
+#for_window [class="Oblogout"] fullscreen enable
+#for_window [class="octopi"] floating enable
+#for_window [title="About Pale Moon"] floating enable
+#for_window [class="Pamac-manager"] floating enable
+#for_window [class="Pavucontrol"] floating enable
+#for_window [class="qt5ct"] floating enable sticky enable border normal
+#for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+#for_window [class="Simple-scan"] floating enable border normal
+#for_window [class="(?i)System-config-printer.py"] floating enable border normal
+#for_window [class="Skype"] floating enable border normal
+#for_window [class="Thus"] floating enable border normal
+#for_window [class="Timeset-gui"] floating enable border normal
+#for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -185,36 +185,39 @@ mode "resize" {
 exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
 # Custom colors
-set_from_resource $black       color8  #000000
-set_from_resource $darkblack   color0  #000000
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $white       color7  #000000
-set_from_resource $darkwhite   color15 #000000
+set_from_resource  $color0   background  #ff0000
+set_from_resource  $color1   color1      #ff0000
+set_from_resource  $color2   color2      #ff0000
+set_from_resource  $color3   color3      #ff0000
+set_from_resource  $color4   color4      #ff0000
+set_from_resource  $color5   color5      #ff0000
+set_from_resource  $color6   color6      #ff0000
+set_from_resource  $color7   color7      #ff0000
+set_from_resource  $color8   color8      #ff0000
+set_from_resource  $color9   color9      #ff0000
+set_from_resource  $color10  color10     #ff0000
+set_from_resource  $color11  color11     #ff0000
+set_from_resource  $color12  color12     #ff0000
+set_from_resource  $color13  color13     #ff0000
+set_from_resource  $color14  color14     #ff0000
+set_from_resource  $color15  color15     #ff0000
 
 set_from_resource $background  color8 #000000
 
 # Theme colors
-# Window colors           border       background   text           indicator   child_border
-client.focused            $blue        $blue        $darkblack     $darkblack  $darkblack
-client.focused_inactive   $darkblack   $darkblack   $blue          $darkblack  $darkblack
-client.unfocused          $darkblack   $darkblack   $blue          $darkblack  $darkblack
-client.urgent             $darkblue    $darkblue    $blue          $darkblack  $darkblack
-client.background         $background
+#Window_colors           border   background  text     indicator  child_border
+client.focused           $color5  $color5     $color0  $color0    $color5
+client.focused_inactive  $color5  $color0     $color5  $color0    $color0
+client.unfocused         $color0  $color0     $color5  $color0    $color0
+client.urgent            $color0  $color15    $color5  $color0    $color0
+client.background        $background
+
+
+client.background       #ffffff
 
 # Gaps
-gaps inner 10
-gaps outer -4
+gaps inner 4
+gaps outer 0
 
 smart_gaps on
 

@@ -185,8 +185,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(
-                         wombat
+   dotspacemacs-themes '(wombat
                          tangotango
                          doom-one
                          spacemacs-dark
@@ -213,7 +212,7 @@ It should only modify the values of Spacemacs settings."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                :size 14
-                               :weight semi-bold
+                               :weight Semi-Bold
                                :width condensed
                                :powerline-scale 1.1)
 

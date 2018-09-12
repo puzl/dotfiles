@@ -9,6 +9,7 @@
 #define wb_ltgreen      #e7f6da
 #define wb_green        #95e454
 #define wb_dkgrey       #8f8f8f
+#define wb_black        #000000
 
 URxvt*background:         wb_bg
 URxvt*foreground:         wb_fg
@@ -19,8 +20,8 @@ URxvt*cursorColor:        wb_cur
 *.cursorColor:        wb_cur
 *.cursorUL:           wb_sel
 
-! black
-*color0:  black
+! wb_black
+*color0:  wb_black
 *color8:  wb_red
 ! red
 *color1:  wb_red
@@ -45,7 +46,7 @@ URxvt*cursorColor:        wb_cur
 *color15: white
 
 ! Rofi colors.
-rofi.color-window: black, black, wb_green
-rofi.color-normal: black, wb_green, black, wb_green, black
-rofi.color-active: black, wb_green, black, wb_green, black
-rofi.color-urgent: black, wb_dkgrey, black, wb_dkgrey, wb_green
+rofi.color-window: wb_black, wb_black, wb_blue
+rofi.color-normal: wb_black, wb_blue, wb_black, wb_blue, wb_black
+rofi.color-active: wb_black, wb_blue, wb_black, wb_blue, wb_black
+rofi.color-urgent: wb_black, wb_dkgrey, wb_black, wb_dkgrey, wb_blue

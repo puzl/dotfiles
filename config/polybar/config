@@ -19,7 +19,7 @@ my_color13	= ${xrdb:color13}
 my_color14	= ${xrdb:color14}
 my_color15	= ${xrdb:color15}
 
-[bar/i3wmthemer_bar]
+[bar/main]
 monitor = ${env:MONITOR:fallback-value}
 width = 100%
 height = 27
@@ -29,28 +29,64 @@ fixed-center = false
 background = ${colors.my_background}
 foreground = ${colors.my_foreground}
 
-line-size = 3
-line-color =
+line-size = 0
+line-color =${colors.my_color5}
 
 border-size = 0
-border-color = ${colors.my_color1}
+border-color = ${colors.my_color5}
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Source Code Pro Semibold:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
-font-2 = "Font Awesome 5 Brands:size=10;1"
+font-0 = "Source Code Pro Semibold:size=14;1"
+font-1 = "Font Awesome 5 Free:style=Solid:size=14;1"
+font-2 = "Font Awesome 5 Brands:size=14;1"
 
-modules-left = i3 musicinfo
-modules-center = title
-modules-right = date
+modules-left = i3 title
+modules-center = 
+modules-right = musicinfo date
 
 tray-position = right
-;tray-padding =
+tray-padding =
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/side]
+monitor = ${env:MONITOR:fallback-value}
+width = 100%
+height = 27
+radius = 0
+fixed-center = false
+
+background = ${colors.my_background}
+foreground = ${colors.my_foreground}
+
+line-size = 0
+line-color =${colors.my_color5}
+
+border-size = 0
+border-color = ${colors.my_color5}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Source Code Pro Semibold:size=14;1"
+font-1 = "Font Awesome 5 Free:style=Solid:size=14;1"
+font-2 = "Font Awesome 5 Brands:size=14;1"
+
+modules-left = i3 title
+modules-center = 
+modules-right = 
+
+tray-position = right
+tray-padding =
 
 cursor-click = pointer
 cursor-scroll = ns-resize
