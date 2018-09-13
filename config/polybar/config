@@ -150,7 +150,6 @@ type = internal/xwindow
 
 [module/musicinfo]
 type = custom/script
-
 exec = ~/.config/polybar/music.sh
 interval = 5
 format = <label>

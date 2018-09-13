@@ -7,7 +7,9 @@ xset dpms 600&
 xautolock -time 10 -locker i3lock&
 gnome-settings-daemon&
 nitrogen --restore &
-parcellite&
+#parcellite&
+clipit&
 compton&
+pasystray&
  
 exec /usr/local/bin/i3

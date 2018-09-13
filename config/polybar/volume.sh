@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# NOTE: You need the "playerctl" pachage in order for this to work!!!
 sink=0
 vol=0
 muted=0
@@ -23,15 +25,15 @@ done <<< "$(pacmd list-sinks | grep -e 'index:' -e 'state:' -e 'volume:' -e 'mut
 
 exec 2>/dev/null
 
-if [[ $muted -eq 1 ]]; then
-    VOLUME="$ICON_MUTED Muted"
-else
-    VOLUME=$vol
-fi
-if [ "$(playerctl status)" = "Playing" ]; then
-  title=`exec playerctl metadata xesam:title`
-  artist=`exec playerctl metadata xesam:artist`
-  echo "$VOLUME [$artist] $title"
-else
-  echo "$VOLUME :: No song currently playing"
-fi
+case $1 in
+    up)
+        pactl set-sink-volume $sink +5%
+        ;;
+    down)
+        pactl set-sink-volume $sink -5%
+        ;;
+    toggle)
+        exec pactl set-sink-mute $sink toggle
+        ;;
+esac
+

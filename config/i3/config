@@ -1,9 +1,11 @@
 set $mod Mod4
 force_xinerama no
 
-new_window pixel 2
-new_float pixel 2
-
+gaps inner 6
+gaps outer 0
+smart_gaps on
+new_window pixel 6
+new_float pixel 6
 hide_edge_borders none
 
 font pango:System San Francisco Display 14
@@ -182,7 +184,7 @@ mode "resize" {
 }
 
 # Autostart applications
-exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
+exec_always --no-startup-id /$HOME/.config/polybar/bar.sh
 
 # Custom colors
 set_from_resource  $color0   background  #ff0000
@@ -215,11 +217,6 @@ client.background        $background
 
 client.background       #ffffff
 
-# Gaps
-gaps inner 4
-gaps outer 0
-
-smart_gaps on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -258,9 +255,9 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec ~/.config/polybar/volume.sh up
+bindsym XF86AudioLowerVolume exec ~/.config/polybar/volume.sh down
+bindsym XF86AudioMute exec ~/.config/polybar/volume.sh toggle
 
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioPlay exec playerctl play-pause
