@@ -2,8 +2,8 @@ set $mod Mod4
 force_xinerama no
 
 gaps inner 6
-gaps outer 0
-smart_gaps on
+gaps outer 6
+
 new_window pixel 6
 new_float pixel 6
 hide_edge_borders none
@@ -119,33 +119,34 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 0
 
 # Open specific applications in floating mode
-#for_window [title="alsamixer"] floating enable border pixel 1
-#for_window [class="Calamares"] floating enable border normal
-#for_window [class="Clipgrab"] floating enable
-#for_window [title="File Transfer*"] floating enable
-#for_window [class="Galculator"] floating enable border pixel 1
-#for_window [class="GParted"] floating enable border normal
-#for_window [title="i3_help"] floating enable sticky enable border normal
-#for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-#for_window [class="Lxappearance"] floating enable sticky enable border normal
-#for_window [class="Manjaro-hello"] floating enable
-#for_window [class="Manjaro Settings Manager"] floating enable border normal
-#for_window [title="MuseScore: Play Panel"] floating enable
-#for_window [class="Nitrogen"] floating enable sticky enable border normal
-#for_window [class="Oblogout"] fullscreen enable
-#for_window [class="octopi"] floating enable
-#for_window [title="About Pale Moon"] floating enable
-#for_window [class="Pamac-manager"] floating enable
-#for_window [class="Pavucontrol"] floating enable
-#for_window [class="qt5ct"] floating enable sticky enable border normal
-#for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-#for_window [class="Simple-scan"] floating enable border normal
-#for_window [class="(?i)System-config-printer.py"] floating enable border normal
-#for_window [class="Skype"] floating enable border normal
-#for_window [class="Thus"] floating enable border normal
-#for_window [class="Timeset-gui"] floating enable border normal
-#for_window [class="(?i)virtualbox"] floating enable border normal
-#for_window [class="Xfburn"] floating enable
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="Qalculate"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [title="About Pale Moon"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Thus"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -187,7 +188,11 @@ mode "resize" {
 exec_always --no-startup-id /$HOME/.config/polybar/bar.sh
 
 # Custom colors
-set_from_resource  $color0   background  #ff0000
+set_from_resource  $background background  #ff0000
+set_from_resource  $foreground foreground  #ff0000
+set_from_resource  $cursor     cursorColor #ff0000
+
+set_from_resource  $color0   color0      #ff0000
 set_from_resource  $color1   color1      #ff0000
 set_from_resource  $color2   color2      #ff0000
 set_from_resource  $color3   color3      #ff0000
@@ -204,18 +209,18 @@ set_from_resource  $color13  color13     #ff0000
 set_from_resource  $color14  color14     #ff0000
 set_from_resource  $color15  color15     #ff0000
 
-set_from_resource $background  color8 #000000
+
 
 # Theme colors
-#Window_colors           border   background  text     indicator  child_border
-client.focused           $color5  $color5     $color0  $color0    $color5
-client.focused_inactive  $color5  $color0     $color5  $color0    $color0
-client.unfocused         $color0  $color0     $color5  $color0    $color0
-client.urgent            $color0  $color15    $color5  $color0    $color0
+#Window_colors           border       background   text         indicator  child_border
+client.focused           $cursor      $cursor      $background  $color7    $color5
+client.focused_inactive  $cursor      $background  $foreground  $color7    $color0
+client.unfocused         $background  $background  $foreground  $color7    $color0
+client.urgent            $background  $background  $foreground  $color7    $color0
 client.background        $background
 
 
-client.background       #ffffff
+client.background        $background
 
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
@@ -263,4 +268,6 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Tools exec spotify
+bindsym XF86Tools scratchpad show
+bindsym XF86Calculator exec qalculate
+

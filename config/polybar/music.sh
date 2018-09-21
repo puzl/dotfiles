@@ -31,7 +31,9 @@ fi
 if [ "$(playerctl status)" = "Playing" ]; then
   title=`exec playerctl metadata xesam:title`
   artist=`exec playerctl metadata xesam:artist`
-  echo "$VOLUME [$artist] $title"
+  PLAYING="[$artist] $title"
 else
-  echo "$VOLUME :: No song currently playing"
+  PLAYING="Nothing"
 fi
+
+echo "$VOLUME $PLAYING"

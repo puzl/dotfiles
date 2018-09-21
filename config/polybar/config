@@ -19,10 +19,10 @@ my_color13	= ${xrdb:color13}
 my_color14	= ${xrdb:color14}
 my_color15	= ${xrdb:color15}
 
-[bar/main]
+[bar/globals]
 monitor = ${env:MONITOR:fallback-value}
 width = 100%
-height = 27
+height = 30
 radius = 0
 fixed-center = false
 
@@ -45,51 +45,23 @@ font-0 = "Source Code Pro Semibold:size=14;1"
 font-1 = "Font Awesome 5 Free:style=Solid:size=14;1"
 font-2 = "Font Awesome 5 Brands:size=14;1"
 
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/main]
+inherit = bar/globals
 modules-left = i3 title
 modules-center = 
 modules-right = musicinfo date
-
 tray-position = right
 tray-padding =
 
-cursor-click = pointer
-cursor-scroll = ns-resize
-
 [bar/side]
-monitor = ${env:MONITOR:fallback-value}
-width = 100%
-height = 27
-radius = 0
-fixed-center = false
-
-background = ${colors.my_background}
-foreground = ${colors.my_foreground}
-
-line-size = 0
-line-color =${colors.my_color5}
-
-border-size = 0
-border-color = ${colors.my_color5}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = "Source Code Pro Semibold:size=14;1"
-font-1 = "Font Awesome 5 Free:style=Solid:size=14;1"
-font-2 = "Font Awesome 5 Brands:size=14;1"
-
+height = 26
+inherit = bar/globals
 modules-left = i3 title
 modules-center = 
 modules-right = 
-
-tray-position = right
-tray-padding =
-
-cursor-click = pointer
-cursor-scroll = ns-resize
 
 [module/i3]
 pin-workspaces = true
@@ -99,41 +71,32 @@ index-sort = false
 wrapping-scroll = false
 
 label-mode-padding = 2
-label-mode-foreground = ${colors.my_color13}
-label-mode-background = ${colors.my_color14}
 
 label-focused = %index%
-label-focused-background = ${colors.my_color5}
-label-focused-foreground = ${colors.my_foreground}
+label-focused-background = ${colors.my_color2}
 label-focused-padding = 2
 
 label-unfocused = %index%
-label-unfocused-background = ${colors.my_color9}
-label-unfocused-foreground = ${colors.my_foreground}
+label-unfocused-background = ${colors.my_color0}
 label-unfocused-padding = 2
 
 label-visible = %index%
-label-visible-background = ${colors.my_color7}
-label-visible-foreground = ${colors.my_color5}
+label-visible-background = ${colors.my_color1}
 label-visible-padding = 2
 
 label-urgent = %index%
-label-urgent-background = #BA2922
+label-urgent-background = #FF0000
 label-urgent-padding = 2
 
 [module/date]
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = " %Y-%m-%d"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = "%H:%M"
 
 format-prefix = 
-format-foreground = ${colors.my_foreground}
-format-background = ${colors.my_color5}
 format-padding = 2
 
 label = %date% %time%
@@ -151,9 +114,8 @@ type = internal/xwindow
 [module/musicinfo]
 type = custom/script
 exec = ~/.config/polybar/music.sh
-interval = 5
+interval = 1
 format = <label>
 label = %output:0:120:...%
 format-padding = 10
-format-foreground = ${colors.my_foreground}
 

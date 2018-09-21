@@ -17,7 +17,6 @@ endif
 " => lightline {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
@@ -64,7 +63,7 @@ map <D-A-UP> <C-w>W
 """"""""""""""""""""""""""""""
 syntax enable " Syntax highlight and colour scheme
 
-colorscheme wombat
+"colorscheme wombat
 "}}}
 
 " => UI {{{

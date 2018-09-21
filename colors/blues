@@ -1,0 +1,23 @@
+#define  col_bg         #00001a
+#define  col_fg         #F0F0F0
+#define  col_cur        #6699CC
+#define  col_bold       #4a59bf
+#define  col_italic     #ff0000
+#define  col_ul         #0000ff
+#define  col_black0     #333366
+#define  col_black8     #4d4d9b
+#define  col_red1       #274da5
+#define  col_red9       #1e4491
+#define  col_green2     #0099CC
+#define  col_green10    #00CCFF
+#define  col_yellow3    #3366CC
+#define  col_yellow11   #6699FF
+#define  col_blue4      #006699
+#define  col_blue12     #0099cc
+#define  col_purple5    #0066FF
+#define  col_purple13   #0099FF
+#define  col_cyan6      #669999
+#define  col_cyan14     #66CCCC
+#define  col_white7     #99CCCC
+#define  col_white15    #62dae0
+#include "/home/hjw/.colors/Xresources"

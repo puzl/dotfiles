@@ -11,5 +11,6 @@ nitrogen --restore &
 clipit&
 compton&
 pasystray&
+mopidy&
  
 exec /usr/local/bin/i3

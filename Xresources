@@ -1,28 +1,10 @@
-*background:                      #272827
-*foreground:                      #657b83
-*cursorColor:                     #16A085
-
-*color0:                          #232423
-*color8:                          #282928
-*color1:                          #BA2922
-*color9:                          #CC372C
-*color2:                          #7E807E
-*color10:                         #8D8F8D
-*color3:                          #4C4F4D
-*color11:                         #4E524F
-*color4:                          #16A085
-*color12:                         #13BF9D
-*color5:                          #43746A
-*color13:                         #487D72
-*color6:                          #00CCCC
-*color14:                         #00D1D1
-*color7:                          #E0E0E0
-*color15:                         #E8E8E8
+#include "/home/hjw/.colors/active"
 
 URxvt.termName: rxvt-unicode
-URxvt.font: xft:Source Code Pro:size=10.5
-URxvt.boldFont: xft:Source Code Pro:pixelsize=13:weight=bold
+URxvt.font: xft:Source Code Pro:size=15.5
+URxvt.boldFont: xft:Source Code Pro:pixelsize=15.5:weight=bold
 URxvt.depth:                      32
+URxvt.background: rgba:0000/0000/0200/e800
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
@@ -30,22 +12,18 @@ URxvt*saveLines:                  10000
 URxvt*internalBorder: 5
 URxvt*geometry: 70x19
 URxvt.clipboard.autocopy: true
-URxvt.keysym.Shift-KP_Insert: eval:paste_clipboard
-URxvt.keysym.Control-KP_Insert: X
-URxvt.perl-ext-common: default,clipboard,selection-to-clipboard
-
-rofi.color-enabled: true
-rofi.color-window: #272827, #13bf9d, #13bf9d
-rofi.color-normal: #272827, #657b83, #272827, #272827, #13bf9d
-rofi.color-active: #272827, #657b83, #272827, #272827, #13bf9d
-rofi.color-urgent: #272827, #657b83, #272827, #272827, #13bf9d
+!
+URxvt.perl-ext-common:        default,xkr-clipboard
+URxvt.iso14755:               false
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Control-Insert:  perl:clipboard:copy
 
 rofi.separator-style: solid
 rofi.sidebar-mode: false
 rofi.lines: 5
-rofi.font: Source Code Pro Semibold 10.5
+rofi.font: Source Code Pro Semibold 26
 rofi.bw: 1
-rofi.columns: 2
+rofi.columns: 1
 rofi.padding: 5
 rofi.fixed-num-lines: true
 rofi.hide-scrollbar: true

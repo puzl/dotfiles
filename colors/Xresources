@@ -1,0 +1,49 @@
+URxvt*background:   col_bg
+URxvt*foreground:   col_fg
+URxvt*cursorColor:  col_cur
+URxvt*colorBD:      col_bold
+URxvt*colorIT:      col_italic
+URxvt*colorUL:      col_ul
+
+*.background:       col_bg
+*.foreground:       col_fg
+*.cursorColor:      col_cur
+
+!black
+*color0:            col_black0
+*color8:            col_black8
+
+!red
+*color1:            col_red1
+*color9:            col_red9
+
+!green
+*color2:            col_green2
+*color10:           col_green10
+
+!yellow
+*color3:            col_yellow3
+*color11:           col_yellow11
+
+!blue
+*color4:            col_blue4
+*color12:           col_blue12
+
+!purple
+*color5:            col_purple5
+*color13:           col_purple13
+
+!cyan
+*color6:            col_cyan6
+*color14:           col_cyan14
+
+!white
+*color7:            col_white7
+*color15:           col_white15
+
+!Rofi colors.       background foreground  bgalt       hlbg     hlfg
+rofi.color-window:  col_bg,    col_fg,     col_bg,     col_fg,  col_bg
+rofi.color-normal:  col_bg,    col_fg,     col_bg,     col_fg,  col_bg
+rofi.color-active:  col_bg,    col_fg,     col_bg,     col_fg,  col_bg
+rofi.color-urgent:  col_bg,    col_fg,     col_bg,     col_fg,  col_bg
+

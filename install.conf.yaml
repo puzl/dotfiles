@@ -13,6 +13,7 @@
     ~/.globalrc: globalrc
     ~/.config/i3: config/i3
     ~/.config/polybar: config/polybar
+    ~/.config/mopidy: config/mopidy
     ~/.inputrc: inputrc
     ~/.minttyrc: minttyrc
     ~/.simrc: simrc
@@ -27,6 +28,8 @@
     ~/.colors: colors
     ~/.xinitrc: xinitrc
     ~/.xsession: xinitrc
+    ~/.ncmpcpp: ncmpcpp
+
 
 - shell:
   - if [[ ! -d ~/.config ]]; then mkdir ~/.config; fi
