@@ -34,8 +34,8 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(yaml
+     evil-commentary
      javascript
-     smex
      helm
      html
      version-control
@@ -82,6 +82,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '(
                                       (sunrise-commander :location (recipe :fetcher github :repo "escherdragon/sunrise-commander"))
                                       darkokai-theme
+                                      gruvbox-theme
                                       doom-themes
                                       gotham-theme
                                       xresources-theme)
@@ -216,11 +217,14 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   ;dotspacemacs-default-font '("Source Code Pro"
+                               ;:size 16
+                               ;:weight Semi-Bold
+                               ;:width condensed
+                               ;:powerline-scale 1.1)
+   dotspacemacs-default-font '("Overpass Mono"
                                :size 16
-                               :weight Semi-Bold
-                               :width condensed
-                               :powerline-scale 1.1)
+                               )
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -485,7 +489,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (spacemacs/toggle-transparency)
+  ;(spacemacs/toggle-transparency)
   ;  This is a workaround for bug on dev branch
 
   (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
@@ -645,35 +649,35 @@ before packages are loaded."
  '(helm-source-names-using-follow
    (quote
     (#("USING_DSQOS_P in /vobs/C4_hdwr/dprocs/" 0 13
-       (c-in-sws t face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face c-in-sws t))
      #("send_mmm_pkt_downstream_stripping_isl in /vobs/C4_hdwr/dprocs/" 0 37
-       (face font-lock-function-name-face fontified t))
-     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
-       (fontified t face font-lock-function-name-face)
-       17 27
        (fontified t face font-lock-function-name-face))
+     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
+       (face font-lock-function-name-face fontified t)
+       17 27
+       (face font-lock-function-name-face fontified t))
      #("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("freeSdvSession in x:/app/" 0 14
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      "Search at /hdwr/dprocs/"
      #("DHCPDISCOVER in /vobs/C4_app/" 0 12
        (fontified t))
      #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
        (fontified t))
      #("buildRpdDsChanConfig in /app/" 0 20
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
        (fontified t))
      "Find tag from here"
      #("sendControlPacket in /vobs/C4_kernel/" 0 17
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
-       (face font-lock-variable-name-face c-in-sws t fontified t))
+       (fontified t c-in-sws t face font-lock-variable-name-face))
      #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
-       (face font-lock-function-name-face fontified t)))))
+       (fontified t face font-lock-function-name-face)))))
  '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
  '(highlight-tail-colors
    (quote
@@ -691,7 +695,7 @@ before packages are loaded."
  '(neo-show-hidden-files nil t)
  '(package-selected-packages
    (quote
-    (doom-themes all-the-icons memoize org-mime ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (yaml-mode xresources-theme web-beautify sunrise-commander livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc gruvbox-theme autothemer gotham-theme treepy graphql evil-commentary company-tern doom-themes all-the-icons memoize org-mime ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#E6DB74")
  '(pos-tip-foreground-color "#242728")
  '(projectile-enable-caching t)
@@ -749,11 +753,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 0.25)
+ '(ahs-case-fold-search nil t)
+ '(ahs-default-range (quote ahs-range-whole-buffer) t)
+ '(ahs-idle-interval 0.25 t)
  '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil)
+ '(ahs-inhibit-face-list nil t)
  '(compilation-message-face (quote default))
  '(compile-command "e6make sim")
  '(evil-want-Y-yank-to-eol nil)
@@ -773,35 +777,35 @@ This function is called at the very end of Spacemacs initialization."
  '(helm-source-names-using-follow
    (quote
     (#("USING_DSQOS_P in /vobs/C4_hdwr/dprocs/" 0 13
-       (fontified t face font-lock-function-name-face c-in-sws t))
+       (c-in-sws t face font-lock-function-name-face fontified t))
      #("send_mmm_pkt_downstream_stripping_isl in /vobs/C4_hdwr/dprocs/" 0 37
-       (fontified t face font-lock-function-name-face))
-     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
-       (face font-lock-function-name-face fontified t)
-       17 27
        (face font-lock-function-name-face fontified t))
+     #("send_pkt_ds_with_docsis_hdr in /vobs/C4_hdwr/dprocs/" 0 17
+       (fontified t face font-lock-function-name-face)
+       17 27
+       (fontified t face font-lock-function-name-face))
      #("sendRawPacketBufferToPort in /hdwr/dprocs/" 0 25
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("freeSdvSession in x:/app/" 0 14
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      "Search at /hdwr/dprocs/"
      #("DHCPDISCOVER in /vobs/C4_app/" 0 12
        (fontified t))
      #("PHY_OP_SETMAX_SCDMA_MOD in /kernel/" 0 23
        (fontified t))
      #("buildRpdDsChanConfig in /app/" 0 20
-       (fontified t face font-lock-function-name-face))
+       (face font-lock-function-name-face fontified t))
      #("buildRpdOperationMsg in /vobs/C4_app/" 0 20
        (fontified t))
      "Find tag from here"
      #("sendControlPacket in /vobs/C4_kernel/" 0 17
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("BCM3160TOP_MSG_DATA in /vobs/C4_kernel/" 0 19
-       (fontified t c-in-sws t face font-lock-variable-name-face))
+       (face font-lock-variable-name-face c-in-sws t fontified t))
      #("usPhyDevInitTimeout in /vobs/C4_kernel/" 0 19
-       (face font-lock-function-name-face fontified t))
+       (fontified t face font-lock-function-name-face))
      #("_txDepiPsp in /vobs/C4_hdwr/dprocs/" 0 10
-       (fontified t face font-lock-function-name-face)))))
+       (face font-lock-function-name-face fontified t)))))
  '(highlight-changes-colors (quote ("#ff8eff" "#ab7eff")))
  '(highlight-tail-colors
    (quote
@@ -819,7 +823,7 @@ This function is called at the very end of Spacemacs initialization."
  '(neo-show-hidden-files nil t)
  '(package-selected-packages
    (quote
-    (sunrise-commander doom-themes all-the-icons memoize org-mime ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (magithub ghub+ evil-goggles doom-modeline eldoc-eval rtags yaml-mode xresources-theme web-beautify sunrise-commander livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc gruvbox-theme autothemer gotham-theme treepy graphql evil-commentary company-tern doom-themes all-the-icons memoize org-mime ghub let-alist tagedit scss-mode sass-mode less-css-mode helm-css-scss fuzzy emmet-mode company-web web-completion-data slim-mode pug-mode org-category-capture dash-functional darkokai-theme haml-mode winum web-mode yapfify py-isort org-projectile org live-py-mode hide-comnt github-search marshal ht flyspell-correct-helm evil-unimpaired goto-chg undo-tree dumb-jump diminish powerline smeargle pyvenv pytest pyenv-mode py-yapf pip-requirements spinner orgit alert log4e gntp markdown-mode magit-gitflow magit-gh-pulls linum-relative hy-mode parent-mode helm-pydoc projectile helm-gitignore helm-flyspell gitignore-mode github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh logito pcache pkg-info epl flx evil-magit magit magit-popup git-commit with-editor smartparens iedit anzu highlight diff-hl cython-mode pos-tip company-anaconda company bracketed-paste packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build bind-key bind-map evil helm helm-core hydra flycheck zenburn-theme xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tangotango-theme stickyfunc-enhance srefactor spacemacs-theme spaceline solarized-theme smooth-scrolling shell-pop restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree multi-term move-text monokai-theme mmm-mode markdown-toc macrostep lorem-ipsum link-hint leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-flx helm-descbinds helm-company helm-ag google-translate golden-ratio gnuplot gh-md ggtags flyspell-correct flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-quickhelp company-c-headers column-enforce-mode cmake-mode clean-aindent-mode clang-format buffer-move auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#E6DB74")
  '(pos-tip-foreground-color "#242728")
  '(projectile-enable-caching t)

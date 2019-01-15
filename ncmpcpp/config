@@ -439,7 +439,7 @@ ignore_leading_the = yes
 #
 #block_search_constraints_change_if_items_found = yes
 #
-#mouse_support = yes
+mouse_support = yes
 #
 #mouse_list_scroll_whole_page = yes
 #
@@ -451,7 +451,7 @@ ignore_leading_the = yes
 #
 #media_library_sort_by_mtime = no
 #
-#enable_window_title = yes
+enable_window_title = yes
 #
 ##
 ## Note: You can choose default search mode for search
@@ -467,11 +467,11 @@ ignore_leading_the = yes
 #
 #search_engine_default_search_mode = 1
 #
-#external_editor = nano
+external_editor = vim
 #
 ## Note: set to yes if external editor is a console application.
 ##
-#use_console_editor = yes
+use_console_editor = yes
 #
 ##### colors definitions #####
 ##

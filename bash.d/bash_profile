@@ -46,7 +46,7 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
         fi
         PS1="\[\e[33m\]\$(git_branch_prompt)\[\e[m\]$PS1"
         PS1="\[\e[39m\] \D{%T} \[\e[m\]$PS1"
-        PS1="\[\e[0;31m\]┌─\e[0m\e[34m{\[\e[0m\e[0;32m\]$PS1\e[34m}\e[0m\n\e[0;31m\]└─>\[\e[0m\] "
+        PS1="\[\e[0;31m\]┌─\e[0m\e[34m{\[\e[0m\e[0;32m\]$PS1\e[34m}\n\[\e[0;31m\]└─>\[\e[0m\] "
 
 		export CCASE_BLD_UMASK=002
 		export CCASE_MAKE_COMPAT=gnu
@@ -99,6 +99,7 @@ if [[ ! -z "$VIM_PATH" ]] ;  then
 fi
 
 shopt -s histappend
+shopt -u checkwinsize
 export GOPATH=$HOME/.go
 hostify bash_profile
 

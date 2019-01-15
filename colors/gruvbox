@@ -1,0 +1,28 @@
+! hard contrast: *background: #1d2021
+! soft contrast: *background: #32302f
+
+!#define  col_bg         #282828
+#define  col_bg         #1d2021
+#define  col_fg         #ebdbb2
+#define  col_cur        #ebdbb2
+#define  col_bold       #ebdbb2
+#define  col_italic     #ebdbb2
+#define  col_ul         #ebdbb2
+
+#define  col_black0     #282828
+#define  col_black8     #028374
+#define  col_red1       #cc241d
+#define  col_red9       #fb4934
+#define  col_green2     #98971a
+#define  col_green10    #b8bb26
+#define  col_yellow3    #d79921
+#define  col_yellow11   #fabd2f
+#define  col_blue4      #458588
+#define  col_blue12     #83a598
+#define  col_purple5    #b16286
+#define  col_purple13   #d3869b
+#define  col_cyan6      #689d6a
+#define  col_cyan14     #8ec07c
+#define  col_white7     #a89984
+#define  col_white15    #ebdbb2
+#include "/home/hjw/.colors/Xresources"

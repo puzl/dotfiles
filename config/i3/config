@@ -1,3 +1,5 @@
+exec --no-startup-id /home/hjw/bin/x-startup-apps
+
 set $mod Mod4
 force_xinerama no
 
@@ -8,11 +10,13 @@ new_window pixel 6
 new_float pixel 6
 hide_edge_borders none
 
-font pango:System San Francisco Display 14
+#font pango:System San Francisco Display 14
+font pango:Overpass SemiBold 14
 
 floating_modifier $mod
 
 bindsym $mod+Return exec rxvt-unicode
+bindsym $mod+Shift+Return exec rxvt-unicode -e ssh -X rpd-vm-cork-6
 bindsym $mod+Shift+f exec nautilus
 
 # Window kill command
@@ -78,9 +82,9 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-workspace 1 output DP2
-workspace 5 output DP1
-workspace 0 output VGA1
+workspace 1 output DP-2
+workspace 5 output DP-1
+workspace 0 output VGA-1
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -213,7 +217,7 @@ set_from_resource  $color15  color15     #ff0000
 
 # Theme colors
 #Window_colors           border       background   text         indicator  child_border
-client.focused           $cursor      $cursor      $background  $color7    $color5
+client.focused           $cursor      $cursor      $background  $color7    $color7
 client.focused_inactive  $cursor      $background  $foreground  $color7    $color0
 client.unfocused         $background  $background  $foreground  $color7    $color0
 client.urgent            $background  $background  $foreground  $color7    $color0
@@ -268,6 +272,10 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Tools scratchpad show
+bindsym XF86Tools exec ~/bin/ncmpcpp-start.sh
 bindsym XF86Calculator exec qalculate
 
+
+exec --no-startup-id i3-msg 'workspace 0; exec evolution'
+exec --no-startup-id i3-msg 'workspace 0; exec pidgin'
+for_window [instance="rxvt_scratch"] move scratchpad

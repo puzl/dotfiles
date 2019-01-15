@@ -1,7 +1,7 @@
-#!/bin/env sh
+#!/usr/bin/env bash
 
 pkill polybar
-MONITOR=DP1 polybar main &
+MONITOR=DP-1 polybar main &
 sleep 1
-MONITOR=DP2 polybar side &
-MONITOR=VGA1 polybar side &
+MONITOR=DP-2 polybar side &
+MONITOR=VGA-1 polybar side &

@@ -17,8 +17,13 @@ fi
 if [[ ! -x ./i3/i3 ]]; then
     echo i3
     cd i3
-    make && sudo make install
-    cd ..
+    autoreconf --force --install
+    rm -rf build
+    mkdir build
+    cd build
+    ../configure --prefix=/usr --sysconfdir=/etc
+    make &&  sudo make install
+    cd ../..
 fi
 
 # rofi
