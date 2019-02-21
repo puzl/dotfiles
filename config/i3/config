@@ -277,5 +277,5 @@ bindsym XF86Calculator exec qalculate
 
 
 exec --no-startup-id i3-msg 'workspace 0; exec evolution'
-exec --no-startup-id i3-msg 'workspace 0; exec pidgin'
+#exec --no-startup-id i3-msg 'workspace 0; exec pidgin'
 for_window [instance="rxvt_scratch"] move scratchpad

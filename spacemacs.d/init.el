@@ -491,7 +491,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   ;(spacemacs/toggle-transparency)
   ;  This is a workaround for bug on dev branch
-
+  (setq org-latex-toc-command "\\tableofcontents \\clearpage")
   (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
                                         ;(setq dotspacemacs-additional-packages '(org-plus-contrib))
   (define-key global-map "\C-cc" 'org-capture)
@@ -505,9 +505,9 @@ before packages are loaded."
   (setq org-log-done t)
 
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/org/todo.org" "Tasks")
+        '(("t" "Todo" entry (file+headline "~/Org/todo.org" "Tasks")
            "* TODO %?\n  %i\n  %a\n\n")
-          ("j" "Journal" entry (file+datetree "~/org/journal.org")
+          ("j" "Journal" entry (file+datetree "~/Org/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")))
 
   (setq org-agenda-files '("~/org"))
