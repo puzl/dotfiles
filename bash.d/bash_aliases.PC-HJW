@@ -1,0 +1,2 @@
+alias vi="/usr/local/vim/bin/vim -i ~/.viminfo"
+alias vim="/usr/local/vim/bin/vim -i ~/.viminfo"
