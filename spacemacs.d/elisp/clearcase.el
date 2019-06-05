@@ -2,6 +2,11 @@
 
 ;; Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2006, 2006, 2007 Kevin Esler
 
+;; Branch 'shr' created by Scott Roland <scott@hackonteur.com>
+;; GitHub home of 'shr' branch: https://github.com/hackonteur/clearcase-mode
+;; $KnownCompatibility: 23.1+, XEmacs21.4.15+ $
+
+;; Branch based on the original clearcase.el file:
 ;; Author: Kevin Esler <kaesler@us.ibm.com>
 ;; Maintainer: Kevin Esler <kaesler@us.ibm.com>
 ;; Keywords: clearcase tools
@@ -148,7 +153,7 @@
 
 ;;{{{ Version info
 
-(defconst clearcase-version-stamp "ClearCase-version: </main/laptop/166>")
+(defconst clearcase-version-stamp "ClearCase-version: </main/laptop/166-shr4>")
 (defconst clearcase-version (substring clearcase-version-stamp 19))
 
 (defun clearcase-maintainer-address ()
@@ -545,19 +550,14 @@ recommended to produce unified diffs, when your
 
 ;;{{{ Global variables
 
-;; Initialize clearcase-pname-sep-regexp according to
-;; directory-sep-char.
-(defvar clearcase-pname-sep-regexp "[\\/]")
-(defvar clearcase-non-pname-sep-regexp "[^\\/]")
-
 ;; Matches any viewtag (without the trailing "/").
 ;;
 (defvar clearcase-viewtag-regexp
   (concat "^"
           clearcase-viewroot
-          clearcase-pname-sep-regexp
+          "[//]"
           "\\("
-          clearcase-non-pname-sep-regexp "*"
+          "[^//]" "*"
           "\\)"
           "$"
           ))
@@ -567,9 +567,9 @@ recommended to produce unified diffs, when your
 (defvar clearcase-vrpath-regexp
   (concat "^"
           clearcase-viewroot
-          clearcase-pname-sep-regexp
+          "[//]"
           "\\("
-          clearcase-non-pname-sep-regexp "*"
+          "[^//]" "*"
           "\\)"
           ))
 
@@ -598,13 +598,16 @@ recommended to produce unified diffs, when your
 (define-key clearcase-mode-map "\C-xv" clearcase-prefix-map)
 (define-key clearcase-mode-map "\C-x\C-q" 'clearcase-toggle-read-only)
 
+(define-key clearcase-prefix-map "a" 'clearcase-mkelem-current-buffer)
 (define-key clearcase-prefix-map "b" 'clearcase-browse-vtree-current-buffer)
 (define-key clearcase-prefix-map "c" 'clearcase-uncheckout-current-buffer)
 (define-key clearcase-prefix-map "e" 'clearcase-edcs-edit)
 (define-key clearcase-prefix-map "g" 'clearcase-annotate-current-buffer)
-(define-key clearcase-prefix-map "i" 'clearcase-mkelem-current-buffer)
+(define-key clearcase-prefix-map "i" 'clearcase-checkin-current-buffer)
 (define-key clearcase-prefix-map "l" 'clearcase-list-history-current-buffer)
 (define-key clearcase-prefix-map "m" 'clearcase-mkbrtype)
+(define-key clearcase-prefix-map "o" 'clearcase-unreserved-checkout-current-buffer)
+(define-key clearcase-prefix-map "r" 'clearcase-checkout-current-buffer)
 (define-key clearcase-prefix-map "u" 'clearcase-uncheckout-current-buffer)
 (define-key clearcase-prefix-map "v" 'clearcase-next-action-current-buffer)
 (define-key clearcase-prefix-map "w" 'clearcase-what-rule-current-buffer)
@@ -616,13 +619,13 @@ recommended to produce unified diffs, when your
 ;; undefining its keybindings for which ClearCase Mode doesn't yet have an
 ;; analogue.
 ;;
-(define-key clearcase-prefix-map "a" 'undefined) ;; vc-update-change-log
-(define-key clearcase-prefix-map "d" 'undefined) ;; vc-directory
-(define-key clearcase-prefix-map "h" 'undefined) ;; vc-insert-headers
-(define-key clearcase-prefix-map "m" 'undefined) ;; vc-merge
-(define-key clearcase-prefix-map "r" 'undefined) ;; vc-retrieve-snapshot
-(define-key clearcase-prefix-map "s" 'undefined) ;; vc-create-snapshot
-(define-key clearcase-prefix-map "t" 'undefined) ;; vc-dired-toggle-terse-mode
+(define-key vc-prefix-map "a" 'undefined) ;; vc-update-change-log
+(define-key vc-prefix-map "d" 'undefined) ;; vc-directory
+(define-key vc-prefix-map "h" 'undefined) ;; vc-insert-headers
+(define-key vc-prefix-map "m" 'undefined) ;; vc-merge
+(define-key vc-prefix-map "r" 'undefined) ;; vc-retrieve-snapshot
+(define-key vc-prefix-map "s" 'undefined) ;; vc-create-snapshot
+(define-key vc-prefix-map "t" 'undefined) ;; vc-dired-toggle-terse-mode
 
 ;; Associate the map and the minor mode
 ;;
@@ -2170,6 +2173,11 @@ is specified, save it."
   (interactive)
   (clearcase-commented-checkout buffer-file-name))
 
+(defun clearcase-unreserved-checkout-current-buffer ()
+  "Checkout the file in the current buffer (unreserved)."
+  (interactive)
+  (clearcase-unreserved-commented-checkout buffer-file-name))
+
 (defun clearcase-checkout-dired-files ()
   "Checkout the selected files."
   (interactive)
@@ -3170,6 +3178,39 @@ a buffer is popped up to accept one."
     ;;
     (clearcase-sync-from-disk file t)))
 
+(defun clearcase-unreserved-commented-checkout (file &optional comment)
+  "Check-out FILE with COMMENT. If the comment is omitted,
+a buffer is popped up to accept one."
+
+  (clearcase-assert-file-ok-to-checkout file)
+
+  (if (and (null comment)
+           (not clearcase-suppress-checkout-comments))
+      ;; If no comment supplied, go and get one...
+      ;;
+      (clearcase-comment-start-entry (file-name-nondirectory file)
+                                     "Enter a checkout comment."
+                                     'clearcase-unreserved-commented-checkout
+                                     (list file)
+                                     (find-file-noselect file))
+
+    ;; ...otherwise perform the operation.
+    ;;
+    (message "Checking out %s..." file)
+    ;; Change buffers to get local value of clearcase-checkin-arguments.
+    ;;
+    (save-excursion
+      (set-buffer (or (find-buffer-visiting file)
+                      (current-buffer)))
+      (clearcase-ct-do-cleartool-command "co"
+                                         file
+                                         comment
+                                         (list "-unreserved" clearcase-checkout-arguments)))
+    (message "Checking out %s...done" file)
+
+    ;; Resync.
+    ;;
+    (clearcase-sync-from-disk file t)))
 
 (defun clearcase-commented-checkout-seq (files &optional comment)
   "Checkout a sequence of FILES. If COMMENT is supplied it will be
@@ -3309,7 +3350,6 @@ used, otherwise the user will be prompted to enter one."
                  (format "%s@%s" typename default-directory)))
 
        (clearcase-ct-cleartool-cmd "mkbrtype"
-                                   "-global"
                                    "-cfile"
                                    (clearcase-path-native comment-file)
                                    qualified-typename)))))
@@ -3565,7 +3605,7 @@ on the directory element itself is listed, not on its contents."
   ;;
   (setq filename (clearcase-path-canonicalise-slashes filename))
   (if (and clearcase-on-mswindows
-           (string-match (concat "^" "[A-Za-z]:" clearcase-pname-sep-regexp "$")
+           (string-match (concat "^" "[A-Za-z]:" "[//]" "$")
                          filename))
       filename
     (clearcase-utl-strip-trailing-slashes filename)))
@@ -4405,7 +4445,7 @@ It doesn't examine the file contents."
                                        ;;
                                        (concat "^"
                                                "[Mm]:"
-                                               clearcase-pname-sep-regexp)))
+                                               "[//]")))
 
 ;; This prevents the clearcase-file-vob-root function from pausing for long periods
 ;; stat-ing /net/host@@
@@ -4679,9 +4719,9 @@ If so, return the viewtag."
      ;;
      ((and clearcase-on-mswindows
            (string-match (concat clearcase-viewroot-drive
-                                 clearcase-pname-sep-regexp
+                                 "[//]"
                                  "\\("
-                                 clearcase-non-pname-sep-regexp "*"
+                                 "[^//]" "*"
                                  "\\)"
                                  )
                          truename))
@@ -5359,11 +5399,11 @@ Intended for use in snapshot views."
 (defvar clearcase-multiple-viewroot-regexp
   (concat "^"
           clearcase-viewroot
-          clearcase-pname-sep-regexp
-          clearcase-non-pname-sep-regexp "+"
+          "[//]"
+          "[^//]" "+"
           "\\("
           clearcase-viewroot
-          clearcase-pname-sep-regexp
+          "[//]"
           "\\)"
           ))
 
@@ -5415,9 +5455,11 @@ Intended for use in snapshot views."
       (subst-char-in-string ?\\ ?/ path))))
 
 (defun clearcase-path-native (path)
-    (replace-regexp-in-string "[\\]" "\\\\\\\\"
-     (substring (shell-command-to-string (concat "cygpath -w " path)) 0 -1))
-)
+  (if (not clearcase-on-mswindows)
+      path
+    (if clearcase-on-cygwin
+	(substring (shell-command-to-string (concat "cygpath -w " path)) 0 -1)
+      (subst-char-in-string ?/ ?\\ path))))
 
 (defun clearcase-path-file-really-exists-p (filename)
   "Test if a file really exists, when all file-name handlers are disabled."
@@ -6190,7 +6232,11 @@ that mapped to non-nil."
          :keys nil
          :visible (clearcase-file-ok-to-checkin buffer-file-name)]
 
-        ["Checkout" clearcase-checkout-current-buffer
+        ["Checkout Reserved" clearcase-checkout-current-buffer
+         :keys nil
+         :visible (clearcase-file-ok-to-checkout buffer-file-name)]
+
+        ["Checkout Unreserved" clearcase-unreserved-checkout-current-buffer
          :keys nil
          :visible (clearcase-file-ok-to-checkout buffer-file-name)]
 
@@ -6357,7 +6403,11 @@ that mapped to non-nil."
          :keys nil
          :active (clearcase-file-ok-to-checkin buffer-file-name)]
 
-        ["Checkout" clearcase-checkout-current-buffer
+        ["Checkout Reserved" clearcase-checkout-current-buffer
+         :keys nil
+         :active (clearcase-file-ok-to-checkout buffer-file-name)]
+
+        ["Checkout Unreserved" clearcase-unreserved-checkout-current-buffer
          :keys nil
          :active (clearcase-file-ok-to-checkout buffer-file-name)]
 
@@ -7264,9 +7314,6 @@ looking for a cleartool executable. If found return the full pathname."
     cleartool-path))
 
 (defun clearcase-non-lt-registry-server-online-p ()
-  "Fake true"
-  t)
-(defun hjw-clearcase-non-lt-registry-server-online-p ()
   "Heuristic to determine if the local host is network-connected to
 its ClearCase servers. Used for a non-LT system."
 
@@ -7298,7 +7345,7 @@ its ClearCase servers. Used for a non-LT system."
     ;; If servers are apparently not online, keep the
     ;; buffer around so we can see what lsregion reported.
     ;;
-    (sit-for 0.01); Fix by AJM to prevent kill-buffer claiming process still running
+    (sleep-for 0.01); Fix by AJM to prevent kill-buffer claiming process still running
     (if result
         (kill-buffer buf))
     result))
@@ -7338,7 +7385,7 @@ its ClearCase servers. Used for LT system."
     ;; If servers are apparently not online, keep the
     ;; buffer around so we can see what lssite reported.
     ;;
-    (sit-for 0.01); Fix by AJM to prevent kill-buffer claiming process still running
+    (sleep-for 0.01); Fix by AJM to prevent kill-buffer claiming process still running
     (if result
         (kill-buffer buf))
     result))

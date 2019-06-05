@@ -19,6 +19,7 @@
     ~/.solarized.ansi: solarized.ansi
     ~/.spacemacs.d: spacemacs.d
     ~/.emacs.d: emacs.d
+    ~/.emacs: emacs
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.fonts: fonts

@@ -1,10 +1,10 @@
 exec --no-startup-id /home/hjw/bin/x-startup-apps
 
 set $mod Mod4
-force_xinerama no
+#force_xinerama no
 
-gaps inner 6
-gaps outer 6
+#gaps inner 6
+#gaps outer 6
 
 new_window pixel 6
 new_float pixel 6
