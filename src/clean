@@ -1,5 +1,7 @@
 #!/bin/bash
 for dir in rofi i3 polybar
 do
-    rm -rf $dir/build
+    if [[ -d "$dir" ]]; then
+    	rm -rf $dir
+    fi
 done

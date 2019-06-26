@@ -4,12 +4,11 @@
 if [[ ! -x ./polybar/build/bin/polybar ]]; then
     echo Polybar
     cd polybar
-    git submodule init
-    git submodule update
     rm -rf build
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr/local .. && sudo make install
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
+    make -j8 && sudo make install
     cd ../..
 fi
  
@@ -21,8 +20,8 @@ if [[ ! -x ./i3/i3 ]]; then
     rm -rf build
     mkdir build
     cd build
-    ../configure --prefix=/usr --sysconfdir=/etc
-    make &&  sudo make install
+    ../configure --prefix=/usr/local --sysconfdir=/etc
+    make -j8 &&  sudo make install
     cd ../..
 fi
 
@@ -30,13 +29,11 @@ fi
 if [[ ! -x ./rofi/build/rofi ]]; then
     echo rofi
     cd rofi
-    git submodule init
-    git submodule update
     autoreconf --force --install
     rm -rf build
     mkdir build
     cd build
     ../configure --prefix=/usr/local --sysconfdir=/etc --disable-check
-    make
+    make -j8
     sudo make install
 fi

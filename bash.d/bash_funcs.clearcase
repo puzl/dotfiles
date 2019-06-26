@@ -125,3 +125,12 @@ else
 fi
 }
 
+function cmeld() {
+    filename=$1
+    if [[ ! -e $file  ]]; then
+        >&2 echo "Usage: $0 <filename>"
+    else
+        from=$(cleartool ls -l $filename | awk '{print $4}')
+        meld $filename $filename@@$from
+    fi
+}

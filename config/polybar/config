@@ -52,16 +52,16 @@ cursor-scroll = ns-resize
 [bar/main]
 inherit = bar/globals
 modules-left = i3 title
-modules-center = 
-modules-right = musicinfo date
+modules-center = date
+modules-right = mpd musicinfo
 tray-position = right
-tray-padding =
+tray-padding = 10
 
 [bar/side]
 height = 26
 inherit = bar/globals
 modules-left = i3 title
-modules-center = 
+modules-center = date
 modules-right = 
 
 [module/i3]
@@ -96,7 +96,7 @@ interval = 5
 date = " %Y-%m-%d"
 
 time = "%H:%M"
-
+format =%{A1:gnome-calendar:} 🕓 <label> %{A}
 format-prefix = 
 format-padding = 2
 
@@ -120,3 +120,14 @@ format = <label>
 label = %output:0:120:...%
 format-padding = 10
 click-left =  i3-msg scratchpad show
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+#password = mysecretpassword
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 2

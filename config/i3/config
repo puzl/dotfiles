@@ -1,10 +1,10 @@
 exec --no-startup-id /home/hjw/bin/x-startup-apps
 
 set $mod Mod4
-#force_xinerama no
+force_xinerama no
 
-#gaps inner 6
-#gaps outer 6
+gaps inner 6
+gaps outer 6
 
 new_window pixel 6
 new_float pixel 6
@@ -79,12 +79,12 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Up workspace next
+bindsym $mod+Ctrl+Down workspace prev
 
 workspace 1 output DP-2
 workspace 5 output DP-1
-workspace 0 output VGA-1
+workspace 9 output VGA-1
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -151,7 +151,9 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
+for_window [class="Reminders"] floating enable
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
+for_window [class="(?i)Calendar"] floating enable, move position mouse, move down $height px
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -276,6 +278,4 @@ bindsym XF86Tools exec ~/bin/ncmpcpp-start.sh
 bindsym XF86Calculator exec qalculate
 
 
-exec --no-startup-id i3-msg 'workspace 0; exec evolution'
-#exec --no-startup-id i3-msg 'workspace 0; exec pidgin'
 for_window [instance="rxvt_scratch"] move scratchpad
