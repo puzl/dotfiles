@@ -18,7 +18,6 @@
     ~/.simrc: simrc
     ~/.solarized.ansi: solarized.ansi
     ~/.spacemacs.d: spacemacs.d
-    ~/.emacs.d: emacs.d
     ~/.doom.d: doom.d
     ~/.emacs: emacs
     ~/.vim: vim
