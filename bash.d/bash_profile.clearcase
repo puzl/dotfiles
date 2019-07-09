@@ -1,12 +1,14 @@
 #!/bin/bash
-export CCASE_BUILD_SUPPRESS_TIMES=1
-export CMAKE_PNAME_SEP=/
-export CCASE_CONC=7
-export RUBYOPT=rubygems
-export CCASE_CONC_V6_OBSOLETE=1
-export CCASE_MAKEFLAGS_V6_OBSOLETE=1
-export CCASE_SHELL_REQUIRED=TRUE
-export GTAGSFORCECPP=""
+if [[ "$HOSTNAME" != "bob" ]]; then
+	export CCASE_BUILD_SUPPRESS_TIMES=1
+	export CMAKE_PNAME_SEP=/
+	export CCASE_CONC=7
+	export RUBYOPT=rubygems
+	export CCASE_CONC_V6_OBSOLETE=1
+	export CCASE_MAKEFLAGS_V6_OBSOLETE=1
+	export CCASE_SHELL_REQUIRED=TRUE
+	export GTAGSFORCECPP=""
+fi
 
 
 export VCCAP_DIR=~/vccap
