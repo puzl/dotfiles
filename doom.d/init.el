@@ -185,7 +185,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (async quelpa use-package persistent-soft))))
+ '(package-selected-packages '(async quelpa use-package persistent-soft))
+ '(projectile-globally-ignored-directories
+   '(".attach" "~/.emacs.d/.local/" "~/.emacs.d/.local/" ".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "lost+found")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
