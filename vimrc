@@ -62,8 +62,8 @@ map <D-A-UP> <C-w>W
 " => Colours {{{
 """"""""""""""""""""""""""""""
 syntax enable " Syntax highlight and colour scheme
+colorscheme peaksea
 
-"colorscheme wombat
 "}}}
 
 " => UI {{{
