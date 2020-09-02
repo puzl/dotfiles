@@ -57,7 +57,6 @@
 (setq flycheck-disabled-checkers '(c/c++-clang c/c++-gcc))
 (setq flycheck-cppcheck-checks "all")
 
-<<<<<<< Updated upstream
 ;;-------------
 ;;Add color to the current GUD line (obrigado google)
 
@@ -82,11 +81,9 @@ ov)
 
 (add-hook 'kill-buffer-hook 'gud-kill-buffer)
 ;;-------------------------------------------------------------
-=======
 (setq doom-font (font-spec :family "Overpass Mono" :size 16))
 (setq projectile-generic-command "find . \\( -name build -o -name lost+found -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
 
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (semantic-mode 1)
 (require 'stickyfunc-enhance)
->>>>>>> Stashed changes
