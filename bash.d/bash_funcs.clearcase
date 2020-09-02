@@ -134,3 +134,23 @@ function cmeld() {
         meld $filename $filename@@$from
     fi
 }
+
+function rmdup() {
+    echo configure ssd-start file tftpboot/hjw/$(cleartool pwv -s).img transport http server 10.173.4.3 vrf debug-mgmt
+    scp /rxd/prod/rmd/image/$(cleartool pwv -s).img lab@tazerface.irlcor.lab:/tftpboot/hjw/
+}
+
+function rmdall() {
+ for dir in hjw rxd rd1322 rd2322
+ do
+     for file in $(ssh lab@tazerface.irlcor.lab ls /tftpboot/$dir)
+     do
+         echo configure ssd-start file tftpboot/$dir/$file transport gtto server 10.173.4.3 vrf debug-mgmt
+     done
+ done
+}
+
+function rmdchi() {
+    echo configure ssd-start file hjw/$(cleartool pwv -s).img transport tftp server 10.44.230.170 vrf debug-mgmt
+    curl --user serial:serial -T /rxd/prod/rmd/image/$CC_VIEW_TAG.img ftp://10.44.230.170//tftpboot/$USER/$CC_VIEW_TAG.img
+}

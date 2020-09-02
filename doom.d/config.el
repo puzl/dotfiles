@@ -29,16 +29,16 @@
   (set-company-backend! 'c-mode
     '(:separate company-gtags)))
 
-(def-package! clearcase
-  :commands (clearcase-mode
-             clearcase-ediff-pred-current-buffer
-             clearcase-unreserved-checkout-current-buffer
-             clearcase-uncheckout-current-buffer
-             clearcase-checkin-current-buffer)
-  :init
-  (setq-default clearcase-keep-uncheckouts nil)
-  (setq-default clearcase-suppress-checkout-comments t)
-  )
+;(def-package! clearcase
+;  :commands (clearcase-mode
+;             clearcase-ediff-pred-current-buffer
+;             clearcase-unreserved-checkout-current-buffer
+;             clearcase-uncheckout-current-buffer
+;             clearcase-checkin-current-buffer)
+;  :init
+;  (setq-default clearcase-keep-uncheckouts nil)
+;  (setq-default clearcase-suppress-checkout-comments t)
+;  )
 
 (map! :leader
       :prefix ("v" . "clearcase")
@@ -81,7 +81,7 @@ ov)
 
 (add-hook 'kill-buffer-hook 'gud-kill-buffer)
 ;;-------------------------------------------------------------
-(setq doom-font (font-spec :family "Overpass Mono" :size 16))
+(setq doom-font (font-spec :family "Overpass Mono" :size 20))
 (setq projectile-generic-command "find . \\( -name build -o -name lost+found -o -name obj-* -o -name *.state -o -name *.keep \\) -prune -o -type f -print0")
 
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)

@@ -7,15 +7,12 @@
 ;; (package! builtin-package :disable t)
 ;;
 
-(package! clearcase)
-(package! ggtags)
 ;; Disable packages provided by DOOM
-
 (package! irony :disable t)
 (package! emacs-snippets :disable t)
 
 
 ;; Add custom packages for me
-;(package! ggtags :recipe (:fetcher github :repo "leoliu/ggtags"))
-(package! clearcase :recipe (:fetcher github :repo "hackonteur/clearcase-mode"))
-(package! stickyfunc-enhance :recipe (:fetcher github :repo "tuhdo/semantic-stickyfunc-enhance"))
+(package! ggtags :recipe (:host github :repo "leoliu/ggtags"))
+(package! clearcase :recipe (:host github :repo "hackonteur/clearcase-mode"))
+(package! stickyfunc-enhance :recipe (:host github :repo "tuhdo/semantic-stickyfunc-enhance"))

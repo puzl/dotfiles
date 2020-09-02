@@ -62,8 +62,8 @@ map <D-A-UP> <C-w>W
 " => Colours {{{
 """"""""""""""""""""""""""""""
 syntax enable " Syntax highlight and colour scheme
+colorscheme peaksea
 
-"colorscheme wombat
 "}}}
 
 " => UI {{{
@@ -157,9 +157,9 @@ map <leader>f :MRU<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = 'ag %s --ignore-dir obj-\* -l --nocolor -g ""'
 let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+let g:ctrlp_clear_cache_on_exit = 0
 
 map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
@@ -253,7 +253,7 @@ endif
 nmap <F2> :CtrlPBuffer<CR>
 nmap <F3> :CtrlP<CR>
 nmap <F4> :MRU<CR>
-nmap <F5> :TagbarToggle<CR>
+nmap <F5> :Gtags -f %<CR>
 nmap <F6> :cn<CR>
 nmap <F7> :cp<CR>
 nmap <F8> :cw<CR>

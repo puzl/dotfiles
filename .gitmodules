@@ -44,9 +44,6 @@
 [submodule "vim/bundle/gtags.vim"]
 	path = vim/bundle/gtags.vim
 	url = https://github.com/vim-scripts/gtags.vim.git
-[submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = https://github.com/tomasr/molokai.git
@@ -56,9 +53,3 @@
 [submodule "vim/bundle/ag"]
 	path = vim/bundle/ag
 	url = https://github.com/rking/ag.vim.git
-[submodule "vim/bundle/vim-orgmode"]
-	path = vim/bundle/vim-orgmode
-	url = https://github.com/jceb/vim-orgmode.git
-[submodule "vim/bundle/vim-speeddating"]
-	path = vim/bundle/vim-speeddating
-	url = https://github.com/tpope/vim-speeddating.git
