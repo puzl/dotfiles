@@ -136,7 +136,6 @@ function cmeld() {
 }
 
 function rmdup() {
-    echo configure ssd-start file hjw/$(cleartool pwv -s).img transport tftp server 10.173.4.3 vrf debug-mgmt
     echo configure ssd-start file tftpboot/hjw/$(cleartool pwv -s).img transport http server 10.173.4.3 vrf debug-mgmt
     scp /rxd/prod/rmd/image/$(cleartool pwv -s).img lab@tazerface.irlcor.lab:/tftpboot/hjw/
 }
@@ -146,7 +145,7 @@ function rmdall() {
  do
      for file in $(ssh lab@tazerface.irlcor.lab ls /tftpboot/$dir)
      do
-         echo configure ssd-start file $dir/$file transport tftp server 10.173.4.3 vrf debug-mgmt
+         echo configure ssd-start file tftpboot/$dir/$file transport gtto server 10.173.4.3 vrf debug-mgmt
      done
  done
 }
