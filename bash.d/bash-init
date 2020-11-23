@@ -9,3 +9,4 @@ do
 done
 
 #[[ "$OSTYPE" == "linux-gnu" && -f ~/.fzf.bash ]] && source ~/.fzf.bash
+[[ -r "$HOME/.artifactoryrc" ]] && source "$HOME/.artifactoryrc"
