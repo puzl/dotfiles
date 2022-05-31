@@ -15,7 +15,7 @@
 [credential]
 	helper = store --file ~/.my-credentials
 [diff]
-	tool = meld
+	tool = vimdiff
 [difftool]
 	prompt = false
 [alias]
