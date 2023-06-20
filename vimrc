@@ -94,6 +94,7 @@ set mouse+=a
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+set t_kb=
 
 set wildmenu
 set wildignore=*.o,*~,*.pyc
@@ -259,3 +260,5 @@ nmap <F7> :cp<CR>
 nmap <F8> :cw<CR>
 nmap <F9> :Ag<CR>
 " }}}
+
+set backspace=indent,eol,start

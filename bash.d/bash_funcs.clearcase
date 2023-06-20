@@ -60,9 +60,43 @@ function catcs
     eval cleartool catcs $*
 }
 
-function cdiff 
+function cdiff
 {
     cleartool diff -pred -diff -options -b $*
+}
+function gdiff
+{
+    while [ $# -gt 0 ];
+    do
+        cleartool diff -pred -graphical -options -b $1&
+        shift
+    done
+}
+function vcdiff
+{
+    while [ $# -gt 0 ];
+    do
+        if [[ -e $1 ]]; then
+            LS=$(cleartool ls -l $1 | sed -e 's/\\/\//g')
+            if [[ $? -eq 0 ]]; 
+            then
+                if [[ ${LS} =~ version\ *(.*)@@.*/CHECKEDOUT\ from\ (.*)\ *Rule.*CHECKEDOUT ]]; 
+                then
+                    FILE=${BASH_REMATCH[1]}
+                    ORIG=${BASH_REMATCH[2]}
+                    cp ${FILE}@@${ORIG} /tmp/$(basename ${FILE}).orig.$$
+                    vimdiff ${FILE} /tmp/$(basename ${FILE}).orig.$$
+                fi
+            fi
+        fi
+        shift
+    done
+    #version                /rxd/rmd/e6000/hdwr/dprocs/slowpath/src\swfp.c@@\main\vcore_main\CHECKEDOUT from \main\vcore_main\11   Rule: element * CHECKEDOUT
+}
+
+function tdiff
+{
+    difft --width 160 $1@@$(cleartool describe -predecessor -short $1 | sed -e 's/\\/\//g') $1
 }
 
 function ppcmakeall
@@ -135,13 +169,24 @@ function cmeld() {
     fi
 }
 
+function rpdup() {
+    echo configure ssd-start file tftpboot/hjw/$(cleartool pwv -s).rpd.img transport http server 10.173.4.3 vrf debug-mgmt
+    scp /rxd/prod/rpd/image/$(cleartool pwv -s).rpd.img lab@tazerface.irlcor.lab:/tftpboot/hjw/
+}
 function rmdup() {
-    echo configure ssd-start file tftpboot/hjw/$(cleartool pwv -s).img transport http server 10.173.4.3 vrf debug-mgmt
-    scp /rxd/prod/rmd/image/$(cleartool pwv -s).img lab@tazerface.irlcor.lab:/tftpboot/hjw/$1
+    if [[ -e /rxd/prod/rmd/image/$(cleartool pwv -s).img ]]; then
+        echo configure ssd-start file tftpboot/hjw/$(cleartool pwv -s).img transport http server 10.173.4.3 vrf debug-mgmt
+        scp /rxd/prod/rmd/image/$(cleartool pwv -s).img lab@tazerface.irlcor.lab:/tftpboot/hjw/$1
+    elif [[ -e /rxd/prod/rmd/image/$(cleartool pwv -s).rd3.rmd.img ]]; then 
+        echo configure ssd-start file tftpboot/hjw/$(cleartool pwv -s).rd3.rmd.img transport http server 10.173.4.3 vrf debug-mgmt
+        scp /rxd/prod/rmd/image/$(cleartool pwv -s).rd3.rmd.img lab@tazerface.irlcor.lab:/tftpboot/hjw/$1
+    else
+        echo No image
+    fi
 }
 
 function rmdall() {
- for dir in hjw rd1322 rd2322 cotuama
+ for dir in hjw rd1322 rd2322 cotuama ttunnell
  do
      for file in $(ssh lab@tazerface.irlcor.lab ls /tftpboot/$dir)
      do
@@ -150,6 +195,10 @@ function rmdall() {
  done
 }
 
+function rpdchi() {
+    echo configure ssd-start file hjw/$(cleartool pwv -s).rpd.img transport tftp server 10.44.230.170
+    curl --user serial:serial -T /rxd/prod/rpd/image/$CC_VIEW_TAG.rpd.img ftp://10.44.230.170//tftpboot/$USER/$CC_VIEW_TAG.rpd.img
+}
 function rmdchi() {
     echo configure ssd-start file hjw/$(cleartool pwv -s).img transport tftp server 10.44.230.170 vrf debug-mgmt
     curl --user serial:serial -T /rxd/prod/rmd/image/$CC_VIEW_TAG.img ftp://10.44.230.170//tftpboot/$USER/$CC_VIEW_TAG.img
@@ -166,4 +215,31 @@ function edcs() {
         fi
     fi
     rm edcs.$$
+}
+
+function _do_vcore_up() {
+    host=$1
+    view=$(cleartool pwv -s)
+    rsync -aP /rxd/prod/rmd/bin/ labuser@${host}:/home/labuser/${USER}/${view}/images/
+}
+
+function cs1v1up() {
+    _do_vcore_up corks1-vcore1.irlcor.lab
+}
+
+function cs2v1up() {
+    _do_vcore_up corks2-vcore1.irlcor.lab
+}
+
+function cs2v2up() {
+    _do_vcore_up corks2-vcore2.irlcor.lab
+}
+
+function vcoreup() {
+    echo cs1v1up
+    cs1v1up
+    echo cs2v1up
+    cs2v1up
+    echo cs2v2up
+    cs2v2up
 }

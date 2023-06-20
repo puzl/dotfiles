@@ -68,20 +68,20 @@ function figrep()
     find ${DIR} -type d -path obj -prune -o -type f -name \*[cph]   | xargs egrep -i "$EXPR"
 }
 
-#function title()
-#{
-    #echo -ne "\033]2;$*\007"
-#}
+function title()
+{
+   echo -ne "\033]2;$*\007"
+}
 
-#function settitle()
-#{
-#    if [[ -z "$CC_VIEW_SPEC" ]]; then
-#        title "$HOSTNAME :: $PWD"
-#    else
-#        title "$(cleartool pwv -s) :: $HOSTNAME :: $PWD :: "
-#    fi
-#}
-#export PROMPT_COMMAND=settitle
+function settitle()
+{
+    if [[ -z "$CC_VIEW_SPEC" ]]; then
+        title "$HOSTNAME"
+    else
+        title "$(cleartool pwv -s)"
+    fi
+}
+export PROMPT_COMMAND=settitle
 
 sv () {
     views=$(subst | dos2unix | sed -e 's/:.*\\/ /g')

@@ -1,5 +1,0 @@
-export CYGFIXIFY="| sed -e 's/\\\\/\\//g' -e 's/^[A-Za-z]://g'"
-add_to_path PATH /c/emacs/bin
-add_to_path PATH /usr/local/vim/bin
-export VAGRANT_HOME="d:\\vagrant"
-

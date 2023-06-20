@@ -1,6 +1,5 @@
 #!/bin/bash
 umask 022
-set -o emacs
 VIMPATH=/usr/bin/vim
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
     if [[ "$SHELL" == "/bin/bash" ]]; then
@@ -9,8 +8,6 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 
     export VIM_PATH=vim
 
-    if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
-
     if [[ ! -z $SETVIEW_ENV ]] ;  then
         if [[ $SETVIEW_ENV = "C4" ]] ;  then
             export TAGFILES="/CMTS/sw/src/src.t,/CMTS/sw/include/h.t,/model/cmts/model.t,/common/windriver/build/kernel.t,/common/ezchip/ezchip.t, /CMTS/sw/Rhapsody/Share/LangCpp/oxf/rhap.t"
@@ -18,8 +15,6 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
             export TAGFILES="/app/app.t,/kernel/kernel.t,/system/system.t,/vendor/windriver/vxworks/target/wrs.t,/vendor/windriver/components/comp.t,/devTools/videosim/videosim.t"
         fi
     fi
-
-    set -o emacs
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
@@ -50,7 +45,6 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 		export CCASE_BLD_UMASK=002
 		export CCASE_MAKE_COMPAT=gnu
-    set -o emacs
 else
     export TERM="xterm-256color"
 
@@ -103,3 +97,8 @@ shopt -u checkwinsize
 export GOPATH=$HOME/.go
 hostify bash_profile
 
+if [[ "$OSTYPE" = "cygwin" ]] ;  then
+    if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
+fi
+set -o emacs
+export ARRIS_TOOLS_DIR=//irlcor-fil01/Projects/E6000/swDevTools 
