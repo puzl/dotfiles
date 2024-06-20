@@ -149,7 +149,7 @@ map <leader>f :MRU<CR>
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s --ignore-dir obj-\* -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
 
@@ -204,9 +204,11 @@ endif                                       " Clearcase
 
 " => gnu global {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Gtags_Auto_Update = 1
+
 let g:GtagsCscope_Auto_Update = 1
 let g:GtagsCscope_Keep_Alive = 1
-let g:GtagsCscope_Absolute_Path = 0
+let g:GtagsCscope_Absolute_Path = 1
 let g:GtagsCscope_Auto_Map = 0
 let g:GtagsCscope_Auto_Load =1
 let g:GtagsCscope_Quiet = 0
@@ -240,11 +242,25 @@ endif
 
 " }}}
 
+" => context
+let g:context_enabled = 1
+
+" => easy align
+
+nmap ga <Plug>(EasyAlign)
+
+" => rainbow parenthesis
+" Activation based on file type
+augroup rainbow_c
+  autocmd!
+  autocmd FileType c,bash RainbowParentheses
+augroup END
+
 " => function keys {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F2> :CtrlPBuffer<CR>
 nmap <F3> :CtrlP<CR>
-nmap <F4> :MRU<CR>
+nmap <F4> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 nmap <F5> :Gtags -f %<CR>
 nmap <F6> :cn<CR>
 nmap <F7> :cp<CR>

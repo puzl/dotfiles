@@ -102,3 +102,5 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 fi
 set -o emacs
 export ARRIS_TOOLS_DIR=//irlcor-fil01/Projects/E6000/swDevTools 
+
+export LESSGLOBALTAGS=global
