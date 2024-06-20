@@ -105,15 +105,6 @@ else
 endif
 " }}}
 
-" => Spaces and Tabs {{{
-""""""""""""""""""""""""""""""
-set tabstop=4
-set softtabstop=4
-set expandtab
-set shiftwidth=4
-set smartindent
-set autoindent
-" }}}
 
 " => folding {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -262,3 +253,13 @@ nmap <F9> :Ag<CR>
 " }}}
 
 set backspace=indent,eol,start
+
+" => Spaces and Tabs {{{
+""""""""""""""""""""""""""""""
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set smartindent
+set autoindent
+" }}}

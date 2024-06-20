@@ -62,18 +62,29 @@ function catcs
 
 function cdiff
 {
-    cleartool diff -pred -diff -options -b $*
+    while [ $# -gt 0 ];
+    do
+        if [[ -e $1 ]]; then
+            cleartool diff -pred -diff -options -b $*
+        fi
+        shift
+    done
 }
 function gdiff
 {
     while [ $# -gt 0 ];
     do
-        cleartool diff -pred -graphical -options -b $1&
+        if [[ -e $1 ]]; then
+            cleartool diff -pred -graphical -options -b $1&
+        fi
+        shift
         shift
     done
 }
+
 function vcdiff
 {
+    set -o noglob
     while [ $# -gt 0 ];
     do
         if [[ -e $1 ]]; then
@@ -84,14 +95,58 @@ function vcdiff
                 then
                     FILE=${BASH_REMATCH[1]}
                     ORIG=${BASH_REMATCH[2]}
-                    cp ${FILE}@@${ORIG} /tmp/$(basename ${FILE}).orig.$$
-                    vimdiff ${FILE} /tmp/$(basename ${FILE}).orig.$$
+                    DEST=/tmp/$(basename ${FILE}).orig.$$
+                    #echo FILE=${FILE}
+                    #echo ORIG=${ORIG}
+                    #echo DEST=${DEST}
+                    cp ${FILE}@@${ORIG} ${DEST}
+                    chmod 644 ${DEST}
+                    vimdiff ${FILE} ${DEST}
+                    rm -f ${DEST}
                 fi
             fi
         fi
         shift
     done
     #version                /rxd/rmd/e6000/hdwr/dprocs/slowpath/src\swfp.c@@\main\vcore_main\CHECKEDOUT from \main\vcore_main\11   Rule: element * CHECKEDOUT
+    set -o glob
+}
+
+function brdiff
+{
+    set -o noglob
+    while [ $# -gt 0 ];
+    do
+        if [[ -f $1 ]]; then
+            LS=$(cleartool ls -l $1 | sed -e 's/\\/\//g')
+            if [[ $? -eq 0 ]]; 
+            then
+                FILE=""
+                BRANCH=""
+                if [[ ${LS} =~ version\ *(.*)@@(.*)/CHECKEDOUT\ from\ (.*)\ *Rule.*CHECKEDOUT ]]; 
+                then
+                    FILE=${BASH_REMATCH[1]}
+                    BRANCH=${BASH_REMATCH[2]}
+                elif [[ ${LS} =~ version\ *(.*)@@(.*)/[0-9]+\ *Rule:.* ]]; 
+                then
+                    FILE=${BASH_REMATCH[1]}
+                    BRANCH=${BASH_REMATCH[2]}
+                fi
+                DEST="/tmp/$(basename ${FILE}).orig.$$"
+
+                #echo FILE=${FILE}
+                #echo BRANCH=${BRANCH}
+                #echo DEST=${DEST}
+                cp ${FILE}@@${BRANCH}/0 ${DEST}
+                chmod 644 ${DEST}
+                vimdiff ${FILE} ${DEST}
+                rm -f ${DEST}
+            fi
+        fi
+        shift
+    done
+    #version                /rxd/rmd/e6000/hdwr/dprocs/common/h\vmac-bpi.h@@\main\hjw_vcore_dynsched_1\2           Rule: element * ...\hjw_vcore_dynsched_1\LATEST
+    set +o noglob
 }
 
 function tdiff
@@ -218,28 +273,40 @@ function edcs() {
 }
 
 function _do_vcore_up() {
-    host=$1
+    USERNAME=$(echo ${USER} |  tr '[:upper:]' '[:lower:]' )
+    user=$1
+    host=$2
     view=$(cleartool pwv -s)
-    rsync -aP /rxd/prod/rmd/bin/ labuser@${host}:/home/labuser/${USER}/${view}/images/
+    rsync -aP /rxd/prod/rmd/bin/ ${user}@${host}:/home/${user}/${USERNAME}/${view}/images/
+}
+
+function wslup() {
+    _do_vcore_up hjw 172.17.159.63
 }
 
 function cs1v1up() {
-    _do_vcore_up corks1-vcore1.irlcor.lab
+    _do_vcore_up labuser corks1-vcore1.irlcor.lab
 }
 
 function cs2v1up() {
-    _do_vcore_up corks2-vcore1.irlcor.lab
+    _do_vcore_up labuser corks2-vcore1.irlcor.lab
 }
 
 function cs2v2up() {
-    _do_vcore_up corks2-vcore2.irlcor.lab
+    _do_vcore_up labuser corks2-vcore2.irlcor.lab
+}
+
+function cs4v1up() {
+    _do_vcore_up labuser corks4-vcore1.irlcor.lab
 }
 
 function vcoreup() {
-    echo cs1v1up
+    echo cs1v1
     cs1v1up
-    echo cs2v1up
+    echo cs2v1
     cs2v1up
-    echo cs2v2up
+    echo cs2v2
     cs2v2up
+    echo cs4v1
+    cs4v1up
 }

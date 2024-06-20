@@ -5,9 +5,6 @@
 [submodule "spacemacs.d/vc-clearcase"]
 	path = spacemacs.d/vc-clearcase
 	url = https://github.com/alex-hhh/vc-clearcase.git
-[submodule "vim/bundle/nerdcommenter"]
-	path = vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/lightline"]
 	path = vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim.git
@@ -26,18 +23,12 @@
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = https://github.com/jlanzarotta/bufexplorer.git
-[submodule "vim/bundle/mru"]
-	path = vim/bundle/mru
-	url = https://github.com/vim-scripts/mru.vim.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
