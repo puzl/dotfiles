@@ -152,6 +152,7 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
@@ -217,28 +218,25 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 set cscopetag
 set csprg=gtags-cscope 
 
-if filereadable($HOME . "/.vim/manualload/gtags-cscope.vim")
-    source $HOME/.vim/manualload/gtags-cscope.vim
 
-    nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap zi :cs find i <C-R>=expand("<cword>")<CR><CR>
+nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap zi :cs find i <C-R>=expand("<cword>")<CR><CR>
 
-    try 
-        " Gtags is setup to use tag database in the directories specified in the
-        " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
-        for dir in split($GTAGSLIBPATH, ":")
-            if isdirectory(dir) 
-                if filereadable(dir . "/GTAGS")
-                    let cscmd = 'cs add ' . dir . '/GTAGS'
-                    silent exec cscmd
-                endif
+try 
+    " Gtags is setup to use tag database in the directories specified in the
+    " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
+    for dir in split($GTAGSLIBPATH, ":")
+        if isdirectory(dir) 
+            if filereadable(dir . "/GTAGS")
+                let cscmd = 'cs add ' . dir . '/GTAGS'
+                silent exec cscmd
             endif
-        endfor
-    catch
-    endtry
-endif
+        endif
+    endfor
+catch
+endtry
 
 " }}}
 
@@ -258,14 +256,35 @@ augroup END
 
 " => function keys {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <F2> :CtrlPBuffer<CR>
-nmap <F3> :CtrlP<CR>
-nmap <F4> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
-nmap <F5> :Gtags -f %<CR>
-nmap <F6> :cn<CR>
-nmap <F7> :cp<CR>
-nmap <F8> :cw<CR>
-nmap <F9> :Ag<CR>
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
+" F1 is help
+
+" F2 - F3 are gtags
+
+" list symbols in current file
+" Find file
+" Find references
+nmap <F2>  :Gtags -f %<CR>
+nmap <F3>  :Gtags -P <C-R>=expand("<cword>")<CR><CR>
+nmap <F4>  :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+
+nmap <F5>  :call ToggleQuickFix()<CR>
+nmap <F6>  :cn<CR>
+nmap <F7>  :cp<CR>
+" name <F8> 
+
+nmap <F9>  :Ag<CR>
+nmap <F10> :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <F11> :cs find c <C-R>=expand("<cword>")<CR><CR>
+"nmap <F12> 
+
 " }}}
 
 set backspace=indent,eol,start

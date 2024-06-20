@@ -134,7 +134,12 @@ function peta() {
 }
 
 
+function vip() {
+    FILES=$(global -P $*)
+    vim ${FILES}
+}
 hostify bash_funcs
+
 
 
 

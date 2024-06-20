@@ -56,3 +56,12 @@
 [submodule "vim/bundle/ReplaceWithRegister"]
 	path = vim/bundle/ReplaceWithRegister
 	url = https://github.com/vim-scripts/ReplaceWithRegister
+[submodule "vim/bundle/gtags.vim"]
+	path = vim/bundle/gtags.vim
+	url = https://github.com/ivechan/gtags.vim
+[submodule "vim/bundle/ctrlp-py-matcher"]
+	path = vim/bundle/ctrlp-py-matcher
+	url = https://github.com/FelikZ/ctrlp-py-matcher
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
