@@ -1,5 +1,9 @@
-if has('win32') || has('win64')
-    set runtimepath=c:\cygwin-1.7.31-3\home\hjw\.dotfiles\vim
+if exists('+shellslash')            " DOS
+    set shellslash                  " Get Windows Vim to use forward slashes instead of backslashes
+    set shell=C:/cygwin-2.10.0/bin/bash
+    set shellcmdflag=-c
+    set shellxquote=\"              " bash wants '"' instead of Windows default '('
+    let $CHERE_INVOKING=1           " bash opens in working directory
 endif
 
 " vim:foldmethod=marker:foldlevel=0
@@ -254,6 +258,11 @@ augroup rainbow_c
   autocmd FileType c,bash RainbowParentheses
 augroup END
 
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " => function keys {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ToggleQuickFix()
@@ -278,12 +287,13 @@ nmap <F4>  :Gtags -r <C-R>=expand("<cword>")<CR><CR>
 nmap <F5>  :call ToggleQuickFix()<CR>
 nmap <F6>  :cn<CR>
 nmap <F7>  :cp<CR>
-" name <F8> 
 
-nmap <F9>  :Ag<CR>
+nmap <F8>  :Grepper -jump -cword -highlight -noprompt<CR><CR>
+nmap <F9>  :Grepper<CR>
+
 nmap <F10> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <F11> :cs find c <C-R>=expand("<cword>")<CR><CR>
-"nmap <F12> 
+nmap <F12>  :Ag<CR>
 
 " }}}
 

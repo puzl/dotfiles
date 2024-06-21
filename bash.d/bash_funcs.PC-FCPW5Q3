@@ -24,7 +24,7 @@ function cdd()
 
 function gvim()
 {
-    TMPDIR="/c/Windows/Temp" HOME="/c/Users/hjw" /c/Program\ Files\ \(x86\)/Vim/vim80/gvim.exe $* &
+    TMPDIR="/c/Windows/Temp" HOME="/c/Users/hjw"  /c/Program\ Files/Vim/vim91/gvim.exe $* &
 }
 
 function gvs()

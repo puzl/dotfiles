@@ -95,7 +95,6 @@ fi
 shopt -s histappend
 shopt -u checkwinsize
 export GOPATH=$HOME/.go
-hostify bash_profile
 
 if [[ "$OSTYPE" = "cygwin" ]] ;  then
     if [[ -s "$HOME/.arris/arris.env" ]] ; then source "$HOME/.arris/arris.env" ; fi
@@ -104,3 +103,5 @@ set -o emacs
 export ARRIS_TOOLS_DIR=//irlcor-fil01/Projects/E6000/swDevTools 
 
 export LESSGLOBALTAGS=global
+
+hostify bash_profile

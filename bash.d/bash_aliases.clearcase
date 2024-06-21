@@ -1,3 +1,4 @@
+alias e6="cd /rxd/rmd/e6000"
 alias e6000="cd /rxd/rmd/e6000"
 alias app="cd /rxd/rmd/e6000/app"
 alias dprocs="cd /rxd/rmd/e6000/hdwr/dprocs"

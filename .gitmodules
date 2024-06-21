@@ -65,3 +65,9 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/bundle/asyncrun.vim"]
+	path = vim/bundle/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim
+[submodule "vim/bundle/async-grepper"]
+	path = vim/bundle/async-grepper
+	url = https://github.com/paretje/async-grepper
