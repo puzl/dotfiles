@@ -7,7 +7,8 @@ if exists('+shellslash')            " DOS
 endif
 
 " vim:foldmethod=marker:foldlevel=0
-execute pathogen#infect()
+" execute pathogen#infect()
+
 set nocompatible
 set paste
 set guifont=Consolas:h12
@@ -17,6 +18,32 @@ if has("win32") && ! has("win32unix")
     set directory=C:/Windows/Temp
 endif
 
+call plug#begin()
+
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'https://github.com/kien/ctrlp.vim'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/rking/ag.vim.git'
+Plug 'https://github.com/paretje/async-grepper'
+Plug 'https://github.com/skywind3000/asyncrun.vim'
+Plug 'https://github.com/sjl/badwolf.git'
+Plug 'https://github.com/jlanzarotta/bufexplorer.git'
+Plug 'https://github.com/wellle/context.vim'
+Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
+Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/ivechan/gtags.vim'
+Plug 'https://github.com/itchyny/lightline.vim.git'
+Plug 'https://github.com/tomasr/molokai.git'
+Plug 'https://github.com/vim-scripts/peaksea.git'
+Plug 'https://github.com/junegunn/rainbow_parentheses.vim'
+Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
+Plug 'https://github.com/ervandew/supertab.git'
+Plug 'https://github.com/junegunn/vim-easy-align'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/vim-scripts/Wombat.git'
+
+call plug#end()
 
 " => lightline {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -65,8 +92,19 @@ map <D-A-UP> <C-w>W
 
 " => Colours {{{
 """"""""""""""""""""""""""""""
-syntax enable " Syntax highlight and colour scheme
-colorscheme peaksea
+"syntax enable " Syntax highlight and colour scheme
+"set background=dark
+""colorscheme molokai
+""colorscheme peaksea
+"colorscheme gruvbox
+"let g:gruvbox_contrast_dark='hard'
+"let g:gruvbox_contrast_light='hard'
+
+syntax on
+set t_Co=256
+set cursorline
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 "}}}
 
