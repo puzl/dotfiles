@@ -4,3 +4,4 @@ alias app="cd /rxd/rmd/e6000/app"
 alias dprocs="cd /rxd/rmd/e6000/hdwr/dprocs"
 alias vcore="cd /rxd/vcore"
 alias am="(amake &&  cd /rxd/vcore && amake dacm)"
+alias scanBuild=echo

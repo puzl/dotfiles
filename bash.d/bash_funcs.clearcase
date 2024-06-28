@@ -310,3 +310,11 @@ function vcoreup() {
     echo cs4v1
     cs4v1up
 }
+
+alias scanBuild=echo
+function amake()
+{
+    /devTools/bin/amake $*
+    rm -f buildLog.* 
+    rm -f errorLog.*
+}

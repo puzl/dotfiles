@@ -20,104 +20,58 @@ endif
 
 call plug#begin()
 
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'https://github.com/kien/ctrlp.vim'
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/rking/ag.vim.git'
-Plug 'https://github.com/paretje/async-grepper'
+" Finding and searching
 Plug 'https://github.com/skywind3000/asyncrun.vim'
-Plug 'https://github.com/sjl/badwolf.git'
-Plug 'https://github.com/jlanzarotta/bufexplorer.git'
-Plug 'https://github.com/wellle/context.vim'
+Plug 'https://github.com/paretje/async-grepper'
+Plug 'https://github.com/kien/ctrlp.vim'
 Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
-Plug 'https://github.com/morhetz/gruvbox'
+"Plug 'https://github.com/rking/ag.vim.git'
 Plug 'https://github.com/ivechan/gtags.vim'
-Plug 'https://github.com/itchyny/lightline.vim.git'
-Plug 'https://github.com/tomasr/molokai.git'
-Plug 'https://github.com/vim-scripts/peaksea.git'
-Plug 'https://github.com/junegunn/rainbow_parentheses.vim'
-Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
-Plug 'https://github.com/ervandew/supertab.git'
-Plug 'https://github.com/junegunn/vim-easy-align'
-Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/mhinz/vim-startify'
+Plug 'https://github.com/ntpeters/vim-better-whitespace'
+
+
+" Text manipulation
 Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/vim-scripts/Wombat.git'
+Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
 
+" UI
+Plug 'https://github.com/wellle/context.vim'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/bling/vim-bufferline'
+Plug 'https://github.com/junegunn/rainbow_parentheses.vim'
+Plug 'https://github.com/junegunn/vim-peekaboo'
+Plug 'https://github.com/tpope/vim-dispatch'
+
+" Colour schemes
+Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
+Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'https://github.com/morhetz/gruvbox'
+
+"Plug 'https://github.com/tomasr/molokai.git'
+"Plug 'https://github.com/vim-scripts/peaksea.git'
+"Plug 'https://github.com/sjl/badwolf.git'
+"Plug 'https://github.com/vim-scripts/Wombat.git'
+
+" Not sure if I use these
+"Plug 'https://github.com/tpope/vim-fugitive.git'
+"Plug 'https://github.com/ervandew/supertab.git'
+
+"Plug 'https://github.com/dense-analysis/ale'
+"Plug 'https://github.com/jlanzarotta/bufexplorer.git'
 call plug#end()
-
-" => lightline {{{
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'],
-      \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], ['percent'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' }
-      \ }
-
-set laststatus=2 " needed for lightline
-
-" }}}
-
-" => binds {{{
-""""""""""""""""""""""""""""""
-let mapleader="," " leader is comma
-if has("win32")
-    map <leader>s :source ~/_vimrc<CR>
-else
-    map <leader>s :source ~/.vimrc<CR>
-endif
-
-nnoremap <Leader><Leader> :e#<CR>
-map <D-A-RIGHT> <C-w>l
-map <D-A-LEFT> <C-w>h
-map <D-A-DOWN> <C-w><C-w>
-map <D-A-UP> <C-w>W
-"}}}
-
-" => Colours {{{
-""""""""""""""""""""""""""""""
-"syntax enable " Syntax highlight and colour scheme
-"set background=dark
-""colorscheme molokai
-""colorscheme peaksea
-"colorscheme gruvbox
-"let g:gruvbox_contrast_dark='hard'
-"let g:gruvbox_contrast_light='hard'
-
-syntax on
-set t_Co=256
-set cursorline
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
-
-"}}}
 
 " => UI {{{
 """"""""""""""""""""""""""""""
 if has("gui_running")
-set guioptions+=c  "no windows dialogs
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-set lines=42
-set columns=100
+    set guioptions+=c  "no windows dialogs
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions-=L  "remove left-hand scroll bar
+    set lines=42
+    set columns=100
 endif
 
 set hidden
@@ -147,6 +101,74 @@ else
 endif
 " }}}
 
+" => make {{{
+
+set makeprg=amake\ --halt
+
+set errorformat=%f:%l:%c:\ %trror:\ %m
+set errorformat^=%f:%l:%c:\ %tarning:\ %m
+
+" }}}
+" => binds {{{
+""""""""""""""""""""""""""""""
+let mapleader="," " leader is comma
+if has("win32")
+    map <leader>s :source ~/_vimrc<CR>
+else
+    map <leader>s :source ~/.vimrc<CR>
+endif
+
+nnoremap <Leader><Leader> :e#<CR>
+map <D-A-RIGHT> <C-w>l
+map <D-A-LEFT> <C-w>h
+map <D-A-DOWN> <C-w><C-w>
+map <D-A-UP> <C-w>W
+"}}}
+
+" => Colours {{{
+""""""""""""""""""""""""""""""
+syntax enable " Syntax highlight and colour scheme
+
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
+if has_key(plugs, 'gruvbox')
+    "set background=dark
+    let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_contrast_light='hard'
+    let g:gruvbox_termcolors=256
+    let g:gruvbox_improved_strings=1
+    colorscheme gruvbox
+elseif has_key(plugs, 'onehalf')
+    set t_Co=256
+    set cursorline
+    "colorscheme onehalfdark
+    colorscheme onehalflight
+elseif has_key(plugs, 'xcode')
+    "colorscheme xcode
+    colorscheme xcodedark
+    "colorscheme xcodedarkhc
+    "colorscheme xcodehc
+    "colorscheme xcodelight
+    "colorscheme xcodelighthc
+    "colorscheme xcodewwdc
+elseif has_key(plugs, 'embark')
+    colorscheme embark
+endif
+"}}}
+
+" => Spaces and Tabs {{{
+""""""""""""""""""""""""""""""
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set smartindent
+set autoindent
+" }}}
 
 " => folding {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,38 +189,81 @@ set ignorecase
 set smartcase
 set incsearch
 set showmatch
-map <leader>g :Ag<Space>
 " }}}
 
-" => bufExplorer plugin {{{
+" => ale {{{
 """"""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
+if has_key(plugs, 'ale')
+    let g:ale_pattern_options = {
+                \   '/rxd/rmd/e6000/hdwr/dprocs/.*\.c$': {
+                \       'ale_linters': ['cppcheck'],
+                \       'ale_fixers': ['cppcheck'],
+                \   },
+                \}
+endif
 " }}}
 
-" => MRU plugin {{{
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+" => lightline {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has_key(plugs, 'lightline')
+    let g:lightline = {
+                \ 'active': {
+                \   'left': [ ['mode', 'paste'],
+                \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
+                \   'right': [ [ 'lineinfo' ], ['percent'] ]
+                \ },
+                \ 'component_function': {
+                \   'gitbranch': 'fugitive#head'
+                \ },
+                \ 'component': {
+                \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
+                \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+                \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+                \ },
+                \ 'component_visible_condition': {
+                \   'readonly': '(&filetype!="help"&& &readonly)',
+                \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+                \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+                \ },
+                \ 'separator': { 'left': ' ', 'right': ' ' },
+                \ 'subseparator': { 'left': ' ', 'right': ' ' }
+                \ }
 
-"}}}
+    set laststatus=2 " needed for lightline
+endif
+
+" }}}
 
 " => CTRL-P {{{
 """"""""""""""""""""""""""""""
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_max_height = 20
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+if has_key(plugs, 'ctrlp.vim')
+    let g:ctrlp_match_window = 'bottom,order:ttb'
+    let g:ctrlp_switch_buffer = 0
+    let g:ctrlp_working_path_mode = 0
+if has("win32") && ! has("win32unix")
+    let g:ctrlp_user_command = 'ag.exe %s -l --nocolor -g ""'
+else
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+    let g:ctrlp_max_height = 20
+    let g:ctrlp_clear_cache_on_exit = 0
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
+    map <leader>j :CtrlP<cr>
+    map <c-b> :CtrlPBuffer<cr>
+    map <leader>o :CtrlPBuffer<cr>
+endif
+" }}}
 
+" => bufexplorer {{{
+""""""""""""""""""""""""""""""
+if has_key(plugs, 'bufexplorer')
+    let g:bufExplorerDefaultHelp=0
+    let g:bufExplorerShowRelativePath=1
+    let g:bufExplorerFindActive=1
+    let g:bufExplorerSortBy='name'
+    map <leader>o :BufExplorer<cr>
+endif
 " }}}
 
 " => clearcase {{{
@@ -231,14 +296,14 @@ if 1                                        " Clearcase
     command! Ctunco call CleartoolUnCo()
 
     function! FixupCs()                     " Fixup configspec
-      " Fixup Configspec - change
-      "     Checked in "/dir/file" version "\main\47".
-      " ->
-      "     element /dir/file    /main/47
-      execute '%s/^Checked in "/element /g'
-      execute '%s/" version "/    /g'
-      execute '%s/\\/\//g'
-      execute '%s/".//g'
+        " Fixup Configspec - change
+        "     Checked in "/dir/file" version "\main\47".
+        " ->
+        "     element /dir/file    /main/47
+        execute '%s/^Checked in "/element /g'
+        execute '%s/" version "/    /g'
+        execute '%s/\\/\//g'
+        execute '%s/".//g'
     endfunction
     command! Fixcs call FixupCs()
 
@@ -247,58 +312,61 @@ endif                                       " Clearcase
 
 " => gnu global {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Gtags_Auto_Update = 1
+if has_key(plugs, 'gtags.vim')
+    let g:Gtags_Auto_Update = 1
 
-let g:GtagsCscope_Auto_Update = 1
-let g:GtagsCscope_Keep_Alive = 1
-let g:GtagsCscope_Absolute_Path = 1
-let g:GtagsCscope_Auto_Map = 0
-let g:GtagsCscope_Auto_Load =1
-let g:GtagsCscope_Quiet = 0
+    let g:GtagsCscope_Auto_Update = 1
+    let g:GtagsCscope_Keep_Alive = 1
+    let g:GtagsCscope_Absolute_Path = 1
+    let g:GtagsCscope_Auto_Map = 0
+    let g:GtagsCscope_Auto_Load =1
+    let g:GtagsCscope_Quiet = 1
 
-set cscopequickfix=s-,c-,d-,i-,t-,e-
-set cscopetag
-set csprg=gtags-cscope 
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set cscopetag
+    set csprg=gtags-cscope 
 
 
-nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap zi :cs find i <C-R>=expand("<cword>")<CR><CR>
+    nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap zi :cs find i <C-R>=expand("<cword>")<CR><CR>
 
-try 
-    " Gtags is setup to use tag database in the directories specified in the
-    " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
-    for dir in split($GTAGSLIBPATH, ":")
-        if isdirectory(dir) 
-            if filereadable(dir . "/GTAGS")
-                let cscmd = 'cs add ' . dir . '/GTAGS'
-                silent exec cscmd
-            endif
-        endif
-    endfor
-catch
-endtry
+    "try 
+    "    " Gtags is setup to use tag database in the directories specified in the
+    "    " GTAGSLIBPATH.  Parse this variable and auto load them *If* they exist.
+    "    for dir in split($GTAGSLIBPATH, ":")
+    "        if isdirectory(dir) 
+    "            if filereadable(dir . "/GTAGS")
+    "                let cscmd = 'cs add ' . dir . '/GTAGS'
+    "                silent exec cscmd
+    "            endif
+    "        endif
+    "    endfor
+    "catch
+    "endtry
+endif
 
 " }}}
 
-" => context
-let g:context_enabled = 1
+" => grepper {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>g :Grepper -highlight<CR>
+" }}}
 
-" => easy align
-
-nmap ga <Plug>(EasyAlign)
-
-" => rainbow parenthesis
-" Activation based on file type
-augroup rainbow_c
-  autocmd!
-  autocmd FileType c,bash RainbowParentheses
-augroup END
+" => rainbow parentheses {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has_key(plugs, 'rainbow_parentheses')
+    " Activation based on file type
+    augroup rainbow_c
+        autocmd!
+        autocmd FileType c,bash RainbowParentheses
+    augroup END
+endif
 
 " reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 " => function keys {{{
@@ -314,10 +382,6 @@ endfunction
 " F1 is help
 
 " F2 - F3 are gtags
-
-" list symbols in current file
-" Find file
-" Find references
 nmap <F2>  :Gtags -f %<CR>
 nmap <F3>  :Gtags -P <C-R>=expand("<cword>")<CR><CR>
 nmap <F4>  :Gtags -r <C-R>=expand("<cword>")<CR><CR>
@@ -326,8 +390,8 @@ nmap <F5>  :call ToggleQuickFix()<CR>
 nmap <F6>  :cn<CR>
 nmap <F7>  :cp<CR>
 
-nmap <F8>  :Grepper -jump -cword -highlight -noprompt<CR><CR>
-nmap <F9>  :Grepper<CR>
+nmap <F8>  :Grepper -cword -highlight -noprompt<CR><CR>
+nmap <F9>  :Grepper -highlight<CR><CR>
 
 nmap <F10> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <F11> :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -335,14 +399,6 @@ nmap <F12>  :Ag<CR>
 
 " }}}
 
-set backspace=indent,eol,start
 
-" => Spaces and Tabs {{{
-""""""""""""""""""""""""""""""
-set tabstop=4
-set softtabstop=4
-set expandtab
-set shiftwidth=4
-set smartindent
-set autoindent
-" }}}
+" => context
+"let g:context_enabled = 1
