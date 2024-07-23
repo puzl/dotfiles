@@ -27,3 +27,5 @@ export GTAGSLIBPATH
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     add_to_path PATH /devTools/bin
 fi
+
+ export DOCKERREPO=cork-dockerrepo.irlcor.lab:5000

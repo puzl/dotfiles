@@ -1,6 +1,0 @@
-# Sample $HOME/.simrc file
-#
-# Replace "putty" with your preferred terminal emulator (executable must be in $PATH)
-export sim_window_type="mintty"
-
-export sim_default_cards="DCAM-4 DCAM-5 RSM-7 DCAM-13"

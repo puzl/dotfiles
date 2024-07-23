@@ -3,5 +3,7 @@ alias e6000="cd /rxd/rmd/e6000"
 alias app="cd /rxd/rmd/e6000/app"
 alias dprocs="cd /rxd/rmd/e6000/hdwr/dprocs"
 alias vcore="cd /rxd/vcore"
-alias am="(amake &&  cd /rxd/vcore && amake dacm)"
+alias ocp="cd /rxd/ocp"
+alias am="(amake &&  cd /rxd/vcore && amake dacm DOCKERREPO=cork-dockerrepo.irlcor.lab:5000)"
+alias amc="amake DOCKERREPO=cork-dockerrepo.irlcor.lab:5000"
 alias scanBuild=echo

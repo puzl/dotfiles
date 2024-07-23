@@ -1,13 +1,2 @@
-.nfs*
-.uuid
-\#*
-elpa
-*~
-*.elc
-ede-projects.el
-emacs/projectile-bookmarks.eld
-emacs/semanticdb/
-projectile.cache
-.netrwhist
-*.swp
-.spacemacs.env
+vim/doc
+vim/.netrwhist

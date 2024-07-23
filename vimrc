@@ -1,7 +1,7 @@
 if exists('+shellslash')            " DOS
     set shellslash                  " Get Windows Vim to use forward slashes instead of backslashes
     set shell=C:/cygwin-2.10.0/bin/bash
-    set shellcmdflag=-c
+    set shellcmdflag=-cDone!
     set shellxquote=\"              " bash wants '"' instead of Windows default '('
     let $CHERE_INVOKING=1           " bash opens in working directory
 endif
@@ -28,7 +28,7 @@ Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
 "Plug 'https://github.com/rking/ag.vim.git'
 Plug 'https://github.com/ivechan/gtags.vim'
 Plug 'https://github.com/mhinz/vim-startify'
-Plug 'https://github.com/ntpeters/vim-better-whitespace'
+"Plug 'https://github.com/ntpeters/vim-better-whitespace'
 
 
 " Text manipulation
@@ -49,6 +49,10 @@ Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'https://github.com/morhetz/gruvbox'
 
+" Utils
+
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 "Plug 'https://github.com/tomasr/molokai.git'
 "Plug 'https://github.com/vim-scripts/peaksea.git'
 "Plug 'https://github.com/sjl/badwolf.git'
@@ -103,7 +107,7 @@ endif
 
 " => make {{{
 
-set makeprg=amake\ --halt
+set makeprg=~/bin/amake
 
 set errorformat=%f:%l:%c:\ %trror:\ %m
 set errorformat^=%f:%l:%c:\ %tarning:\ %m
@@ -273,9 +277,10 @@ if 1                                        " Clearcase
         if exists('+shellslash')            " DOS
             return substitute(expand("%:p"), "/", "\\", "g")
         else
-            return expand("%:p")
+            return substitute (expand("%:p"), getcwd() . "/", "", "")
         endif
     endfun
+
     function! CleartoolCheckout()
         echom system ("cleartool co -unr -nmaster -nc " . DosExpandCurrentFile())
         if &modified == 1
@@ -284,8 +289,10 @@ if 1                                        " Clearcase
             exe 'e!'
         endif
     endfun
-    command! Ctcou call CleartoolCheckout()
-    command! Cvtree echom system ("clearvtree " . DosExpandCurrentFile())
+
+    function CleartoolVtree()
+        echom system ("cleartool lsvtree -g " . DosExpandCurrentFile())
+    endfun
 
     function! CleartoolUnCo()               " Cleartool UnCheckout
         let choice = confirm ("Uncheckout " . expand ("%.p") . " ?", "&Yes\n&No", 2)
@@ -293,7 +300,6 @@ if 1                                        " Clearcase
             echom system ("cleartool unco -keep " . DosExpandCurrentFile())
         endif
     endfunction
-    command! Ctunco call CleartoolUnCo()
 
     function! FixupCs()                     " Fixup configspec
         " Fixup Configspec - change
@@ -305,6 +311,12 @@ if 1                                        " Clearcase
         execute '%s/\\/\//g'
         execute '%s/".//g'
     endfunction
+
+
+    command! Ctcou call CleartoolCheckout()
+    command! Cvt call CleartoolVtree()
+    command! Ctunco call CleartoolUnCo()
+
     command! Fixcs call FixupCs()
 
 endif                                       " Clearcase 
@@ -351,7 +363,7 @@ endif
 
 " => grepper {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>g :Grepper -highlight<CR>
+map <leader>g :Grepper -highlight -query<CR>
 " }}}
 
 " => rainbow parentheses {{{
@@ -402,3 +414,5 @@ nmap <F12>  :Ag<CR>
 
 " => context
 "let g:context_enabled = 1
+
+let g:notes_directories = ['~/Notes']

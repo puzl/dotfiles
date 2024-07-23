@@ -2,9 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
     ignore = dirty
-[submodule "spacemacs.d/vc-clearcase"]
-	path = spacemacs.d/vc-clearcase
-	url = https://github.com/alex-hhh/vc-clearcase.git
 [submodule "vim/bundle/lightline"]
 	path = vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim.git

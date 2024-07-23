@@ -10,25 +10,16 @@
     ~/.bash.d:  bash.d
     ~/.bash_profile:  bash_profile
     ~/.bashrc: bashrc
+    ~/.tmux.conf: tmux.conf
     ~/.globalrc: globalrc
-    ~/.config/i3: config/i3
-    ~/.config/polybar: config/polybar
     ~/.inputrc: inputrc
     ~/.minttyrc: minttyrc
-    ~/.simrc: simrc
     ~/.solarized.ansi: solarized.ansi
-    ~/.spacemacs.d: spacemacs.d
-    ~/.doom.d: doom.d
-    ~/.emacs: emacs
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.fonts: fonts
-    ~/.Xresources: Xresources
     ~/.gitconfig: gitconfig
     ~/.colors: colors
-    ~/.xinitrc: xinitrc
-    ~/.xsession: xinitrc
-    ~/.ncmpcpp: ncmpcpp
 
 
 - shell:
