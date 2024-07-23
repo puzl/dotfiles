@@ -20,6 +20,8 @@
     ~/.fonts: fonts
     ~/.gitconfig: gitconfig
     ~/.colors: colors
+    ~/.agignore: agignore
+    ~/.dircolors: dircolors
 
 
 - shell:
