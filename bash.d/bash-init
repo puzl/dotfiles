@@ -8,6 +8,10 @@ do
     fi
 done
 
-#[[ "$OSTYPE" == "linux-gnu" && -f ~/.fzf.bash ]] && source ~/.fzf.bash
 [[ -r "$HOME/.artifactoryrc" ]] && source "$HOME/.artifactoryrc"
-if [[ -d "$HOME/vcore-utils" ]]; then export PATH=$HOME/vcore-utils:$PATH; fi
+[[ -d "$HOME/vcore-utils" ]]    && export PATH=$HOME/vcore-utils:$PATH
+[[ -r ~/.dircolors ]]           && eval "$(dircolors ~/.dircolors)"
+
+if [[ -e /usr/share/doc/fzf/examples/key-bindings.bash ]]; then
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+fi

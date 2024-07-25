@@ -29,3 +29,5 @@
 	required = true
 [safe]
 	directory = /y/.dotfiles
+[init]
+	defaultBranch = main
