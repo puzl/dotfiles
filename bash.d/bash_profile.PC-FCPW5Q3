@@ -1,8 +1,11 @@
 export CYGFIXIFY="| sed -e 's/\\\\/\\//g' -e 's/^[A-Za-z]://g'"
-add_to_path PATH /y/bin
-add_to_path PATH /usr/local/vim/bin
-export VAGRANT_HOME="d:\\vagrant"
 
+add_to_path PATH /y/bin
+add_to_path PATH /opt/tools/bin
+
+#add_to_path PATH /usr/local/vim/bin
+#add_to_path PATH /usr/local/global/bin
+#add_to_path PATH /usr/local/ag/bin
 
 #if [[ ! -z ${SSH_TTY} ]]; then
     #source ~/.bash.d/cygwin-ssh.sh

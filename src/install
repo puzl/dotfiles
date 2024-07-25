@@ -1,0 +1,32 @@
+#!/bin/bash
+
+[[ -d ${HOME}/src ]] || mkdir -p ${HOME}/src
+
+# vim
+echo Vim
+if [[ ! -d ${HOME}/src/vim ]]; then
+    git clone --recursive https://github.com/vim/vim ${HOME}/src/vim
+fi
+
+cd ${HOME}/src/vim
+git pull
+./configure --with-features=huge --enable-pythoninterp --prefix=/opt/tools
+make
+make install
+
+echo Global
+if [[ ! -d ${HOME}/src/global-6.6.13 ]]; then
+    cd ${HOME}/src
+    wget https://ftp.gnu.org/pub/gnu/global/global-6.6.13.tar.gz
+    tar zxvf global-6.6.13.tar.gz
+fi
+cd ${HOME}/src/global-6.6.13
+./configure --prefix=/opt/tools
+make
+make install
+
+echo ag
+if [[ ! -d ${HOME}/src/the_silver_searcher ]]; then
+    cd ${HOME}/src
+    git clone https://github.com/ggreer/the_silver_searcher
+fi

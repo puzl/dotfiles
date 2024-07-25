@@ -1,0 +1,5 @@
+#!/bin/bash
+git clone --recursive https://github.com/davatorium/rofi.git
+git clone --recursive https://github.com/polybar/polybar.git
+git clone --recursive https://github.com/Airblader/i3.git
+

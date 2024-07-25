@@ -29,9 +29,11 @@ Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
 Plug 'https://github.com/ivechan/gtags.vim'
 Plug 'https://github.com/mhinz/vim-startify'
 "Plug 'https://github.com/ntpeters/vim-better-whitespace'
+Plug 'romainl/vim-qf'
 
 
 " Text manipulation
+Plug 'tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
 
@@ -88,6 +90,7 @@ set showcmd
 set cursorline
 filetype indent on
 filetype plugin on
+filetype plugin indent on
 set lazyredraw
 set mouse+=a
 
