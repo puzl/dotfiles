@@ -26,7 +26,6 @@ Plug 'https://github.com/paretje/async-grepper'
 Plug 'https://github.com/kien/ctrlp.vim'
 Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
 "Plug 'https://github.com/rking/ag.vim.git'
-Plug 'https://github.com/ivechan/gtags.vim'
 Plug 'https://github.com/mhinz/vim-startify'
 "Plug 'https://github.com/ntpeters/vim-better-whitespace'
 
@@ -62,8 +61,27 @@ Plug 'xolox/vim-misc'
 "Plug 'https://github.com/tpope/vim-fugitive.git'
 "Plug 'https://github.com/ervandew/supertab.git'
 
-"Plug 'https://github.com/dense-analysis/ale'
 "Plug 'https://github.com/jlanzarotta/bufexplorer.git'
+
+
+if has('nvim')
+" NEOVIM Specific
+
+Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+"Plug 'https://github.com/dense-analysis/ale'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'L3MON4D3/LuaSnip'
+
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
+
+else
+
+" VIM specific
+Plug 'https://github.com/ivechan/gtags.vim'
+endif
 call plug#end()
 
 " => UI {{{
@@ -140,7 +158,7 @@ if exists('+termguicolors')
 endif
 
 if has_key(plugs, 'gruvbox')
-    "set background=dark
+    set background=light
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_contrast_light='hard'
     let g:gruvbox_termcolors=256
@@ -334,7 +352,9 @@ if has_key(plugs, 'gtags.vim')
     let g:GtagsCscope_Auto_Load =1
     let g:GtagsCscope_Quiet = 1
 
+if ! has('nvim')
     set cscopequickfix=s-,c-,d-,i-,t-,e-
+endif
     set cscopetag
     set csprg=gtags-cscope 
 
@@ -416,3 +436,6 @@ nmap <F12>  :Ag<CR>
 "let g:context_enabled = 1
 
 let g:notes_directories = ['~/Notes']
+if has('nvim')
+    lua require('init')
+endif
