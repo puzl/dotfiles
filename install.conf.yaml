@@ -1,6 +1,7 @@
 - defaults:
     link:
       relink: true
+      force: true
 
 - create:
   - ~/.config
@@ -13,6 +14,7 @@
     ~/.bash.d:  bash.d
     ~/.bash_profile:  bash_profile
     ~/.bashrc: bashrc
+    ~/.bash_logout: bash_logout
     ~/.tmux.conf: tmux.conf
     ~/.globalrc: globalrc
     ~/.inputrc: inputrc
