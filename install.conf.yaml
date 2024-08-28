@@ -2,6 +2,9 @@
     link:
       relink: true
 
+- create:
+  - ~/.config
+
 - clean: ['~']
 
 - link:
@@ -23,6 +26,8 @@
     ~/.agignore: agignore
     ~/.dircolors: dircolors
     ~/Notes: Notes
+    ~/.config/nvim: nvim
+    ~/.config/nvim/vimrc: vimrc
 
 
 - shell:
