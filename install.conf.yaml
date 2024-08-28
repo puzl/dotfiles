@@ -29,7 +29,7 @@
     ~/.dircolors: dircolors
     ~/Notes: Notes
     ~/.config/nvim: nvim
-    ~/.config/nvim/vimrc: vimrc
+    ~/.config/nvim/init.vim: vimrc
 
 
 - shell:
