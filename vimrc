@@ -35,7 +35,7 @@ Plug 'romainl/vim-qf'
 Plug 'tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
-
+Plug 'christoomey/vim-system-copy'
 " UI
 Plug 'https://github.com/wellle/context.vim'
 Plug 'https://github.com/vim-airline/vim-airline'
