@@ -18,33 +18,35 @@ if [[ "$OSTYPE" = "cygwin" ]] ;  then
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR=vim
     add_to_path PATH $HOME/bin:/usr/local/bin:/usr/atria/bin
-    if [[ -x /usr/atria/bin/cleartool ]]; then
-        trap 'printf "\033]0;$HOSTNAME: $(cleartool pwv -s) %s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
-    else
-        trap 'printf "\033]0;$HOSTNAME: %s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
-    fi
-		# Calculate the view name for later use
-		VIEW=`echo $CLEARCASE_ROOT  | sed -e 's./view/..g'`
-        git_branch_prompt() {
-            BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
-            if [[ "X$BRANCH" != "X" ]]; then
-                top_level=$(git rev-parse --show-toplevel)
-                echo " ${BRANCH} on $(basename $top_level)"
-            fi
-        }
-
-        PS1="\[\e[31m\] \u@\h \[\e[m\]\[\e[35m\] \W \[\e[m\]"
-
-        BRANCH=$( git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
-        if [[ "X$VIEW" != "X" ]]; then
-            PS1="\[\e[32m\] $VIEW \[\e[m\]$PS1"
+    if shopt -q login_shell; then
+        if [[ -x /usr/atria/bin/cleartool ]]; then
+            trap 'printf "\033]0;$HOSTNAME: $(cleartool pwv -s) %s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
+        else
+            trap 'printf "\033]0;$HOSTNAME: %s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
         fi
-        PS1="\[\e[33m\]\$(git_branch_prompt)\[\e[m\]$PS1"
-        PS1="\[\e[39m\] \D{%T} \[\e[m\]$PS1"
-        PS1="\[\e[0;31m\]┌─\e[0m\e[34m{\[\e[0m\e[0;32m\]$PS1\e[34m}\n\[\e[0;31m\]└─>\[\e[0m\] "
+    fi
+    # Calculate the view name for later use
+    VIEW=`echo $CLEARCASE_ROOT  | sed -e 's./view/..g'`
+    git_branch_prompt() {
+        BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
+        if [[ "X$BRANCH" != "X" ]]; then
+            top_level=$(git rev-parse --show-toplevel)
+            echo " ${BRANCH} on $(basename $top_level)"
+        fi
+    }
 
-		export CCASE_BLD_UMASK=002
-		export CCASE_MAKE_COMPAT=gnu
+    PS1="\[\e[31m\] \u@\h \[\e[m\]\[\e[35m\] \W \[\e[m\]"
+
+    BRANCH=$( git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
+    if [[ "X$VIEW" != "X" ]]; then
+        PS1="\[\e[32m\] $VIEW \[\e[m\]$PS1"
+    fi
+    PS1="\[\e[33m\]\$(git_branch_prompt)\[\e[m\]$PS1"
+    PS1="\[\e[39m\] \D{%T} \[\e[m\]$PS1"
+    PS1="\[\e[0;31m\]┌─\e[0m\e[34m{\[\e[0m\e[0;32m\]$PS1\e[34m}\n\[\e[0;31m\]└─>\[\e[0m\] "
+
+    export CCASE_BLD_UMASK=002
+    export CCASE_MAKE_COMPAT=gnu
 else
     export TERM="xterm-256color"
 
