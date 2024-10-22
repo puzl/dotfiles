@@ -37,4 +37,5 @@
 - shell:
   - if [[ ! -d ~/.config ]]; then mkdir ~/.config; fi
   - [git submodule update --init --recursive, Installing submodules]
+  - if [[ -d ~/.fzf ]]; then  ~/.fzf/install --bin; fi
 
