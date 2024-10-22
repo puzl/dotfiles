@@ -30,6 +30,8 @@ Plug 'https://github.com/mhinz/vim-startify'
 "Plug 'https://github.com/ntpeters/vim-better-whitespace'
 Plug 'romainl/vim-qf'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Text manipulation
 Plug 'tpope/vim-commentary'
