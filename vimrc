@@ -36,7 +36,8 @@ if executable('fzf')
 endif
 
 " Text manipulation
-Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdcommenter'
+"Plug 'tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-system-copy'
@@ -47,6 +48,7 @@ Plug 'https://github.com/bling/vim-bufferline'
 Plug 'https://github.com/junegunn/rainbow_parentheses.vim'
 Plug 'https://github.com/junegunn/vim-peekaboo'
 Plug 'https://github.com/tpope/vim-dispatch'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Colour schemes
 Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
@@ -450,4 +452,7 @@ endif
 if has_key(plugs, 'fzf')
     let g:ctrlp_map = ""
     map <c-p> :FZF<cr>
+endif
+if has_key(plugs, 'vim-indent-guides')
+    let g:indent_guides_enable_on_vim_startup = 1
 endif

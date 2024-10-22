@@ -3,6 +3,7 @@ RCS="bash_funcs bash_profile bash_aliases"
 
 for rc in $RCS
 do
+    # if
     if [[ -f $HOME/.bash.d/$rc ]]; then
         source $HOME/.bash.d/$rc
     fi
