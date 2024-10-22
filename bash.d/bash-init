@@ -11,7 +11,4 @@ done
 [[ -r "$HOME/.artifactoryrc" ]] && source "$HOME/.artifactoryrc"
 [[ -d "$HOME/vcore-utils" ]]    && export PATH=$HOME/vcore-utils:$PATH
 [[ -r ~/.dircolors ]]           && eval "$(dircolors ~/.dircolors)"
-
-if [[ -e /usr/share/doc/fzf/examples/key-bindings.bash ]]; then
-    source /usr/share/doc/fzf/examples/key-bindings.bash
-fi
+[[ -d ~/.fzf && -e ~/.fzf.bash ]] && source ~/.fzf.bash

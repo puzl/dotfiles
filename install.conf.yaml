@@ -13,6 +13,8 @@
     ~/.astylerc: astylerc
     ~/.bash.d:  bash.d
     ~/.bash_profile:  bash_profile
+    ~/.profile:  bash_profile
+    ~/.fzf.bash:  fzf.bash
     ~/.bashrc: bashrc
     ~/.bash_logout: bash_logout
     ~/.tmux.conf: tmux.conf
