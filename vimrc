@@ -443,6 +443,19 @@ if has('nvim')
 endif
 
 if has_key(plugs, 'fzf')
+    " An action can be a reference to a function that processes selected lines
+    function! s:build_quickfix_list(lines)
+        call setqflist(map(copy(a:lines), '{ "filename": v:val, "lnum": 1 }'))
+        copen
+        cc
+    endfunction
+
+    let g:fzf_action = {
+                \ 'ctrl-q': function('s:build_quickfix_list'),
+                \ 'ctrl-t': 'tab split',
+                \ 'ctrl-x': 'split',
+                \ 'ctrl-v': 'vsplit' }
+
     let g:ctrlp_map = ""
     map <c-p> :FZF<cr>
 endif
