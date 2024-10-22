@@ -25,9 +25,6 @@ Plug 'https://github.com/skywind3000/asyncrun.vim'
 Plug 'https://github.com/paretje/async-grepper'
 Plug 'https://github.com/kien/ctrlp.vim'
 Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
-"Plug 'https://github.com/rking/ag.vim.git'
-Plug 'https://github.com/mhinz/vim-startify'
-"Plug 'https://github.com/ntpeters/vim-better-whitespace'
 Plug 'romainl/vim-qf'
 
 if executable('fzf')
@@ -54,7 +51,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
 Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-"Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/morhetz/gruvbox'
 
 " Utils
 
@@ -69,14 +66,10 @@ Plug 'xolox/vim-misc'
 "Plug 'https://github.com/tpope/vim-fugitive.git'
 "Plug 'https://github.com/ervandew/supertab.git'
 
-"Plug 'https://github.com/jlanzarotta/bufexplorer.git'
-
-
 if has('nvim')
 " NEOVIM Specific
 
 Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
-"Plug 'https://github.com/dense-analysis/ale'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
