@@ -48,7 +48,7 @@ Plug 'https://github.com/tpope/vim-dispatch'
 Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
 Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'https://github.com/morhetz/gruvbox'
+"Plug 'https://github.com/morhetz/gruvbox'
 
 " Utils
 
