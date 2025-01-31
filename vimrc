@@ -57,6 +57,7 @@ Plug 'https://github.com/morhetz/gruvbox'
 
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+Plug 'lambdalisue/vim-suda'
 "Plug 'https://github.com/tomasr/molokai.git'
 "Plug 'https://github.com/vim-scripts/peaksea.git'
 "Plug 'https://github.com/sjl/badwolf.git'

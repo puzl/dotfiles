@@ -24,6 +24,7 @@
     ~/.solarized.ansi: solarized.ansi
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.spacemacs: spacemacs
     ~/.fonts: fonts
     ~/.gitconfig: gitconfig
     ~/.colors: colors
