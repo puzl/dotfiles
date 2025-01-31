@@ -51,7 +51,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
 Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'https://github.com/morhetz/gruvbox'
+"Plug 'https://github.com/morhetz/gruvbox'
 
 " Utils
 
@@ -463,3 +463,9 @@ endif
 if has_key(plugs, 'vim-indent-guides')
     let g:indent_guides_enable_on_vim_startup = 1
 endif
+
+" Fix auto-indentation for YAML files
+augroup yaml_fix
+    autocmd!
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
+augroup END

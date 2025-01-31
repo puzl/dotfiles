@@ -76,7 +76,7 @@ function title()
 function settitle()
 {
     if [[ -z "$CC_VIEW_SPEC" ]]; then
-        title "$HOSTNAME"
+        title "$USER@$HOSTNAME"
     else
         title "$(cleartool pwv -s)"
     fi
