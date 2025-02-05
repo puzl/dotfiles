@@ -26,7 +26,6 @@ Plug 'https://github.com/paretje/async-grepper'
 Plug 'https://github.com/kien/ctrlp.vim'
 Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
 Plug 'romainl/vim-qf'
-
 if executable('fzf')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -48,9 +47,10 @@ Plug 'https://github.com/tpope/vim-dispatch'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Colour schemes
-Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
-Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+"Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
+"Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
+"Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'gzagatti/vim-leuven-theme'
 "Plug 'https://github.com/morhetz/gruvbox'
 
 " Utils
@@ -157,6 +157,7 @@ syntax enable " Syntax highlight and colour scheme
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    let guicursor = 'a:blinkon0-Cursor,i-ci:ver100'
     set termguicolors
 endif
 
@@ -182,6 +183,8 @@ elseif has_key(plugs, 'xcode')
     "colorscheme xcodewwdc
 elseif has_key(plugs, 'embark')
     colorscheme embark
+elseif has_key(plugs, 'vim-leuven-theme')
+    colorscheme leuven
 endif
 "}}}
 

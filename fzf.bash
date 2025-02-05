@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */home/media/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/home/media/.fzf/bin"
+if [[ ! "$PATH" == *fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}~/.fzf/bin"
 fi
 
 eval "$(fzf --bash)"
