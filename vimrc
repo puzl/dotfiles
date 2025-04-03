@@ -44,24 +44,24 @@ Plug 'https://github.com/bling/vim-bufferline'
 Plug 'https://github.com/junegunn/rainbow_parentheses.vim'
 Plug 'https://github.com/junegunn/vim-peekaboo'
 Plug 'https://github.com/tpope/vim-dispatch'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 
 " Colour schemes
 "Plug 'https://github.com/embark-theme/vim', { 'as': 'embark' }
 "Plug 'https://github.com/lunacookies/vim-colors-xcode', {'as' : 'xcode' }
 "Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'gzagatti/vim-leuven-theme'
-"Plug 'https://github.com/morhetz/gruvbox'
+"Plug 'gzagatti/vim-leuven-theme'
+Plug 'https://github.com/morhetz/gruvbox'
+"Plug 'https://github.com/vim-scripts/peaksea.git'
+"Plug 'https://github.com/sjl/badwolf.git'
+"Plug 'https://github.com/vim-scripts/Wombat.git'
 
 " Utils
 
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'lambdalisue/vim-suda'
-"Plug 'https://github.com/tomasr/molokai.git'
-"Plug 'https://github.com/vim-scripts/peaksea.git'
-"Plug 'https://github.com/sjl/badwolf.git'
-"Plug 'https://github.com/vim-scripts/Wombat.git'
+Plug 'https://github.com/tomasr/molokai.git'
 
 " Not sure if I use these
 "Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -472,3 +472,15 @@ augroup yaml_fix
     autocmd!
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 augroup END
+
+if executable('ruff')
+    if !has('nvim')
+        Plug 'prabirshrestha/vim-lsp'
+        au User lsp_setup call lsp#register_server({
+                    \ 'name': 'ruff',
+                    \ 'cmd': {server_info->['ruff', 'server']},
+                    \ 'allowlist': ['python'],
+                    \ 'workspace_config': {},
+                    \ })
+    endif
+endif

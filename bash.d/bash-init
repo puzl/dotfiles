@@ -13,3 +13,4 @@ done
 [[ -d "$HOME/vcore-utils" ]]    && export PATH=$HOME/vcore-utils:$PATH
 [[ -r ~/.dircolors ]]           && eval "$(dircolors ~/.dircolors)"
 [[ -d ~/.fzf && -e ~/.fzf.bash ]] && source ~/.fzf.bash
+[[ -d ~/.local/bin ]] && export PATH=~/.local/bin:$PATH

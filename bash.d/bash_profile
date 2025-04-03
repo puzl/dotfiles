@@ -35,7 +35,7 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
         fi
     }
 
-    PS1="\[\e[31m\] \u@\h \[\e[m\]\[\e[35m\] \W \[\e[m\]"
+    PS1="\[\e[31m\] \u@\h \[\e[m\]\[\e[35m\] \w \[\e[m\]"
 
     BRANCH=$( git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
     if [[ "X$VIEW" != "X" ]]; then
@@ -57,12 +57,12 @@ else
 
 	# No need to setup build environment if not in a view
 	if [[ -z "$CLEARCASE_ROOT" ]] ;   then
-		PS1="\[\033[1;34m\][\u@\h:\W]$\[\033[0m\] "
+		PS1="\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "
 	else
 		# Calculate the view name for later use
 		VIEW=`echo $CLEARCASE_ROOT  | sed -e 's./view/..g'`
 
-		PS1="\[\033[1;32m\][$VIEW]\[\033[1;34m\][\u@\h:\W]$\[\033[0m\] "
+		PS1="\[\033[1;32m\][$VIEW]\[\033[1;34m\][\u@\h:\w]$\[\033[0m\] "
 
 		export CCASE_BLD_UMASK=002
 		export CCASE_MAKE_COMPAT=gnu
