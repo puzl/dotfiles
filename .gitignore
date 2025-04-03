@@ -1,3 +1,4 @@
+.uuid*
 vim/doc
 vim/.netrwhist
 nvim/init.vim

@@ -1,3 +1,4 @@
+#!/bin/bash
 # do funcs first
 RCS="bash_funcs bash_profile bash_aliases"
 
@@ -14,3 +15,4 @@ done
 [[ -r ~/.dircolors ]]           && eval "$(dircolors ~/.dircolors)"
 [[ -d ~/.fzf && -e ~/.fzf.bash ]] && source ~/.fzf.bash
 [[ -d ~/.local/bin ]] && export PATH=~/.local/bin:$PATH
+[[ -d ~/.cargo && -e ~/.cargo/env ]] && source ~/.cargo/env 
