@@ -26,6 +26,7 @@ Plug 'https://github.com/paretje/async-grepper'
 Plug 'https://github.com/kien/ctrlp.vim'
 Plug 'https://github.com/FelikZ/ctrlp-py-matcher'
 Plug 'romainl/vim-qf'
+
 if executable('fzf')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -483,4 +484,12 @@ if executable('ruff')
                     \ 'workspace_config': {},
                     \ })
     endif
+endif
+
+if &diff
+    set nofoldenable
+"    nmap <F6>  ]c
+"    nmap <F7>  [c
+"    nmap <F8>  do
+"    nmap <F5>  dp
 endif
