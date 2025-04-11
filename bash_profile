@@ -4,4 +4,4 @@ if [[ -f $HOME/.bash.d/bash-init ]]; then
     . $HOME/.bash.d/bash-init
 fi
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
